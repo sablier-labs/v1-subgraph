@@ -1,13 +1,5 @@
-type Balance @entity {
-  id: ID!
-  contract: BigInt!
-  sender: BigInt!
-  recipient: BigInt!
-}
-
 type Stream @entity {
   id: ID!
-  status: StreamStatus!
   sender: Bytes! # address
   recipient: Bytes! # address
   tokenAddress: Bytes! # address
@@ -15,7 +7,25 @@ type Stream @entity {
   stopBlock: BigInt! # uint256
   payment: BigInt! # uint256
   interval: BigInt! # uint256
-  balance: Balance
+  status: StreamStatus!
+  balance: Balance! @derivedFrom(field: "stream")
+  txs: [Transaction!]! @derivedFrom(field: "stream")
+}
+
+type Balance @entity {
+  id: ID!
+  contract: BigInt!
+  sender: BigInt!
+  stream: Stream!
+  recipient: BigInt!
+}
+
+type Transaction @entity {
+  id: ID! # Transaction Hash
+  block: Int!
+  event: String!
+  stream: Stream!
+  timestamp: Int!
 }
 
 enum StreamStatus {

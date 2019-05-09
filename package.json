@@ -24,6 +24,7 @@
     "create-local": "graph create PaulRBerg/Sablier --node http://127.0.0.1:8020",
     "deploy": "graph deploy PaulRBerg/Sablier --debug --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
     "deploy-local": "graph deploy PaulRBerg/Sablier --debug --ipfs http://localhost:5001 --node http://127.0.0.1:8020",
-    "remove-local": "graph remove PaulRBerg/Sablier --node http://localhost:8020/"
+    "remove-local": "graph remove PaulRBerg/Sablier --node http://localhost:8020/",
+    "reset-local": "yarn codegen && yarn remove-local && yarn create-local && yarn deploy-local"
   }
 }

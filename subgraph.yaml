@@ -19,6 +19,7 @@ dataSources:
       entities:
         - Balance
         - Stream
+        - Transaction
       eventHandlers:
         - event: CreateStream(uint256,address,address,address,uint256,uint256,uint256,uint256,uint256)
           handler: handleCreateStream
