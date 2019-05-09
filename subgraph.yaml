@@ -1,0 +1,36 @@
+specVersion: 0.0.1
+description: Sablier is a decentralised app for continuous payments on Ethereum.
+repository: https://github.com/PaulRBerg/sablier-subgraph
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Sablier
+    network: rinkeby
+    source:
+      abi: Sablier
+      address: "0xBB6209d27791D3c52BDb4a0FE4CE1cf99156BBeF"
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.2
+      abis:
+        - name: Sablier
+          file: ./abis/sablier.json
+      entities:
+        - Balance
+        - Stream
+      eventHandlers:
+        - event: CreateStream(uint256,address,address,address,uint256,uint256,uint256,uint256,uint256)
+          handler: handleCreateStream
+        - event: WithdrawFromStream(uint256,address,uint256)
+          handler: handleWithdrawFromStream
+        - event: RedeemStream(uint256,address,address,uint256,uint256)
+          handler: handleRedeemStream
+        - event: ConfirmUpdate(uint256,address,address,uint256,uint256,uint256)
+          handler: handleConfirmUpdate
+        - event: RevokeUpdate(uint256,address,address,uint256,uint256,uint256)
+          handler: handleRevokeUpdate
+        - event: ExecuteUpdate(uint256,address,address,address,uint256,uint256,uint256)
+          handler: handleExecuteUpdate
+      file: ./src/mapping.ts
+      language: wasm/assemblyscript

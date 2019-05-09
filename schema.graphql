@@ -1,0 +1,25 @@
+type Balance @entity {
+  id: ID!
+  contract: BigInt!
+  sender: BigInt!
+  recipient: BigInt!
+}
+
+type Stream @entity {
+  id: ID!
+  status: StreamStatus!
+  sender: Bytes! # address
+  recipient: Bytes! # address
+  tokenAddress: Bytes! # address
+  startBlock: BigInt! # uint256
+  stopBlock: BigInt! # uint256
+  payment: BigInt! # uint256
+  interval: BigInt! # uint256
+  balance: Balance
+}
+
+enum StreamStatus {
+  Undefined
+  Created
+  Redeemed
+}
