@@ -47,7 +47,7 @@ export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
     return;
   }
 
-  let balance = Balance.load(stream.balance);
+  let balance = Balance.load(id);
   if (balance == null) {
     return;
   }
@@ -70,7 +70,7 @@ export function handleRedeemStream(event: RedeemStreamEvent): void {
   stream.status = "Redeemed";
   stream.save();
 
-  let balance = Balance.load(stream.balance);
+  let balance = Balance.load(id);
   if (balance == null) {
     return;
   }
