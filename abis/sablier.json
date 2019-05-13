@@ -72,7 +72,7 @@
       },
       {
         "indexed": false,
-        "name": "funds",
+        "name": "amount",
         "type": "uint256"
       }
     ],
@@ -99,12 +99,12 @@
       },
       {
         "indexed": false,
-        "name": "senderBalance",
+        "name": "senderAmount",
         "type": "uint256"
       },
       {
         "indexed": false,
-        "name": "recipientBalance",
+        "name": "recipientAmount",
         "type": "uint256"
       }
     ],
@@ -413,7 +413,7 @@
         "type": "uint256"
       },
       {
-        "name": "_funds",
+        "name": "_amount",
         "type": "uint256"
       }
     ],
