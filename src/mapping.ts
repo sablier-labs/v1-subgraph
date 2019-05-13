@@ -1,84 +1,84 @@
-import { BigInt, EthereumEvent } from "@graphprotocol/graph-ts";
+import { ByteArray, Bytes, crypto, EthereumEvent } from "@graphprotocol/graph-ts";
 
-import { Balance, Stream, Transaction } from "./types/schema";
+import { RawStream, Redeemal, Stream, Transaction, Withdrawal } from "./types/schema";
 import {
   CreateStream as CreateStreamEvent,
   WithdrawFromStream as WithdrawFromStreamEvent,
   RedeemStream as RedeemStreamEvent,
 } from "./types/Sablier/Sablier";
 
-function addTransaction(name: string, event: EthereumEvent, streamId: string, txhash: string): void {
+function addTransaction(name: string, event: EthereumEvent, rawStreamId: string, txhash: string): void {
   let transaction = new Transaction(txhash);
   transaction.event = name;
   transaction.block = event.block.number.toI32();
-  transaction.stream = streamId;
+  transaction.rawStream = rawStreamId;
   transaction.timestamp = event.block.timestamp.toI32();
   transaction.save();
 }
 
 export function handleCreateStream(event: CreateStreamEvent): void {
-  let id = event.params.streamId.toHex();
-  let stream = new Stream(id);
-  stream.status = "Created";
-  stream.sender = event.params.sender;
-  stream.recipient = event.params.recipient;
-  stream.tokenAddress = event.params.tokenAddress;
-  stream.startBlock = event.params.startBlock;
-  stream.stopBlock = event.params.stopBlock;
-  stream.payment = event.params.payment;
-  stream.interval = event.params.interval;
-  stream.save();
-
-  let balance = new Balance(id);
-  balance.contract = event.params.deposit;
-  balance.sender = event.params.deposit;
-  balance.stream = id;
-  balance.recipient = new BigInt(0);
-  balance.save();
+  let rawStreamId = event.params.streamId.toHex();
+  let rawStream = new RawStream(rawStreamId);
+  rawStream.interval = event.params.interval;
+  rawStream.payment = event.params.payment;
+  rawStream.recipient = event.params.recipient;
+  rawStream.sender = event.params.sender;
+  rawStream.startBlock = event.params.startBlock;
+  rawStream.status = "Created";
+  rawStream.stopBlock = event.params.stopBlock;
+  rawStream.tokenAddress = event.params.tokenAddress;
+  rawStream.txs = new Array<string>();
+  rawStream.withdrawals = new Array<string>();
+  rawStream.save();
 
   let txhash = event.transaction.hash.toHex();
-  addTransaction("CreateStream", event, id, txhash);
+
+  let outStreamId = txhash + event.params.sender.toHex().slice(2);
+  let outStream = new Stream(outStreamId);
+  outStream.flow = "Out";
+  outStream.owner = event.params.sender;
+  outStream.rawStream = rawStreamId;
+  outStream.save();
+
+  let inStreamId = txhash + event.params.recipient.toHex().slice(2);
+  let inStream = new Stream(inStreamId);
+  inStream.flow = "In";
+  inStream.owner = event.params.recipient;
+  inStream.rawStream = rawStreamId;
+  inStream.save();
+
+  addTransaction("CreateStream", event, rawStreamId, txhash);
 }
 
 export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
-  let id = event.params.streamId.toHex();
-  let stream = Stream.load(id);
-  if (stream == null) {
+  let rawStreamId = event.params.streamId.toHex();
+  let rawStream = RawStream.load(rawStreamId);
+  if (rawStream == null) {
     return;
   }
-
-  let balance = Balance.load(id);
-  if (balance == null) {
-    return;
-  }
-  let funds = event.params.funds;
-  balance.contract = balance.contract.minus(funds);
-  balance.sender = balance.sender.minus(funds);
-  balance.recipient = balance.recipient.plus(funds);
-  balance.save();
 
   let txhash = event.transaction.hash.toHex();
-  addTransaction("WithdrawFromStream", event, id, txhash);
+  let withdrawal = new Withdrawal(txhash);
+  withdrawal.amount = event.params.amount;
+  withdrawal.rawStream = rawStreamId;
+
+  addTransaction("WithdrawFromStream", event, rawStreamId, txhash);
 }
 
 export function handleRedeemStream(event: RedeemStreamEvent): void {
-  let id = event.params.streamId.toHex();
-  let stream = Stream.load(id);
-  if (stream == null) {
+  let rawStreamId = event.params.streamId.toHex();
+  let rawStream = RawStream.load(rawStreamId);
+  if (rawStream == null) {
     return;
   }
-  stream.status = "Redeemed";
-  stream.save();
+  rawStream.status = "Redeemed";
+  rawStream.save();
 
-  let balance = Balance.load(id);
-  if (balance == null) {
-    return;
-  }
-  balance.contract = new BigInt(0);
-  balance.sender = event.params.senderBalance;
-  balance.recipient = event.params.recipientBalance;
-  balance.save();
+  let redeemal = new Redeemal(rawStreamId);
+  redeemal.rawStream = rawStreamId;
+  redeemal.senderAmount = event.params.senderAmount;
+  redeemal.recipientAmount = event.params.senderAmount;
 
   let txhash = event.transaction.hash.toHex();
-  addTransaction("RedeemStream", event, id, txhash);
+  addTransaction("RedeemStream", event, rawStreamId, txhash);
 }

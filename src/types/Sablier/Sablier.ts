@@ -82,7 +82,7 @@ export class WithdrawFromStream__Params {
     return this._event.parameters[1].value.toAddress();
   }
 
-  get funds(): BigInt {
+  get amount(): BigInt {
     return this._event.parameters[2].value.toBigInt();
   }
 }
@@ -112,11 +112,11 @@ export class RedeemStream__Params {
     return this._event.parameters[2].value.toAddress();
   }
 
-  get senderBalance(): BigInt {
+  get senderAmount(): BigInt {
     return this._event.parameters[3].value.toBigInt();
   }
 
-  get recipientBalance(): BigInt {
+  get recipientAmount(): BigInt {
     return this._event.parameters[4].value.toBigInt();
   }
 }

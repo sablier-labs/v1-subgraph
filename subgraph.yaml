@@ -9,7 +9,7 @@ dataSources:
     network: rinkeby
     source:
       abi: Sablier
-      address: "0xBB6209d27791D3c52BDb4a0FE4CE1cf99156BBeF"
+      address: "0x32Ef6010D97fc0D10f0D0AB842C141CbD266C98D"
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.2
