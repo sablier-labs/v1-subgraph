@@ -33,14 +33,14 @@ export function handleCreateStream(event: CreateStreamEvent): void {
 
   let txhash = event.transaction.hash.toHex();
 
-  let outStreamId = txhash + event.params.sender.toHex().slice(2);
+  let outStreamId = event.params.sender.toHex() + "/" + rawStreamId;
   let outStream = new Stream(outStreamId);
   outStream.flow = "Out";
   outStream.owner = event.params.sender;
   outStream.rawStream = rawStreamId;
   outStream.save();
 
-  let inStreamId = txhash + event.params.recipient.toHex().slice(2);
+  let inStreamId = event.params.recipient.toHex() + "/" + rawStreamId;
   let inStream = new Stream(inStreamId);
   inStream.flow = "In";
   inStream.owner = event.params.recipient;

@@ -3,7 +3,7 @@ type RawStream @entity {
   interval: BigInt!
   payment: BigInt!
   recipient: Bytes!
-  redeemal: Redeemal!
+  redeemal: Redeemal
   sender: Bytes!
   startBlock: BigInt!
   stopBlock: BigInt!

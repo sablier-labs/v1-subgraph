@@ -67,13 +67,21 @@ export class RawStream extends Entity {
     this.set("recipient", Value.fromBytes(value));
   }
 
-  get redeemal(): string {
+  get redeemal(): string | null {
     let value = this.get("redeemal");
-    return value.toString();
+    if (value === null) {
+      return null;
+    } else {
+      return value.toString();
+    }
   }
 
-  set redeemal(value: string) {
-    this.set("redeemal", Value.fromString(value));
+  set redeemal(value: string | null) {
+    if (value === null) {
+      this.unset("redeemal");
+    } else {
+      this.set("redeemal", Value.fromString(value as string));
+    }
   }
 
   get sender(): Bytes {
