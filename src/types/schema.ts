@@ -129,13 +129,21 @@ export class RawStream extends Entity {
     this.set("streams", Value.fromStringArray(value));
   }
 
-  get tokenAddress(): Bytes {
-    let value = this.get("tokenAddress");
-    return value.toBytes();
+  get token(): string | null {
+    let value = this.get("token");
+    if (value === null) {
+      return null;
+    } else {
+      return value.toString();
+    }
   }
 
-  set tokenAddress(value: Bytes) {
-    this.set("tokenAddress", Value.fromBytes(value));
+  set token(value: string | null) {
+    if (value === null) {
+      this.unset("token");
+    } else {
+      this.set("token", Value.fromString(value as string));
+    }
   }
 
   get txs(): Array<string> {
@@ -270,6 +278,97 @@ export class Redeemal extends Entity {
 
   set senderAmount(value: BigInt) {
     this.set("senderAmount", Value.fromBigInt(value));
+  }
+}
+
+export class Token extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save Token entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save Token entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("Token", id.toString(), this);
+  }
+
+  static load(id: string): Token | null {
+    return store.get("Token", id) as Token | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get decimals(): i32 {
+    let value = this.get("decimals");
+    return value.toI32();
+  }
+
+  set decimals(value: i32) {
+    this.set("decimals", Value.fromI32(value));
+  }
+
+  get name(): string | null {
+    let value = this.get("name");
+    if (value === null) {
+      return null;
+    } else {
+      return value.toString();
+    }
+  }
+
+  set name(value: string | null) {
+    if (value === null) {
+      this.unset("name");
+    } else {
+      this.set("name", Value.fromString(value as string));
+    }
+  }
+
+  get rawStream(): string | null {
+    let value = this.get("rawStream");
+    if (value === null) {
+      return null;
+    } else {
+      return value.toString();
+    }
+  }
+
+  set rawStream(value: string | null) {
+    if (value === null) {
+      this.unset("rawStream");
+    } else {
+      this.set("rawStream", Value.fromString(value as string));
+    }
+  }
+
+  get symbol(): string | null {
+    let value = this.get("symbol");
+    if (value === null) {
+      return null;
+    } else {
+      return value.toString();
+    }
+  }
+
+  set symbol(value: string | null) {
+    if (value === null) {
+      this.unset("symbol");
+    } else {
+      this.set("symbol", Value.fromString(value as string));
+    }
   }
 }
 

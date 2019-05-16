@@ -1,6 +1,6 @@
 import { ByteArray, Bytes, crypto, EthereumEvent } from "@graphprotocol/graph-ts";
 
-import { RawStream, Redeemal, Stream, Transaction, Withdrawal } from "./types/schema";
+import { RawStream, Redeemal, Stream, Token, Transaction, Withdrawal } from "./types/schema";
 import {
   CreateStream as CreateStreamEvent,
   WithdrawFromStream as WithdrawFromStreamEvent,
@@ -16,6 +16,48 @@ function addTransaction(name: string, event: EthereumEvent, rawStreamId: string,
   transaction.save();
 }
 
+function hardcodeToken(address: string, rawStreamId: string): void {
+  let token = Token.load(address);
+  if (token != null) {
+    return;
+  }
+
+  token = new Token(address);
+
+  if (address == "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359") {
+    token.decimals = 18;
+    token.name = "Dai Stablecoin v1.0";
+    token.symbol = "DAI";
+  } else if (address == "0x056fd409e1d7a124bd7017459dfea2f387b6d5cd") {
+    token.decimals = 2;
+    token.name = "Gemini Dollar";
+    token.symbol = "GUSD";
+  } else if (address == "0x8e870d67f660d95d5be530380d0ec0bd388289e1") {
+    token.decimals = 18;
+    token.name = "Paxos Standard";
+    token.symbol = "PAX";
+  } else if (address == "0x0000000000085d4780b73119b644ae5ecd22b376") {
+    token.decimals = 18;
+    token.name = "TrueUSD";
+    token.symbol = "TUSD";
+  } else if (address == "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48") {
+    token.decimals = 6;
+    token.name = "USD Coin";
+    token.symbol = "USDC";
+  } else if (address == "0x8ad3aa5d5ff084307d28c8f514d7a193b2bfe725") {
+    token.decimals = 18;
+    token.name = "Rinkeby Dai";
+    token.symbol = "DAI";
+  } else {
+    token.decimals = null;
+    token.name = null;
+    token.symbol = null;
+  }
+
+  // token.rawStream = rawStreamId;
+  token.save();
+}
+
 export function handleCreateStream(event: CreateStreamEvent): void {
   let rawStreamId = event.params.streamId.toHex();
   let rawStream = new RawStream(rawStreamId);
@@ -24,9 +66,9 @@ export function handleCreateStream(event: CreateStreamEvent): void {
   rawStream.recipient = event.params.recipient;
   rawStream.sender = event.params.sender;
   rawStream.startBlock = event.params.startBlock;
-  rawStream.status = "Created";
+  rawStream.status = "CREATED";
   rawStream.stopBlock = event.params.stopBlock;
-  rawStream.tokenAddress = event.params.tokenAddress;
+  rawStream.token = event.params.tokenAddress.toHex();
   rawStream.txs = new Array<string>();
   rawStream.withdrawals = new Array<string>();
   rawStream.save();
@@ -35,19 +77,20 @@ export function handleCreateStream(event: CreateStreamEvent): void {
 
   let outStreamId = event.params.sender.toHex() + "/" + rawStreamId;
   let outStream = new Stream(outStreamId);
-  outStream.flow = "Out";
+  outStream.flow = "OUT";
   outStream.owner = event.params.sender;
   outStream.rawStream = rawStreamId;
   outStream.save();
 
   let inStreamId = event.params.recipient.toHex() + "/" + rawStreamId;
   let inStream = new Stream(inStreamId);
-  inStream.flow = "In";
+  inStream.flow = "IN";
   inStream.owner = event.params.recipient;
   inStream.rawStream = rawStreamId;
   inStream.save();
 
   addTransaction("CreateStream", event, rawStreamId, txhash);
+  hardcodeToken(event.params.tokenAddress.toHex(), rawStreamId);
 }
 
 export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
@@ -71,7 +114,7 @@ export function handleRedeemStream(event: RedeemStreamEvent): void {
   if (rawStream == null) {
     return;
   }
-  rawStream.status = "Redeemed";
+  rawStream.status = "REDEEMED";
   rawStream.save();
 
   let redeemal = new Redeemal(rawStreamId);

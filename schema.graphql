@@ -9,7 +9,7 @@ type RawStream @entity {
   stopBlock: BigInt!
   status: StreamStatus!
   streams: [Stream!]! @derivedFrom(field: "rawStream")
-  tokenAddress: Bytes!
+  token: Token
   txs: [Transaction!]! @derivedFrom(field: "rawStream")
   withdrawals: [Withdrawal!]! @derivedFrom(field: "rawStream")
 }
@@ -31,6 +31,14 @@ type Redeemal @entity {
   senderAmount: BigInt!
 }
 
+type Token @entity {
+  id: ID!
+  decimals: Int
+  name: String
+  rawStream: RawStream
+  symbol: String
+}
+
 type Transaction @entity {
   id: ID!
   block: Int!
@@ -47,13 +55,13 @@ type Withdrawal @entity {
 }
 
 enum StreamFlow {
-  Undefined
-  In
-  Out
+  UNDEFINED
+  IN
+  OUT
 }
 
 enum StreamStatus {
-  Undefined
-  Created
-  Redeemed
+  UNDEFINED
+  CREATED
+  REDEEMED
 }
