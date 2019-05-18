@@ -16,7 +16,7 @@ function addTransaction(name: string, event: EthereumEvent, rawStreamId: string,
   transaction.save();
 }
 
-function hardcodeToken(address: string, rawStreamId: string): void {
+function addToken(address: string, rawStreamId: string): void {
   let token = Token.load(address);
   if (token != null) {
     return;
@@ -54,7 +54,6 @@ function hardcodeToken(address: string, rawStreamId: string): void {
     token.symbol = null;
   }
 
-  // token.rawStream = rawStreamId;
   token.save();
 }
 
@@ -74,6 +73,7 @@ export function handleCreateStream(event: CreateStreamEvent): void {
   rawStream.save();
 
   let txhash = event.transaction.hash.toHex();
+  addTransaction("CreateStream", event, rawStreamId, txhash);
 
   let outStreamId = event.params.sender.toHex() + "/" + rawStreamId;
   let outStream = new Stream(outStreamId);
@@ -89,8 +89,7 @@ export function handleCreateStream(event: CreateStreamEvent): void {
   inStream.rawStream = rawStreamId;
   inStream.save();
 
-  addTransaction("CreateStream", event, rawStreamId, txhash);
-  hardcodeToken(event.params.tokenAddress.toHex(), rawStreamId);
+  addToken(event.params.tokenAddress.toHex(), rawStreamId);
 }
 
 export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
@@ -101,11 +100,12 @@ export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
   }
 
   let txhash = event.transaction.hash.toHex();
+  addTransaction("WithdrawFromStream", event, rawStreamId, txhash);
+
   let withdrawal = new Withdrawal(txhash);
   withdrawal.amount = event.params.amount;
   withdrawal.rawStream = rawStreamId;
-
-  addTransaction("WithdrawFromStream", event, rawStreamId, txhash);
+  withdrawal.save();
 }
 
 export function handleRedeemStream(event: RedeemStreamEvent): void {
@@ -117,11 +117,12 @@ export function handleRedeemStream(event: RedeemStreamEvent): void {
   rawStream.status = "REDEEMED";
   rawStream.save();
 
+  let txhash = event.transaction.hash.toHex();
+  addTransaction("RedeemStream", event, rawStreamId, txhash);
+
   let redeemal = new Redeemal(rawStreamId);
   redeemal.rawStream = rawStreamId;
   redeemal.senderAmount = event.params.senderAmount;
   redeemal.recipientAmount = event.params.senderAmount;
-
-  let txhash = event.transaction.hash.toHex();
-  addTransaction("RedeemStream", event, rawStreamId, txhash);
+  redeemal.save();
 }
