@@ -221,6 +221,15 @@ export class Stream extends Entity {
   set rawStream(value: string) {
     this.set("rawStream", Value.fromString(value));
   }
+
+  get timestamp(): i32 {
+    let value = this.get("timestamp");
+    return value.toI32();
+  }
+
+  set timestamp(value: i32) {
+    this.set("timestamp", Value.fromI32(value));
+  }
 }
 
 export class Redeemal extends Entity {

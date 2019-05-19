@@ -58,7 +58,7 @@ function addToken(address: string, rawStreamId: string): void {
 }
 
 export function handleCreateStream(event: CreateStreamEvent): void {
-  let rawStreamId = event.params.streamId.toHex();
+  let rawStreamId = event.params.streamId.toString();
   let rawStream = new RawStream(rawStreamId);
   rawStream.interval = event.params.interval;
   rawStream.payment = event.params.payment;
@@ -80,6 +80,7 @@ export function handleCreateStream(event: CreateStreamEvent): void {
   outStream.flow = "OUT";
   outStream.owner = event.params.sender;
   outStream.rawStream = rawStreamId;
+  outStream.timestamp = event.block.timestamp.toI32();
   outStream.save();
 
   let inStreamId = event.params.recipient.toHex() + "/" + rawStreamId;
@@ -87,13 +88,14 @@ export function handleCreateStream(event: CreateStreamEvent): void {
   inStream.flow = "IN";
   inStream.owner = event.params.recipient;
   inStream.rawStream = rawStreamId;
+  inStream.timestamp = event.block.timestamp.toI32();
   inStream.save();
 
   addToken(event.params.tokenAddress.toHex(), rawStreamId);
 }
 
 export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
-  let rawStreamId = event.params.streamId.toHex();
+  let rawStreamId = event.params.streamId.toString();
   let rawStream = RawStream.load(rawStreamId);
   if (rawStream == null) {
     return;
@@ -109,7 +111,7 @@ export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
 }
 
 export function handleRedeemStream(event: RedeemStreamEvent): void {
-  let rawStreamId = event.params.streamId.toHex();
+  let rawStreamId = event.params.streamId.toString();
   let rawStream = RawStream.load(rawStreamId);
   if (rawStream == null) {
     return;

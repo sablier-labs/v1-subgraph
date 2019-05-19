@@ -19,6 +19,7 @@ type Stream @entity {
   flow: StreamFlow!
   owner: Bytes!
   rawStream: RawStream!
+  timestamp: Int!
 }
 
 # Both the sender and the recipient can withdraw money
