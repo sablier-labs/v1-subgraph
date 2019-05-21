@@ -262,15 +262,6 @@ export class Redeemal extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get rawStream(): string {
-    let value = this.get("rawStream");
-    return value.toString();
-  }
-
-  set rawStream(value: string) {
-    this.set("rawStream", Value.fromString(value));
-  }
-
   get recipientAmount(): BigInt {
     let value = this.get("recipientAmount");
     return value.toBigInt();
@@ -343,23 +334,6 @@ export class Token extends Entity {
       this.unset("name");
     } else {
       this.set("name", Value.fromString(value as string));
-    }
-  }
-
-  get rawStream(): string | null {
-    let value = this.get("rawStream");
-    if (value === null) {
-      return null;
-    } else {
-      return value.toString();
-    }
-  }
-
-  set rawStream(value: string | null) {
-    if (value === null) {
-      this.unset("rawStream");
-    } else {
-      this.set("rawStream", Value.fromString(value as string));
     }
   }
 

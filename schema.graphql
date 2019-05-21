@@ -27,7 +27,6 @@ type Stream @entity {
 # with the value of "recipient" in the Redeemal entity
 type Redeemal @entity {
   id: ID!
-  rawStream: RawStream!
   recipientAmount: BigInt!
   senderAmount: BigInt!
 }
@@ -36,7 +35,6 @@ type Token @entity {
   id: ID!
   decimals: Int
   name: String
-  rawStream: RawStream
   symbol: String
 }
 

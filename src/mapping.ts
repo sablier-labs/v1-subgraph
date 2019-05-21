@@ -116,15 +116,15 @@ export function handleRedeemStream(event: RedeemStreamEvent): void {
   if (rawStream == null) {
     return;
   }
-  rawStream.status = "REDEEMED";
-  rawStream.save();
-
   let txhash = event.transaction.hash.toHex();
   addTransaction("RedeemStream", event, rawStreamId, txhash);
 
   let redeemal = new Redeemal(rawStreamId);
-  redeemal.rawStream = rawStreamId;
+  redeemal.recipientAmount = event.params.recipientAmount;
   redeemal.senderAmount = event.params.senderAmount;
-  redeemal.recipientAmount = event.params.senderAmount;
   redeemal.save();
+
+  rawStream.redeemal = rawStreamId;
+  rawStream.status = "REDEEMED";
+  rawStream.save();
 }
