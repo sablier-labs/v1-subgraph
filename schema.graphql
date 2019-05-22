@@ -3,11 +3,10 @@ type RawStream @entity {
   interval: BigInt!
   payment: BigInt!
   recipient: Bytes!
-  redeemal: Redeemal
+  redemption: Redemption
   sender: Bytes!
   startBlock: BigInt!
   stopBlock: BigInt!
-  status: StreamStatus!
   streams: [Stream!]! @derivedFrom(field: "rawStream")
   token: Token
   txs: [Transaction!]! @derivedFrom(field: "rawStream")
@@ -24,8 +23,8 @@ type Stream @entity {
 
 # Both the sender and the recipient can withdraw money
 # Figure out the total earned amount of money by adding up all the withdrawals
-# with the value of "recipient" in the Redeemal entity
-type Redeemal @entity {
+# with the value of "recipient" in the Redemption entity
+type Redemption @entity {
   id: ID!
   recipientAmount: BigInt!
   senderAmount: BigInt!
@@ -57,10 +56,4 @@ enum StreamFlow {
   UNDEFINED
   IN
   OUT
-}
-
-enum StreamStatus {
-  UNDEFINED
-  CREATED
-  REDEEMED
 }

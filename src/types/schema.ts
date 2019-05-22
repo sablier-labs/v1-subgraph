@@ -67,8 +67,8 @@ export class RawStream extends Entity {
     this.set("recipient", Value.fromBytes(value));
   }
 
-  get redeemal(): string | null {
-    let value = this.get("redeemal");
+  get redemption(): string | null {
+    let value = this.get("redemption");
     if (value === null) {
       return null;
     } else {
@@ -76,11 +76,11 @@ export class RawStream extends Entity {
     }
   }
 
-  set redeemal(value: string | null) {
+  set redemption(value: string | null) {
     if (value === null) {
-      this.unset("redeemal");
+      this.unset("redemption");
     } else {
-      this.set("redeemal", Value.fromString(value as string));
+      this.set("redemption", Value.fromString(value as string));
     }
   }
 
@@ -109,15 +109,6 @@ export class RawStream extends Entity {
 
   set stopBlock(value: BigInt) {
     this.set("stopBlock", Value.fromBigInt(value));
-  }
-
-  get status(): string {
-    let value = this.get("status");
-    return value.toString();
-  }
-
-  set status(value: string) {
-    this.set("status", Value.fromString(value));
   }
 
   get streams(): Array<string> {
@@ -232,7 +223,7 @@ export class Stream extends Entity {
   }
 }
 
-export class Redeemal extends Entity {
+export class Redemption extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -240,17 +231,17 @@ export class Redeemal extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save Redeemal entity without an ID");
+    assert(id !== null, "Cannot save Redemption entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save Redeemal entity with non-string ID. " +
+      "Cannot save Redemption entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("Redeemal", id.toString(), this);
+    store.set("Redemption", id.toString(), this);
   }
 
-  static load(id: string): Redeemal | null {
-    return store.get("Redeemal", id) as Redeemal | null;
+  static load(id: string): Redemption | null {
+    return store.get("Redemption", id) as Redemption | null;
   }
 
   get id(): string {

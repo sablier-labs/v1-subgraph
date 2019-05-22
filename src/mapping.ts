@@ -1,6 +1,6 @@
 import { ByteArray, Bytes, crypto, EthereumEvent } from "@graphprotocol/graph-ts";
 
-import { RawStream, Redeemal, Stream, Token, Transaction, Withdrawal } from "./types/schema";
+import { RawStream, Redemption, Stream, Token, Transaction, Withdrawal } from "./types/schema";
 import {
   CreateStream as CreateStreamEvent,
   WithdrawFromStream as WithdrawFromStreamEvent,
@@ -65,7 +65,6 @@ export function handleCreateStream(event: CreateStreamEvent): void {
   rawStream.recipient = event.params.recipient;
   rawStream.sender = event.params.sender;
   rawStream.startBlock = event.params.startBlock;
-  rawStream.status = "CREATED";
   rawStream.stopBlock = event.params.stopBlock;
   rawStream.token = event.params.tokenAddress.toHex();
   rawStream.txs = new Array<string>();
@@ -119,12 +118,11 @@ export function handleRedeemStream(event: RedeemStreamEvent): void {
   let txhash = event.transaction.hash.toHex();
   addTransaction("RedeemStream", event, rawStreamId, txhash);
 
-  let redeemal = new Redeemal(rawStreamId);
-  redeemal.recipientAmount = event.params.recipientAmount;
-  redeemal.senderAmount = event.params.senderAmount;
-  redeemal.save();
+  let redemption = new Redemption(rawStreamId);
+  redemption.recipientAmount = event.params.recipientAmount;
+  redemption.senderAmount = event.params.senderAmount;
+  redemption.save();
 
-  rawStream.redeemal = rawStreamId;
-  rawStream.status = "REDEEMED";
+  rawStream.redemption = rawStreamId;
   rawStream.save();
 }
