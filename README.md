@@ -1,6 +1,6 @@
 ## Sablier Subgraph
 
-**This is a beta version which runs on the Rinkeby testnet.**
+**This is a beta version which runs the Rinkeby testnet.**
 
 [Sablier][sablier-repo] is a decentralised app for continuous payments on Ethereum. This repo was built using The Graph,
 which is an absolutely fantastic tool for indexing data on Ethereum. [Here][smart-contract] is a link to the
@@ -8,11 +8,10 @@ smart contract deployed on Rinkeby.
 
 ## Testing
 
-Head to this [URL][netlify-website]. You must use MetaMask and connect to Rinkeby.
+Head to this [URL][netlify-website]. You must use MetaMask and connect to Rinkeby. Furthermore, you must use this mock
+ERC-20 [contract][rinkeby-dai] and mint your own tokens (there is a function that allows anyone to mint an infinite supply).
 
-You could use your own account, but it will take a while until you will be able to see your stream earning money. If you
-want to see Sablier in action with a set of pre-generated streams, use
-the following mnemonic: `bonus scheme citizen soft pretty elephant soap salmon brave velvet exhaust traffic`.
+You could use your own account, but, due to the reasons enumerated above, it may be easier to use this mnemonic: `bonus scheme citizen soft pretty elephant soap salmon brave velvet exhaust traffic`.
 
 ## Queries
 
@@ -124,6 +123,7 @@ query Stream($streamId: ID!) {
 
 [erc-1620]: http://eips.ethereum.org/EIPS/eip-1620
 [netlify-website]: https://kind-hypatia-292f09.netlify.com
+[rinkeby-dai]: https://rinkeby.etherscan.io/address/0x8ad3aa5d5ff084307d28c8f514d7a193b2bfe725
 [sablier-repo]: https://github.com/PaulRBerg/sablier
 [sablier-twitter]: https://twitter.com/SablierApp
 [smart-contract]: https://rinkeby.etherscan.io/address/0x32ef6010d97fc0d10f0d0ab842c141cbd266c98d
