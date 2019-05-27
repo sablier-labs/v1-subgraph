@@ -15,9 +15,24 @@ You could use your own account, but, due to the reasons enumerated above, it may
 
 ## Queries
 
-As of right now, there are two big queries:
+As of right now, there is one subscription and two big queries.
 
-### Get Streams
+### Last Raw Stream
+
+After the user creates a stream, they should be redirected to the profile page. To get there, you need the raw stream
+id, therefore we wrote a subscription that listens to the most recent stream that has the `startBlock` greater than the
+current block number on Ethereum.
+
+```graphql
+subscription LastRawStream($blockNumber: BigInt!, $sender: String!) {
+  rawStreams(first: 1, where: { sender: $sender, startBlock_gte: $blockNumber }) {
+    id
+    startBlock
+  }
+}
+```
+
+### Streams
 
 Sablier shows data differently based on whether you are the either the sender or the recipient of a stream. Because of
 that, I had to duplicate the raw data and add a parent object on top of it.
@@ -66,7 +81,7 @@ query Streams($owner: String!) {
 }
 ```
 
-### Get Raw Stream
+### Stream
 
 Used in the stream profile page.
 
