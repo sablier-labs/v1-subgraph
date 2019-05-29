@@ -1,6 +1,6 @@
 specVersion: 0.0.1
 description: Sablier is a decentralised app for continuous payments on Ethereum.
-repository: https://github.com/PaulRBerg/sablier-subgraph
+repository: https://github.com/SablierApp/sablier-subgraph
 schema:
   file: ./schema.graphql
 dataSources:
@@ -9,7 +9,7 @@ dataSources:
     network: rinkeby
     source:
       abi: Sablier
-      address: "0x32Ef6010D97fc0D10f0D0AB842C141CbD266C98D"
+      address: "0xEC8232ae71f054AEFF4f3EAdD4c8d334732Cbe4b"
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.2

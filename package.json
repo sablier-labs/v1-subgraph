@@ -6,7 +6,7 @@
     "url": "https://paulrberg.com"
   },
   "bugs": {
-    "url": "https://github.com/PaulRBerg/sablier-subgraph/issues"
+    "url": "https://github.com/SablierApp/sablier-subgraph/issues"
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "0.10.0",
@@ -15,7 +15,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PaulRBerg/sablier-subgraph.git"
+    "url": "git+https://github.com/SablierApp/sablier-subgraph.git"
   },
   "scripts": {
     "build": "graph build --debug",

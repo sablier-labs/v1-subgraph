@@ -139,6 +139,6 @@ query Stream($streamId: ID!) {
 [erc-1620]: http://eips.ethereum.org/EIPS/eip-1620
 [netlify-website]: https://kind-hypatia-292f09.netlify.com
 [rinkeby-dai]: https://rinkeby.etherscan.io/address/0x8ad3aa5d5ff084307d28c8f514d7a193b2bfe725
-[sablier-repo]: https://github.com/PaulRBerg/sablier
+[sablier-repo]: https://github.com/SablierApp/sablier
 [sablier-twitter]: https://twitter.com/SablierApp
 [smart-contract]: https://rinkeby.etherscan.io/address/0x32ef6010d97fc0d10f0d0ab842c141cbd266c98d
