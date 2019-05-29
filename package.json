@@ -20,11 +20,11 @@
   "scripts": {
     "build": "graph build --debug",
     "codegen": "graph codegen --debug --output-dir src/types/",
-    "create": "graph create PaulRBerg/SablierDev --node https://api.thegraph.com/deploy/",
-    "create-local": "graph create PaulRBerg/SablierDev --node http://127.0.0.1:8020",
-    "deploy": "graph deploy PaulRBerg/SablierDev --debug --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
-    "deploy-local": "graph deploy PaulRBerg/SablierDev --debug --ipfs http://localhost:5001 --node http://127.0.0.1:8020",
-    "remove-local": "graph remove PaulRBerg/SablierDev --node http://localhost:8020/",
+    "create": "graph create PaulRBerg/sablier --node https://api.thegraph.com/deploy/",
+    "create-local": "graph create PaulRBerg/sablier --node http://127.0.0.1:8020",
+    "deploy": "graph deploy PaulRBerg/sablier --debug --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
+    "deploy-local": "graph deploy PaulRBerg/sablier --debug --ipfs http://localhost:5001 --node http://127.0.0.1:8020",
+    "remove-local": "graph remove PaulRBerg/sablier --node http://localhost:8020/",
     "reset-local": "yarn codegen && yarn remove-local && yarn create-local && yarn deploy-local"
   },
   "dependencies": {}
