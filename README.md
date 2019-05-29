@@ -1,6 +1,6 @@
 ## Sablier Subgraph
 
-**This is a beta version which runs the Rinkeby testnet.**
+**This is a beta version which runs on the Rinkeby testnet.**
 
 [Sablier][sablier-repo] is a decentralised app for continuous payments on Ethereum. This repo was built using The Graph,
 which is an absolutely fantastic tool for indexing data on Ethereum. [Here][smart-contract] is a link to the
