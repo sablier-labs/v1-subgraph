@@ -7,7 +7,7 @@ In this repo, you can find the Sablier Subgraph, which is a collection of schema
 translate the data broadcast on the Ethereum blockchain in GraphQL form. Later on, the UI will parse the data and show
 it to the users.
 
-You may also want to check out the [Sablier monorepo][sablier-monorepo].
+You may also want to check out the main Sablier [monorepo][sablier-monorepo].
 
 ## Queries
 
