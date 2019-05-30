@@ -3,7 +3,7 @@
 **This is a beta version which runs on the Rinkeby testnet.**
 
 [Sablier][sablier-repo] is a decentralised app for continuous payments on Ethereum. This repo was built using The Graph,
-which is an absolutely fantastic tool for indexing data on Ethereum. [Here][smart-contract] is a link to the
+which is a fantastic tool for indexing data on Ethereum. [Here][smart-contract] is a link to the
 smart contract deployed on Rinkeby.
 
 ## Testing
@@ -137,7 +137,7 @@ query Stream($streamId: ID!) {
 - [Twitter][sablier-twitter]
 
 [erc-1620]: http://eips.ethereum.org/EIPS/eip-1620
-[netlify-website]: https://kind-hypatia-292f09.netlify.com
+[netlify-website]: https://infallible-visvesvaraya-6d594e.netlify.com
 [rinkeby-dai]: https://rinkeby.etherscan.io/address/0x8ad3aa5d5ff084307d28c8f514d7a193b2bfe725
 [sablier-repo]: https://github.com/SablierApp/sablier
 [sablier-twitter]: https://twitter.com/SablierApp
