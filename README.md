@@ -1,17 +1,13 @@
 ## Sablier Subgraph
 
-**This is a beta version which runs the Rinkeby testnet.**
+The Graph is a tool that helps dApps index their event data so that users don't have to wait hours or even days for the
+website to load.
 
-[Sablier][sablier-repo] is a decentralised app for continuous payments on Ethereum. This repo was built using The Graph,
-which is an absolutely fantastic tool for indexing data on Ethereum. [Here][smart-contract] is a link to the
-smart contract deployed on Rinkeby.
+In this repo, you can find the Sablier Subgraph, which is a collection of schemas and event handlers that
+translate the data broadcast on the Ethereum blockchain in GraphQL form. Later on, the UI will parse the data and show
+it to the users.
 
-## Testing
-
-Head to this [URL][netlify-website]. You must use MetaMask and connect to Rinkeby. Furthermore, you must use this mock
-ERC-20 [contract][rinkeby-dai] and mint your own tokens (there is a function that allows anyone to mint an infinite supply).
-
-You could use your own account, but, due to the reasons enumerated above, it may be easier to use this mnemonic: `bonus scheme citizen soft pretty elephant soap salmon brave velvet exhaust traffic`.
+You may also want to check out the [Sablier monorepo][sablier-monorepo].
 
 ## Queries
 
@@ -124,21 +120,4 @@ query Stream($streamId: ID!) {
 }
 ```
 
-## Known Issues
-
-- Links do not point to the Rinkeby version of Etherscan
-- There is a small but noticeable delay when making a transaction and waiting for the receipt to be returned
-- Sometimes, time is not calculated properly and it might be off by a few minutes or even more
-
-## Links
-
-- [Monorepo][sablier-repo]
-- [ERC-1620][erc-1620]
-- [Twitter][sablier-twitter]
-
-[erc-1620]: http://eips.ethereum.org/EIPS/eip-1620
-[netlify-website]: https://kind-hypatia-292f09.netlify.com
-[rinkeby-dai]: https://rinkeby.etherscan.io/address/0x8ad3aa5d5ff084307d28c8f514d7a193b2bfe725
-[sablier-repo]: https://github.com/SablierApp/sablier
-[sablier-twitter]: https://twitter.com/SablierApp
-[smart-contract]: https://rinkeby.etherscan.io/address/0x32ef6010d97fc0d10f0d0ab842c141cbd266c98d
+[sablier-monorepo]: https://github.com/SablierApp/sablier
