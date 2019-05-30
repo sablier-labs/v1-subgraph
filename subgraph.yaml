@@ -6,10 +6,10 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Sablier
-    network: mainnet
+    network: rinkeby
     source:
       abi: Sablier
-      address: "0xeef1392e7044993Fd28bf7878DF85A365b540b92"
+      address: "0xEC8232ae71f054AEFF4f3EAdD4c8d334732Cbe4b"
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.3
