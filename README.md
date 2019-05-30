@@ -124,12 +124,6 @@ query Stream($streamId: ID!) {
 }
 ```
 
-## Known Issues
-
-- Links do not point to the Rinkeby version of Etherscan
-- There is a small but noticeable delay when making a transaction and waiting for the receipt to be returned
-- Sometimes, time is not calculated properly and it might be off by a few minutes or even more
-
 ## Links
 
 - [Monorepo][sablier-repo]
