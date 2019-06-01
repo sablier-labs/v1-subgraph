@@ -1,3 +1,7 @@
+## Warning
+
+We migrated to mainnet since we participated at the CoinList hackathon. Please check out the [mainnet][mainnet-branch] for the latest links and tetsing information.
+
 ## Sablier Subgraph
 
 **This is a beta version which runs on the Rinkeby testnet.**
@@ -130,7 +134,8 @@ query Stream($streamId: ID!) {
 - [ERC-1620][erc-1620]
 - [Twitter][sablier-twitter]
 
-[erc-1620]: http://eips.ethereum.org/EIPS/eip-1620
+[erc-1620]: https://eips.ethereum.org/EIPS/eip-1620
+[mainnet-branch]: https://github.com/SablierApp/sablier-subgraph/tree/mainnet
 [netlify-website]: https://infallible-visvesvaraya-6d594e.netlify.com
 [rinkeby-dai]: https://rinkeby.etherscan.io/address/0x8ad3aa5d5ff084307d28c8f514d7a193b2bfe725
 [sablier-repo]: https://github.com/SablierApp/sablier
