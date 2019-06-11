@@ -9,7 +9,7 @@ dataSources:
     network: mainnet
     source:
       abi: Sablier
-      address: "0x45f918d15d58E38a41A712798a0B9e5aB7d81dd7"
+      address: "0xeef1392e7044993Fd28bf7878DF85A365b540b92"
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.2
