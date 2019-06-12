@@ -12,7 +12,7 @@ dataSources:
       address: "0xeef1392e7044993Fd28bf7878DF85A365b540b92"
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.2
+      apiVersion: 0.0.3
       abis:
         - name: Sablier
           file: ./abis/sablier.json
@@ -21,17 +21,19 @@ dataSources:
         - Stream
         - Transaction
       eventHandlers:
-        - event: CreateStream(uint256,address,address,address,uint256,uint256,uint256,uint256,uint256)
+        - event: CreateStream(indexed uint256,indexed address,indexed
+            address,address,uint256,uint256,uint256,uint256,uint256)
           handler: handleCreateStream
-        - event: WithdrawFromStream(uint256,address,uint256)
+        - event: WithdrawFromStream(indexed uint256,indexed address,uint256)
           handler: handleWithdrawFromStream
-        - event: RedeemStream(uint256,address,address,uint256,uint256)
+        - event: RedeemStream(indexed uint256,indexed address,indexed address,uint256,uint256)
           handler: handleRedeemStream
-        - event: ConfirmUpdate(uint256,address,address,uint256,uint256,uint256)
+        - event: ConfirmUpdate(indexed uint256,indexed address,address,uint256,uint256,uint256)
           handler: handleConfirmUpdate
-        - event: RevokeUpdate(uint256,address,address,uint256,uint256,uint256)
+        - event: RevokeUpdate(indexed uint256,indexed address,address,uint256,uint256,uint256)
           handler: handleRevokeUpdate
-        - event: ExecuteUpdate(uint256,address,address,address,uint256,uint256,uint256)
+        - event: ExecuteUpdate(indexed uint256,indexed address,indexed
+            address,address,uint256,uint256,uint256)
           handler: handleExecuteUpdate
       file: ./src/mapping.ts
       language: wasm/assemblyscript
