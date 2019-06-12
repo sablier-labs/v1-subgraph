@@ -9,8 +9,8 @@
     "url": "https://github.com/SablierApp/sablier-subgraph/issues"
   },
   "devDependencies": {
-    "@graphprotocol/graph-cli": "0.10.0",
-    "@graphprotocol/graph-ts": "0.10.0"
+    "@graphprotocol/graph-cli": "^0.13.1",
+    "@graphprotocol/graph-ts": "^0.13.0"
   },
   "license": "MIT",
   "repository": {

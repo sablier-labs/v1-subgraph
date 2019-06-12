@@ -2,10 +2,17 @@
 # yarn lockfile v1
 
 
-"@graphprotocol/graph-cli@0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@graphprotocol/graph-cli/-/graph-cli-0.10.0.tgz#205ebabebdd8f3ce2f087f325d2b4553ca8671c6"
-  integrity sha512-4EZnIiv9Ejq8tZ1kuxJtPtkoFBe8HyYG2lgwGbvTNivjNC4o9u6TCWtipmaBz+3PGI1GcP1WdtlASVyouqhdMw==
+"@babel/runtime@^7.4.5":
+  version "7.4.5"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.4.5.tgz#582bb531f5f9dc67d2fcb682979894f75e253f12"
+  integrity sha512-TuI4qpWZP6lGOGIuGWtp9sPluqYICmbk8T/1vpSysqJxRPkudh/ofFWyqdcMsDf2s7KvDL4/YHgKyvcS3g9CJQ==
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
+"@graphprotocol/graph-cli@^0.13.1":
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/@graphprotocol/graph-cli/-/graph-cli-0.13.1.tgz#8f810a11ec7c1b093ff5eab2c49b647927c2fb28"
+  integrity sha512-POm7ZDdTcYOmDbIOs8AdMy/1Ypdst+4L+2gdQ1ki6SzgKJV01X5soVhJhNP+ivlIwVEgRxQxGhbv3Jj7vFwO1A==
   dependencies:
     assemblyscript "https://github.com/AssemblyScript/assemblyscript#36040d5b5312f19a025782b5e36663823494c2f3"
     chalk "^2.4.1"
@@ -18,18 +25,19 @@
     immutable "^3.8.2"
     ipfs-http-client "^28.1.2"
     jayson "^2.0.6"
-    js-yaml "^3.12.0"
+    js-yaml "^3.13.1"
     node-fetch "^2.3.0"
     pkginfo "^0.4.1"
     prettier "^1.13.5"
     request "^2.88.0"
+    yaml "^1.5.1"
   optionalDependencies:
-    keytar "^4.3.0"
+    keytar "^4.6.0"
 
-"@graphprotocol/graph-ts@0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@graphprotocol/graph-ts/-/graph-ts-0.10.0.tgz#56b1c17ded12b46cff9abb7fec47ee2d662c8388"
-  integrity sha512-3IEdMs2ff4S56PoS8Gekh4PtyjZVDGuHBbf0fqyQOYVFK13syQ96HIutLJ2JNLY3r9u3z7Z6DWo7/oNVFRJYvw==
+"@graphprotocol/graph-ts@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@graphprotocol/graph-ts/-/graph-ts-0.13.0.tgz#5c1c440094270209eb68647ce59f8cad0987dda3"
+  integrity sha512-ajrGdh+/wDgMg0+FYw+ZmbUAaveorD5IHaSWAtms0PFhoiebeBcYHCCFh0FYWNJtumG9Il3GNkD9zo48iEwWSA==
   dependencies:
     assemblyscript "https://github.com/AssemblyScript/assemblyscript#36040d5b5312f19a025782b5e36663823494c2f3"
 
@@ -175,9 +183,9 @@ asn1@~0.2.3:
   dependencies:
     safer-buffer "~2.1.0"
 
-"assemblyscript@https://github.com/AssemblyScript/assemblyscript#36040d5b5312f19a025782b5e36663823494c2f3":
+"assemblyscript@git+https://github.com/AssemblyScript/assemblyscript.git#36040d5b5312f19a025782b5e36663823494c2f3":
   version "0.6.0"
-  resolved "https://github.com/AssemblyScript/assemblyscript#36040d5b5312f19a025782b5e36663823494c2f3"
+  resolved "git+https://github.com/AssemblyScript/assemblyscript.git#36040d5b5312f19a025782b5e36663823494c2f3"
   dependencies:
     "@protobufjs/utf8" "^1.1.0"
     binaryen "77.0.0-nightly.20190407"
@@ -1656,7 +1664,7 @@ js-sha3@~0.8.0:
   resolved "https://registry.yarnpkg.com/js-sha3/-/js-sha3-0.8.0.tgz#b9b7a5da73afad7dedd0f8c463954cbde6818840"
   integrity sha512-gF1cRrHhIzNfToc802P800N8PpXS+evLLXfsVpowqmAFR9uwbi89WvXg2QspOmXL8QL86J4T1EpFu+yUkwJY3Q==
 
-js-yaml@^3.12.0, js-yaml@^3.13.0:
+js-yaml@^3.13.0, js-yaml@^3.13.1:
   version "3.13.1"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.13.1.tgz#aff151b30bfdfa8e49e05da22e7415e9dfa37847"
   integrity sha512-YfbcO7jXDdyj0DGxYVSlSeQNHbD7XPWvrVWeVUujrQEoZzWJIRrCPoyk6kL6IAjAG2IolMK4T0hNUe0HOUs5Jw==
@@ -1723,12 +1731,12 @@ keypair@^1.0.1:
   resolved "https://registry.yarnpkg.com/keypair/-/keypair-1.0.1.tgz#7603719270afb6564ed38a22087a06fc9aa4ea1b"
   integrity sha1-dgNxknCvtlZO04oiCHoG/Jqk6hs=
 
-keytar@^4.3.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/keytar/-/keytar-4.6.0.tgz#18b2e9d6ba68ed32e30ccc78b209b4f6cdc1cbbb"
-  integrity sha512-8wWWTC62QHvUvgW/QYyJv7X0GFZfp2Ykr5n3PuXKADro0Sv2RKvuYxbkzoZvsw33EDNAKnUTSA0/KLGN/MbwDw==
+keytar@^4.6.0:
+  version "4.9.0"
+  resolved "https://registry.yarnpkg.com/keytar/-/keytar-4.9.0.tgz#c7c91b11ef9e7a66886b8bc0dc3a9fc481696d4f"
+  integrity sha512-5aKEpnxRWUIhSlRXckqTxomqokV1/tOBe3EdbCDyMjDaoa5AkVHVa1yK+fa2CgJR5MadbJndFWmcDMCq812F4A==
   dependencies:
-    nan "2.13.2"
+    nan "2.14.0"
     prebuild-install "5.3.0"
 
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
@@ -2078,7 +2086,12 @@ murmurhash3js@^3.0.1:
   resolved "https://registry.yarnpkg.com/murmurhash3js/-/murmurhash3js-3.0.1.tgz#3e983e5b47c2a06f43a713174e7e435ca044b998"
   integrity sha1-Ppg+W0fCoG9DpxMXTn5DXKBEuZg=
 
-nan@2.13.2, nan@^2.11.1, nan@^2.12.1, nan@^2.2.1:
+nan@2.14.0:
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
+  integrity sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
+
+nan@^2.11.1, nan@^2.12.1, nan@^2.2.1:
   version "2.13.2"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.13.2.tgz#f51dc7ae66ba7d5d55e1e6d4d8092e802c9aefe7"
   integrity sha512-TghvYc72wlMGMVMluVo9WRJc0mB8KxxF/gZ4YYFy7V2ZQX9l7rgbPg7vjS9mt6U5HXODVFVI2bOduCzwOMv/lw==
@@ -2594,6 +2607,11 @@ readdirp@^2.2.1:
     graceful-fs "^4.1.11"
     micromatch "^3.1.10"
     readable-stream "^2.0.2"
+
+regenerator-runtime@^0.13.2:
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.2.tgz#32e59c9a6fb9b1a4aff09b4930ca2d4477343447"
+  integrity sha512-S/TQAZJO+D3m9xeN1WTI8dLKBBiRgXBlTJvbWjCThHWZj9EvHK70Ff50/tYj2J/fvBY6JtFVwRuazHN2E7M9BA==
 
 regex-not@^1.0.0, regex-not@^1.0.2:
   version "1.0.2"
@@ -3265,6 +3283,13 @@ yallist@^3.0.0, yallist@^3.0.2:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.0.3.tgz#b4b049e314be545e3ce802236d6cd22cd91c3de9"
   integrity sha512-S+Zk8DEWE6oKpV+vI3qWkaK+jSbIK86pCwe2IF/xwIpQ8jEuxpw9NyaGjmp9+BoJv5FV2piqCDcoCtStppiq2A==
+
+yaml@^1.5.1:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.6.0.tgz#d8a985cfb26086dd73f91c637f6e6bc909fddd3c"
+  integrity sha512-iZfse3lwrJRoSlfs/9KQ9iIXxs9++RvBFVzAqbbBiFT+giYtyanevreF9r61ZTbGMgWQBxAua3FzJiniiJXWWw==
+  dependencies:
+    "@babel/runtime" "^7.4.5"
 
 yargs-parser@^12.0.0:
   version "12.0.0"
