@@ -8,11 +8,12 @@
   "bugs": {
     "url": "https://github.com/SablierApp/sablier-subgraph/issues"
   },
+  "dependencies": {},
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.13.1",
     "@graphprotocol/graph-ts": "^0.13.0"
   },
-  "license": "MIT",
+  "license": "LGPL-3.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SablierApp/sablier-subgraph.git"
@@ -26,6 +27,5 @@
     "deploy-local": "graph deploy PaulRBerg/sablier --debug --ipfs http://localhost:5001 --node http://127.0.0.1:8020",
     "remove-local": "graph remove PaulRBerg/sablier --node http://localhost:8020/",
     "reset-local": "yarn codegen && yarn remove-local && yarn create-local && yarn deploy-local"
-  },
-  "dependencies": {}
+  }
 }
