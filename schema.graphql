@@ -1,12 +1,37 @@
+### CTokenManager ###
+
+type CToken @entity {
+  id: ID!
+  decimals: Int
+  name: String
+  symbol: String
+  whitelisted: Boolean
+}
+
+### Sablier ###
+
+type Cancellation @entity {
+  id: ID!
+  recipientBalance: BigInt!
+  recipientInterest: BigInt!
+  sablierInterest: BigInt!
+  senderBalance: BigInt!
+  senderInterest: BigInt!
+}
+
+# @derivedFrom makes it possible to map large sets of data to the same raw stream
 type RawStream @entity {
+  cancellation: Cancellation
+  deposit: BigInt!
+  exchangeRateInitial: BigInt
   id: ID!
   interval: BigInt!
-  payment: BigInt!
   recipient: Bytes!
-  redemption: Redemption
+  recipientSharePercentage: BigInt
   sender: Bytes!
-  startBlock: BigInt!
-  stopBlock: BigInt!
+  senderSharePercentage: BigInt
+  startTime: BigInt!
+  stopTime: BigInt!
   streams: [Stream!]! @derivedFrom(field: "rawStream")
   token: Token
   txs: [Transaction!]! @derivedFrom(field: "rawStream")
@@ -15,19 +40,9 @@ type RawStream @entity {
 
 type Stream @entity {
   id: ID!
-  flow: StreamFlow!
-  owner: Bytes!
+  who: Bytes!
   rawStream: RawStream!
   timestamp: Int!
-}
-
-# Both the sender and the recipient can withdraw money
-# Figure out the total earned amount of money by adding up all the withdrawals
-# with the value of "recipient" in the Redemption entity
-type Redemption @entity {
-  id: ID!
-  recipientAmount: BigInt!
-  senderAmount: BigInt!
 }
 
 type Token @entity {
@@ -45,15 +60,19 @@ type Transaction @entity {
   timestamp: Int!
 }
 
-# Only the recipient can withdraw money
 type Withdrawal @entity {
   id: ID!
   amount: BigInt!
   rawStream: RawStream!
+  recipientInterest: BigInt!
+  sablierInterest: BigInt!
+  senderInterest: BigInt!
 }
 
-enum StreamFlow {
-  UNDEFINED
-  IN
-  OUT
+### Payroll ###
+
+type Salary @entity {
+  id: ID!
+  company: Bytes!
+  rawStream: RawStream!
 }
