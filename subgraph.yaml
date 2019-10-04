@@ -63,7 +63,7 @@ dataSources:
     network: kovan
     source:
       abi: Payroll
-      address: "0xcA8502C516980BC69fAbCDe26A9dDf70E881ecf8"
+      address: "0x28651FdCaaB295D6Ae243FC5C8A4C3229475140B"
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.3
