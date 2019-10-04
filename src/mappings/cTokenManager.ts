@@ -34,6 +34,7 @@ function addCToken(address: string): void {
     cToken.symbol = null;
   }
 
+  cToken.whitelisted = false;
   cToken.save();
 }
 
