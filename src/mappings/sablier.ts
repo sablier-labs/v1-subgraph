@@ -1,4 +1,4 @@
-import { EthereumEvent } from "@graphprotocol/graph-ts";
+import { BigInt, EthereumEvent } from "@graphprotocol/graph-ts";
 
 import { Cancellation, Stream, Stream, Token, Transaction, Withdrawal } from "../types/schema";
 import {
@@ -64,6 +64,7 @@ export function handleCreateStream(event: CreateStreamEvent): void {
   let streamId = event.params.streamId.toString();
   let stream = new Stream(streamId);
   stream.deposit = event.params.deposit;
+  stream.ratePerSecond = event.params.deposit.div(event.params.stopTime.minus(event.params.startTime));
   stream.recipient = event.params.recipient;
   stream.sender = event.params.sender;
   stream.startTime = event.params.startTime;

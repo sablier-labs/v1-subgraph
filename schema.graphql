@@ -25,6 +25,7 @@ type Stream @entity {
   deposit: BigInt!
   exchangeRateInitial: BigInt
   id: ID!
+  ratePerSecond: BigInt!
   recipient: Bytes!
   recipientSharePercentage: BigInt
   sender: Bytes!

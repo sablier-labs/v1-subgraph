@@ -268,6 +268,15 @@ export class Stream extends Entity {
     this.set("id", Value.fromString(value));
   }
 
+  get ratePerSecond(): BigInt {
+    let value = this.get("ratePerSecond");
+    return value.toBigInt();
+  }
+
+  set ratePerSecond(value: BigInt) {
+    this.set("ratePerSecond", Value.fromBigInt(value));
+  }
+
   get recipient(): Bytes {
     let value = this.get("recipient");
     return value.toBytes();
