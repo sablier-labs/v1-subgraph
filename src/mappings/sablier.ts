@@ -1,6 +1,6 @@
-import { BigInt, EthereumEvent } from "@graphprotocol/graph-ts";
+import { EthereumEvent } from "@graphprotocol/graph-ts";
 
-import { Cancellation, Stream, Stream, Token, Transaction, Withdrawal } from "../types/schema";
+import { Cancellation, Stream, Token, Transaction, Withdrawal } from "../types/schema";
 import {
   CreateStream as CreateStreamEvent,
   CreateCompoundingStream as CreateCompoundingStreamEvent,
@@ -46,9 +46,9 @@ function addToken(address: string): void {
     token.decimals = 6;
     token.name = "USD Coin";
     token.symbol = "USDC";
-  } else if (address == "0x8ad3aa5d5ff084307d28c8f514d7a193b2bfe725") {
+  } else if (address == "0x7d669a64deb8a4a51eea755bb0e19fd39ce25ae9") {
     token.decimals = 18;
-    token.name = "Rinkeby Dai";
+    token.name = "Testnet Dai";
     token.symbol = "DAI";
   } else {
     token.decimals = null;
