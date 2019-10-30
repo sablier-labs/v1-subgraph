@@ -13,36 +13,28 @@ type CToken @entity {
 type Cancellation @entity {
   id: ID!
   recipientBalance: BigInt!
-  recipientInterest: BigInt!
-  sablierInterest: BigInt!
+  recipientInterest: BigInt
+  sablierInterest: BigInt
   senderBalance: BigInt!
-  senderInterest: BigInt!
+  senderInterest: BigInt
 }
 
-# @derivedFrom makes it possible to map large sets of data to the same raw stream
-type RawStream @entity {
+# @derivedFrom makes it possible to map large sets of data to the same stream
+type Stream @entity {
   cancellation: Cancellation
   deposit: BigInt!
   exchangeRateInitial: BigInt
   id: ID!
-  interval: BigInt!
   recipient: Bytes!
   recipientSharePercentage: BigInt
   sender: Bytes!
   senderSharePercentage: BigInt
   startTime: BigInt!
   stopTime: BigInt!
-  streams: [Stream!]! @derivedFrom(field: "rawStream")
+  timestamp: BigInt!
   token: Token
-  txs: [Transaction!]! @derivedFrom(field: "rawStream")
-  withdrawals: [Withdrawal!]! @derivedFrom(field: "rawStream")
-}
-
-type Stream @entity {
-  id: ID!
-  who: Bytes!
-  rawStream: RawStream!
-  timestamp: Int!
+  txs: [Transaction!]! @derivedFrom(field: "stream")
+  withdrawals: [Withdrawal!]! @derivedFrom(field: "stream")
 }
 
 type Token @entity {
@@ -56,17 +48,17 @@ type Transaction @entity {
   id: ID!
   block: Int!
   event: String!
-  rawStream: RawStream!
-  timestamp: Int!
+  stream: Stream!
+  timestamp: BigInt!
 }
 
 type Withdrawal @entity {
   id: ID!
   amount: BigInt!
-  rawStream: RawStream!
-  recipientInterest: BigInt!
-  sablierInterest: BigInt!
-  senderInterest: BigInt!
+  stream: Stream!
+  recipientInterest: BigInt
+  sablierInterest: BigInt
+  senderInterest: BigInt
 }
 
 ### Payroll ###
@@ -74,5 +66,5 @@ type Withdrawal @entity {
 type Salary @entity {
   id: ID!
   company: Bytes!
-  rawStream: RawStream!
+  stream: Stream!
 }

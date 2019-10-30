@@ -1,6 +1,6 @@
 import { EthereumEvent } from "@graphprotocol/graph-ts";
 
-import { Cancellation, RawStream, Stream, Token, Transaction, Withdrawal } from "../types/schema";
+import { Cancellation, Stream, Stream, Token, Transaction, Withdrawal } from "../types/schema";
 import {
   CreateStream as CreateStreamEvent,
   CreateCompoundingStream as CreateCompoundingStreamEvent,
@@ -9,12 +9,12 @@ import {
   PayInterest as PayInterestEvent,
 } from "../types/Sablier/Sablier";
 
-function addTransaction(name: string, event: EthereumEvent, rawStreamId: string, txhash: string): void {
+function addTransaction(name: string, event: EthereumEvent, streamId: string, txhash: string): void {
   let transaction = new Transaction(txhash);
   transaction.event = name;
   transaction.block = event.block.number.toI32();
-  transaction.rawStream = rawStreamId;
-  transaction.timestamp = event.block.timestamp.toI32();
+  transaction.stream = streamId;
+  transaction.timestamp = event.block.timestamp;
   transaction.save();
 }
 
@@ -60,92 +60,75 @@ function addToken(address: string): void {
 }
 
 export function handleCreateStream(event: CreateStreamEvent): void {
-  /* Create the raw stream object */
-  let rawStreamId = event.params.streamId.toString();
-  let rawStream = new RawStream(rawStreamId);
-  rawStream.deposit = event.params.deposit;
-  rawStream.recipient = event.params.recipient;
-  rawStream.sender = event.params.sender;
-  rawStream.startTime = event.params.startTime;
-  rawStream.stopTime = event.params.stopTime;
-  rawStream.token = event.params.tokenAddress.toHex();
-  rawStream.txs = new Array<string>();
-  rawStream.withdrawals = new Array<string>();
-  rawStream.save();
-
-  /**
-   * We fittingly create additional objects for the sender and the recipient,
-   * so that showing data in the client app is easy.
-   */
-  let outStreamId = event.params.sender.toHex() + "/" + rawStreamId;
-  let outStream = new Stream(outStreamId);
-  outStream.who = event.params.sender;
-  outStream.rawStream = rawStreamId;
-  outStream.timestamp = event.block.timestamp.toI32();
-  outStream.save();
-
-  let inStreamId = event.params.recipient.toHex() + "/" + rawStreamId;
-  let inStream = new Stream(inStreamId);
-  inStream.who = event.params.recipient;
-  inStream.rawStream = rawStreamId;
-  inStream.timestamp = event.block.timestamp.toI32();
-  inStream.save();
+  /* Create the stream object */
+  let streamId = event.params.streamId.toString();
+  let stream = new Stream(streamId);
+  stream.deposit = event.params.deposit;
+  stream.recipient = event.params.recipient;
+  stream.sender = event.params.sender;
+  stream.startTime = event.params.startTime;
+  stream.stopTime = event.params.stopTime;
+  stream.timestamp = event.block.timestamp;
+  stream.token = event.params.tokenAddress.toHex();
+  stream.txs = new Array<string>();
+  stream.withdrawals = new Array<string>();
+  stream.save();
 
   /* Create adjacent but important objects */
   let txhash = event.transaction.hash.toHex();
-  addTransaction("CreateStream", event, rawStreamId, txhash);
+  addTransaction("CreateStream", event, streamId, txhash);
   addToken(event.params.tokenAddress.toHex());
 }
 
 export function handleCreateCompoundingStream(event: CreateCompoundingStreamEvent): void {
-  let rawStreamId = event.params.streamId.toString();
-  let rawStream = RawStream.load(rawStreamId);
-  if (rawStream == null) {
+  let streamId = event.params.streamId.toString();
+  let stream = Stream.load(streamId);
+  if (stream == null) {
     return;
   }
 
-  rawStream.exchangeRateInitial = event.params.exchangeRate;
-  rawStream.senderSharePercentage = event.params.senderSharePercentage;
-  rawStream.recipientSharePercentage = event.params.recipientSharePercentage;
-  rawStream.save();
+  stream.exchangeRateInitial = event.params.exchangeRate;
+  stream.senderSharePercentage = event.params.senderSharePercentage;
+  stream.recipientSharePercentage = event.params.recipientSharePercentage;
+  stream.save();
 
   let txhash = event.transaction.hash.toHex();
-  addTransaction("CreateCompoundingStream", event, rawStreamId, txhash);
+  addTransaction("CreateCompoundingStream", event, streamId, txhash);
 }
 
 export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
-  let rawStreamId = event.params.streamId.toString();
-  let rawStream = RawStream.load(rawStreamId);
-  if (rawStream == null) {
+  let streamId = event.params.streamId.toString();
+  let stream = Stream.load(streamId);
+  if (stream == null) {
     return;
   }
 
   let withdrawal = new Withdrawal(event.transaction.hash.toHex());
   withdrawal.amount = event.params.amount;
-  withdrawal.rawStream = rawStreamId;
+  withdrawal.stream = streamId;
   withdrawal.save();
 
   let txhash = event.transaction.hash.toHex();
-  addTransaction("WithdrawFromStream", event, rawStreamId, txhash);
+  addTransaction("WithdrawFromStream", event, streamId, txhash);
 }
 
 export function handleCancelStream(event: CancelStreamEvent): void {
-  let rawStreamId = event.params.streamId.toString();
-  let rawStream = RawStream.load(rawStreamId);
-  if (rawStream == null) {
+  let streamId = event.params.streamId.toString();
+  let stream = Stream.load(streamId);
+  if (stream == null) {
     return;
   }
 
-  let cancellation = new Cancellation(rawStreamId);
+  let cancellation = new Cancellation(streamId);
   cancellation.recipientBalance = event.params.recipientBalance;
   cancellation.senderBalance = event.params.senderBalance;
   cancellation.save();
 
-  rawStream.cancellation = rawStreamId;
-  rawStream.save();
+  stream.cancellation = streamId;
+  stream.save();
 
   let txhash = event.transaction.hash.toHex();
-  addTransaction("CancelStream", event, rawStreamId, txhash);
+  addTransaction("CancelStream", event, streamId, txhash);
 }
 
 export function handlePayInterest(event: PayInterestEvent): void {

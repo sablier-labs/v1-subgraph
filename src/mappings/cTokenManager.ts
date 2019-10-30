@@ -41,7 +41,7 @@ function addCToken(address: string): void {
 export function handleWhitelistCToken(event: WhitelistCTokenEvent): void {
   addCToken(event.params.tokenAddress.toHex());
   let cToken = CToken.load(event.params.tokenAddress.toHex());
-  if (cToken == null) {
+  if (cToken == null || cToken.whitelisted) {
     return;
   }
   cToken.whitelisted = true;
@@ -50,10 +50,7 @@ export function handleWhitelistCToken(event: WhitelistCTokenEvent): void {
 
 export function handleDiscardCToken(event: DiscardCTokenEvent): void {
   let cToken = CToken.load(event.params.tokenAddress.toHex());
-  if (cToken == null) {
-    return;
-  }
-  if (!cToken.whitelisted) {
+  if (cToken == null || !cToken.whitelisted) {
     return;
   }
   cToken.whitelisted = false;

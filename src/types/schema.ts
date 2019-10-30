@@ -134,22 +134,38 @@ export class Cancellation extends Entity {
     this.set("recipientBalance", Value.fromBigInt(value));
   }
 
-  get recipientInterest(): BigInt {
+  get recipientInterest(): BigInt | null {
     let value = this.get("recipientInterest");
-    return value.toBigInt();
+    if (value === null) {
+      return null;
+    } else {
+      return value.toBigInt();
+    }
   }
 
-  set recipientInterest(value: BigInt) {
-    this.set("recipientInterest", Value.fromBigInt(value));
+  set recipientInterest(value: BigInt | null) {
+    if (value === null) {
+      this.unset("recipientInterest");
+    } else {
+      this.set("recipientInterest", Value.fromBigInt(value as BigInt));
+    }
   }
 
-  get sablierInterest(): BigInt {
+  get sablierInterest(): BigInt | null {
     let value = this.get("sablierInterest");
-    return value.toBigInt();
+    if (value === null) {
+      return null;
+    } else {
+      return value.toBigInt();
+    }
   }
 
-  set sablierInterest(value: BigInt) {
-    this.set("sablierInterest", Value.fromBigInt(value));
+  set sablierInterest(value: BigInt | null) {
+    if (value === null) {
+      this.unset("sablierInterest");
+    } else {
+      this.set("sablierInterest", Value.fromBigInt(value as BigInt));
+    }
   }
 
   get senderBalance(): BigInt {
@@ -161,17 +177,25 @@ export class Cancellation extends Entity {
     this.set("senderBalance", Value.fromBigInt(value));
   }
 
-  get senderInterest(): BigInt {
+  get senderInterest(): BigInt | null {
     let value = this.get("senderInterest");
-    return value.toBigInt();
+    if (value === null) {
+      return null;
+    } else {
+      return value.toBigInt();
+    }
   }
 
-  set senderInterest(value: BigInt) {
-    this.set("senderInterest", Value.fromBigInt(value));
+  set senderInterest(value: BigInt | null) {
+    if (value === null) {
+      this.unset("senderInterest");
+    } else {
+      this.set("senderInterest", Value.fromBigInt(value as BigInt));
+    }
   }
 }
 
-export class RawStream extends Entity {
+export class Stream extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -179,17 +203,17 @@ export class RawStream extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save RawStream entity without an ID");
+    assert(id !== null, "Cannot save Stream entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save RawStream entity with non-string ID. " +
+      "Cannot save Stream entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("RawStream", id.toString(), this);
+    store.set("Stream", id.toString(), this);
   }
 
-  static load(id: string): RawStream | null {
-    return store.get("RawStream", id) as RawStream | null;
+  static load(id: string): Stream | null {
+    return store.get("Stream", id) as Stream | null;
   }
 
   get cancellation(): string | null {
@@ -242,15 +266,6 @@ export class RawStream extends Entity {
 
   set id(value: string) {
     this.set("id", Value.fromString(value));
-  }
-
-  get interval(): BigInt {
-    let value = this.get("interval");
-    return value.toBigInt();
-  }
-
-  set interval(value: BigInt) {
-    this.set("interval", Value.fromBigInt(value));
   }
 
   get recipient(): Bytes {
@@ -323,13 +338,13 @@ export class RawStream extends Entity {
     this.set("stopTime", Value.fromBigInt(value));
   }
 
-  get streams(): Array<string> {
-    let value = this.get("streams");
-    return value.toStringArray();
+  get timestamp(): BigInt {
+    let value = this.get("timestamp");
+    return value.toBigInt();
   }
 
-  set streams(value: Array<string>) {
-    this.set("streams", Value.fromStringArray(value));
+  set timestamp(value: BigInt) {
+    this.set("timestamp", Value.fromBigInt(value));
   }
 
   get token(): string | null {
@@ -365,64 +380,6 @@ export class RawStream extends Entity {
 
   set withdrawals(value: Array<string>) {
     this.set("withdrawals", Value.fromStringArray(value));
-  }
-}
-
-export class Stream extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id !== null, "Cannot save Stream entity without an ID");
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save Stream entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("Stream", id.toString(), this);
-  }
-
-  static load(id: string): Stream | null {
-    return store.get("Stream", id) as Stream | null;
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get who(): Bytes {
-    let value = this.get("who");
-    return value.toBytes();
-  }
-
-  set who(value: Bytes) {
-    this.set("who", Value.fromBytes(value));
-  }
-
-  get rawStream(): string {
-    let value = this.get("rawStream");
-    return value.toString();
-  }
-
-  set rawStream(value: string) {
-    this.set("rawStream", Value.fromString(value));
-  }
-
-  get timestamp(): i32 {
-    let value = this.get("timestamp");
-    return value.toI32();
-  }
-
-  set timestamp(value: i32) {
-    this.set("timestamp", Value.fromI32(value));
   }
 }
 
@@ -548,22 +505,22 @@ export class Transaction extends Entity {
     this.set("event", Value.fromString(value));
   }
 
-  get rawStream(): string {
-    let value = this.get("rawStream");
+  get stream(): string {
+    let value = this.get("stream");
     return value.toString();
   }
 
-  set rawStream(value: string) {
-    this.set("rawStream", Value.fromString(value));
+  set stream(value: string) {
+    this.set("stream", Value.fromString(value));
   }
 
-  get timestamp(): i32 {
+  get timestamp(): BigInt {
     let value = this.get("timestamp");
-    return value.toI32();
+    return value.toBigInt();
   }
 
-  set timestamp(value: i32) {
-    this.set("timestamp", Value.fromI32(value));
+  set timestamp(value: BigInt) {
+    this.set("timestamp", Value.fromBigInt(value));
   }
 }
 
@@ -606,40 +563,64 @@ export class Withdrawal extends Entity {
     this.set("amount", Value.fromBigInt(value));
   }
 
-  get rawStream(): string {
-    let value = this.get("rawStream");
+  get stream(): string {
+    let value = this.get("stream");
     return value.toString();
   }
 
-  set rawStream(value: string) {
-    this.set("rawStream", Value.fromString(value));
+  set stream(value: string) {
+    this.set("stream", Value.fromString(value));
   }
 
-  get recipientInterest(): BigInt {
+  get recipientInterest(): BigInt | null {
     let value = this.get("recipientInterest");
-    return value.toBigInt();
+    if (value === null) {
+      return null;
+    } else {
+      return value.toBigInt();
+    }
   }
 
-  set recipientInterest(value: BigInt) {
-    this.set("recipientInterest", Value.fromBigInt(value));
+  set recipientInterest(value: BigInt | null) {
+    if (value === null) {
+      this.unset("recipientInterest");
+    } else {
+      this.set("recipientInterest", Value.fromBigInt(value as BigInt));
+    }
   }
 
-  get sablierInterest(): BigInt {
+  get sablierInterest(): BigInt | null {
     let value = this.get("sablierInterest");
-    return value.toBigInt();
+    if (value === null) {
+      return null;
+    } else {
+      return value.toBigInt();
+    }
   }
 
-  set sablierInterest(value: BigInt) {
-    this.set("sablierInterest", Value.fromBigInt(value));
+  set sablierInterest(value: BigInt | null) {
+    if (value === null) {
+      this.unset("sablierInterest");
+    } else {
+      this.set("sablierInterest", Value.fromBigInt(value as BigInt));
+    }
   }
 
-  get senderInterest(): BigInt {
+  get senderInterest(): BigInt | null {
     let value = this.get("senderInterest");
-    return value.toBigInt();
+    if (value === null) {
+      return null;
+    } else {
+      return value.toBigInt();
+    }
   }
 
-  set senderInterest(value: BigInt) {
-    this.set("senderInterest", Value.fromBigInt(value));
+  set senderInterest(value: BigInt | null) {
+    if (value === null) {
+      this.unset("senderInterest");
+    } else {
+      this.set("senderInterest", Value.fromBigInt(value as BigInt));
+    }
   }
 }
 
@@ -682,12 +663,12 @@ export class Salary extends Entity {
     this.set("company", Value.fromBytes(value));
   }
 
-  get rawStream(): string {
-    let value = this.get("rawStream");
+  get stream(): string {
+    let value = this.get("stream");
     return value.toString();
   }
 
-  set rawStream(value: string) {
-    this.set("rawStream", Value.fromString(value));
+  set stream(value: string) {
+    this.set("stream", Value.fromString(value));
   }
 }

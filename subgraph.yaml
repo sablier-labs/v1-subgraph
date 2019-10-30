@@ -39,7 +39,6 @@ dataSources:
           file: ./abis/Sablier.json
       entities:
         - Cancellation
-        - RawStream
         - Stream
         - Token
         - Transaction
