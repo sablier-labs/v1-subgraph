@@ -193,6 +193,15 @@ export class Cancellation extends Entity {
       this.set("senderInterest", Value.fromBigInt(value as BigInt));
     }
   }
+
+  get timestamp(): BigInt {
+    let value = this.get("timestamp");
+    return value.toBigInt();
+  }
+
+  set timestamp(value: BigInt) {
+    this.set("timestamp", Value.fromBigInt(value));
+  }
 }
 
 export class Stream extends Entity {
@@ -572,15 +581,6 @@ export class Withdrawal extends Entity {
     this.set("amount", Value.fromBigInt(value));
   }
 
-  get stream(): string {
-    let value = this.get("stream");
-    return value.toString();
-  }
-
-  set stream(value: string) {
-    this.set("stream", Value.fromString(value));
-  }
-
   get recipientInterest(): BigInt | null {
     let value = this.get("recipientInterest");
     if (value === null) {
@@ -630,6 +630,24 @@ export class Withdrawal extends Entity {
     } else {
       this.set("senderInterest", Value.fromBigInt(value as BigInt));
     }
+  }
+
+  get stream(): string {
+    let value = this.get("stream");
+    return value.toString();
+  }
+
+  set stream(value: string) {
+    this.set("stream", Value.fromString(value));
+  }
+
+  get timestamp(): BigInt {
+    let value = this.get("timestamp");
+    return value.toBigInt();
+  }
+
+  set timestamp(value: BigInt) {
+    this.set("timestamp", Value.fromBigInt(value));
   }
 }
 

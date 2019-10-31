@@ -17,6 +17,7 @@ type Cancellation @entity {
   sablierInterest: BigInt
   senderBalance: BigInt!
   senderInterest: BigInt
+  timestamp: BigInt!
 }
 
 # @derivedFrom makes it possible to map large sets of data to the same stream
@@ -56,10 +57,11 @@ type Transaction @entity {
 type Withdrawal @entity {
   id: ID!
   amount: BigInt!
-  stream: Stream!
   recipientInterest: BigInt
   sablierInterest: BigInt
   senderInterest: BigInt
+  stream: Stream!
+  timestamp: BigInt!
 }
 
 ### Payroll ###

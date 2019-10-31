@@ -9,8 +9,8 @@ import {
   PayInterest as PayInterestEvent,
 } from "../types/Sablier/Sablier";
 
-function addTransaction(name: string, event: EthereumEvent, streamId: string, txhash: string): void {
-  let transaction = new Transaction(txhash);
+function addTransaction(name: string, event: EthereumEvent, streamId: string): void {
+  let transaction = new Transaction(event.transaction.hash.toHex());
   transaction.event = name;
   transaction.block = event.block.number.toI32();
   transaction.stream = streamId;
@@ -77,7 +77,7 @@ export function handleCreateStream(event: CreateStreamEvent): void {
 
   /* Create adjacent but important objects */
   let txhash = event.transaction.hash.toHex();
-  addTransaction("CreateStream", event, streamId, txhash);
+  addTransaction("CreateStream", event, streamId);
   addToken(event.params.tokenAddress.toHex());
 }
 
@@ -93,8 +93,7 @@ export function handleCreateCompoundingStream(event: CreateCompoundingStreamEven
   stream.recipientSharePercentage = event.params.recipientSharePercentage;
   stream.save();
 
-  let txhash = event.transaction.hash.toHex();
-  addTransaction("CreateCompoundingStream", event, streamId, txhash);
+  addTransaction("CreateCompoundingStream", event, streamId);
 }
 
 export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
@@ -107,10 +106,10 @@ export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
   let withdrawal = new Withdrawal(event.transaction.hash.toHex());
   withdrawal.amount = event.params.amount;
   withdrawal.stream = streamId;
+  withdrawal.timestamp = event.block.timestamp;
   withdrawal.save();
 
-  let txhash = event.transaction.hash.toHex();
-  addTransaction("WithdrawFromStream", event, streamId, txhash);
+  addTransaction("WithdrawFromStream", event, streamId);
 }
 
 export function handleCancelStream(event: CancelStreamEvent): void {
@@ -123,13 +122,14 @@ export function handleCancelStream(event: CancelStreamEvent): void {
   let cancellation = new Cancellation(streamId);
   cancellation.recipientBalance = event.params.recipientBalance;
   cancellation.senderBalance = event.params.senderBalance;
+  cancellation.timestamp = event.block.timestamp;
   cancellation.save();
 
   stream.cancellation = streamId;
   stream.save();
 
   let txhash = event.transaction.hash.toHex();
-  addTransaction("CancelStream", event, streamId, txhash);
+  addTransaction("CancelStream", event, streamId);
 }
 
 export function handlePayInterest(event: PayInterestEvent): void {
