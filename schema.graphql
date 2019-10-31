@@ -1,3 +1,20 @@
+### Generic ###
+
+type Token @entity {
+  id: ID!
+  decimals: Int
+  name: String
+  symbol: String
+}
+
+type Transaction @entity {
+  id: ID!
+  block: Int!
+  event: String!
+  stream: Stream!
+  timestamp: BigInt!
+}
+
 ### CTokenManager ###
 
 type CToken @entity {
@@ -37,21 +54,6 @@ type Stream @entity {
   token: Token
   txs: [Transaction!]! @derivedFrom(field: "stream")
   withdrawals: [Withdrawal!]! @derivedFrom(field: "stream")
-}
-
-type Token @entity {
-  id: ID!
-  decimals: Int
-  name: String
-  symbol: String
-}
-
-type Transaction @entity {
-  id: ID!
-  block: Int!
-  event: String!
-  stream: Stream!
-  timestamp: BigInt!
 }
 
 type Withdrawal @entity {
