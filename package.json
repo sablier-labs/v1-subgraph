@@ -11,8 +11,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@graphprotocol/graph-cli": "^0.15.0",
-    "@graphprotocol/graph-ts": "^0.15.1"
+    "@graphprotocol/graph-cli": "^0.16.0",
+    "@graphprotocol/graph-ts": "^0.16.0"
   },
   "license": "LGPL-3.0",
   "repository": {

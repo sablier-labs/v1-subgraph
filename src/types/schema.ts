@@ -134,6 +134,15 @@ export class Transaction extends Entity {
     this.set("event", Value.fromString(value));
   }
 
+  get from(): Bytes {
+    let value = this.get("from");
+    return value.toBytes();
+  }
+
+  set from(value: Bytes) {
+    this.set("from", Value.fromBytes(value));
+  }
+
   get stream(): string {
     let value = this.get("stream");
     return value.toString();
@@ -150,6 +159,23 @@ export class Transaction extends Entity {
 
   set timestamp(value: BigInt) {
     this.set("timestamp", Value.fromBigInt(value));
+  }
+
+  get to(): Bytes | null {
+    let value = this.get("to");
+    if (value === null) {
+      return null;
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set to(value: Bytes | null) {
+    if (value === null) {
+      this.unset("to");
+    } else {
+      this.set("to", Value.fromBytes(value as Bytes));
+    }
   }
 }
 
@@ -343,6 +369,15 @@ export class Cancellation extends Entity {
   set timestamp(value: BigInt) {
     this.set("timestamp", Value.fromBigInt(value));
   }
+
+  get txhash(): string {
+    let value = this.get("txhash");
+    return value.toString();
+  }
+
+  set txhash(value: string) {
+    this.set("txhash", Value.fromString(value));
+  }
 }
 
 export class Stream extends Entity {
@@ -497,15 +532,6 @@ export class Stream extends Entity {
     this.set("stopTime", Value.fromBigInt(value));
   }
 
-  get timestamp(): BigInt {
-    let value = this.get("timestamp");
-    return value.toBigInt();
-  }
-
-  set timestamp(value: BigInt) {
-    this.set("timestamp", Value.fromBigInt(value));
-  }
-
   get token(): string | null {
     let value = this.get("token");
     if (value === null) {
@@ -523,22 +549,38 @@ export class Stream extends Entity {
     }
   }
 
-  get txs(): Array<string> {
+  get txs(): Array<string> | null {
     let value = this.get("txs");
-    return value.toStringArray();
+    if (value === null) {
+      return null;
+    } else {
+      return value.toStringArray();
+    }
   }
 
-  set txs(value: Array<string>) {
-    this.set("txs", Value.fromStringArray(value));
+  set txs(value: Array<string> | null) {
+    if (value === null) {
+      this.unset("txs");
+    } else {
+      this.set("txs", Value.fromStringArray(value as Array<string>));
+    }
   }
 
-  get withdrawals(): Array<string> {
+  get withdrawals(): Array<string> | null {
     let value = this.get("withdrawals");
-    return value.toStringArray();
+    if (value === null) {
+      return null;
+    } else {
+      return value.toStringArray();
+    }
   }
 
-  set withdrawals(value: Array<string>) {
-    this.set("withdrawals", Value.fromStringArray(value));
+  set withdrawals(value: Array<string> | null) {
+    if (value === null) {
+      this.unset("withdrawals");
+    } else {
+      this.set("withdrawals", Value.fromStringArray(value as Array<string>));
+    }
   }
 }
 

@@ -11,8 +11,10 @@ type Transaction @entity {
   id: ID!
   block: Int!
   event: String!
+  from: Bytes!
   stream: Stream!
   timestamp: BigInt!
+  to: Bytes
 }
 
 ### CTokenManager ###
@@ -27,6 +29,7 @@ type CToken @entity {
 
 ### Sablier ###
 
+# The id is the stream's id
 type Cancellation @entity {
   id: ID!
   recipientBalance: BigInt!
@@ -35,6 +38,7 @@ type Cancellation @entity {
   senderBalance: BigInt!
   senderInterest: BigInt
   timestamp: BigInt!
+  txhash: String!
 }
 
 # @derivedFrom makes it possible to map large sets of data to the same stream
@@ -50,10 +54,9 @@ type Stream @entity {
   senderSharePercentage: BigInt
   startTime: BigInt!
   stopTime: BigInt!
-  timestamp: BigInt!
   token: Token
-  txs: [Transaction!]! @derivedFrom(field: "stream")
-  withdrawals: [Withdrawal!]! @derivedFrom(field: "stream")
+  txs: [Transaction!] @derivedFrom(field: "stream")
+  withdrawals: [Withdrawal!] @derivedFrom(field: "stream")
 }
 
 type Withdrawal @entity {
