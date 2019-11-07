@@ -54,6 +54,7 @@ type Stream @entity {
   senderSharePercentage: BigInt
   startTime: BigInt!
   stopTime: BigInt!
+  timestamp: BigInt!
   token: Token
   txs: [Transaction!] @derivedFrom(field: "stream")
   withdrawals: [Withdrawal!] @derivedFrom(field: "stream")

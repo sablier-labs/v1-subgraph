@@ -19,9 +19,8 @@ export function handleCreateStream(event: CreateStreamEvent): void {
   stream.sender = event.params.sender;
   stream.startTime = event.params.startTime;
   stream.stopTime = event.params.stopTime;
+  stream.timestamp = event.block.timestamp;
   stream.token = event.params.tokenAddress.toHex();
-  stream.txs = new Array<string>();
-  stream.withdrawals = new Array<string>();
   stream.save();
 
   /* Create adjacent but important objects */
