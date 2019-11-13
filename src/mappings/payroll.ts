@@ -6,4 +6,5 @@ export function handleCreateSalary(event: CreateSalaryEvent): void {
   let salary = new Salary(salaryId);
   salary.company = event.params.company;
   salary.stream = event.params.streamId.toString();
+  salary.save();
 }

@@ -9,7 +9,7 @@ dataSources:
     network: kovan
     source:
       abi: CTokenManager
-      address: "0xd3F9e1435316069832cdD0664CFE4f25a34AC562"
+      address: "0xEE5dfDf2e98FdC572786b9E5649cB8Cc93D47a19"
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.3
@@ -30,7 +30,7 @@ dataSources:
     network: kovan
     source:
       abi: Sablier
-      address: "0x08f07914Bc57EAe55A419453f49fE15E654A8154"
+      address: "0xc04Ad234E01327b24a831e3718DBFcbE245904CC"
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.3
@@ -62,7 +62,7 @@ dataSources:
     network: kovan
     source:
       abi: Payroll
-      address: "0x28651FdCaaB295D6Ae243FC5C8A4C3229475140B"
+      address: "0x7ee114C3628Ca90119fC699f03665bF9dB8f5faF"
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.3
