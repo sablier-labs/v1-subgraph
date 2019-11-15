@@ -4,8 +4,7 @@ The Graph is a tool that helps dapps index their blockchain data so that users d
 website to load.
 
 This is our subgraph, a collection of schemas and event handlers that
-parse the data broadcast on the Ethereum blockchain to GraphQL form. The dapp then gets the data to display
-it to the end users.
+parse the data broadcast on the Ethereum blockchain to GraphQL form.
 
 Our smart contracts can be found in the [Sablier monorepo](https://github.com/sablierhq/sablier).
 
