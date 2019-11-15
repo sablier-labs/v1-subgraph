@@ -14,14 +14,15 @@ Before you can build, create and deploy this subgraph, you have to execute the f
 
 ```bash
 $ yarn
-$ SUBGRAPH=sablierhq/sablier yarn run prepare:subgraph
+$ yarn prepare:mainnet
 ```
 
 The first command installs all external dependencies, while the latter generates the `subgraph.yaml` file, which is
 required by The Graph.
 
 We use [Handlebars](https://github.com/wycats/handlebars.js/) to compile a [template subgraph](./subgraph.template.yaml) and add the parameters specific to each
-network (Mainnet, Goerli, Kovan, Rinkeby, Ropsten). See the [templatify.js](./templatify.js) file for all possibles values for `SUBGRAPH`.
+network (Mainnet, Goerli, Kovan, Rinkeby, Ropsten). The network can be changed via the `NETWORK_NAME` environment
+variable or directly by choosing a different "prepare" script. See [package.json](./package.json) for all options.
 
 ## Queries
 
