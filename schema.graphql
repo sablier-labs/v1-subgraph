@@ -75,5 +75,6 @@ type Withdrawal @entity {
 type Salary @entity {
   id: ID!
   company: Bytes!
+  employee: Bytes!
   stream: Stream!
 }

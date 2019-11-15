@@ -741,6 +741,15 @@ export class Salary extends Entity {
     this.set("company", Value.fromBytes(value));
   }
 
+  get employee(): Bytes {
+    let value = this.get("employee");
+    return value.toBytes();
+  }
+
+  set employee(value: Bytes) {
+    this.set("employee", Value.fromBytes(value));
+  }
+
   get stream(): string {
     let value = this.get("stream");
     return value.toString();
