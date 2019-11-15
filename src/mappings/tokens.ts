@@ -29,6 +29,7 @@ export function addToken(address: string): void {
     token.name = "USD Coin";
     token.symbol = "USDC";
   } else if (address == "0x7d669a64deb8a4a51eea755bb0e19fd39ce25ae9") {
+  /* Token used for testing on Kovan  */
     token.decimals = 18;
     token.name = "Testnet Dai";
     token.symbol = "DAI";

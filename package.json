@@ -1,5 +1,6 @@
 {
   "name": "@sablier/subgraph",
+  "description": "GraphQL server built The Graph",
   "version": "2.0.0",
   "author": {
     "name": "Sablier",
@@ -11,7 +12,12 @@
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.16.0",
-    "@graphprotocol/graph-ts": "^0.16.0"
+    "@graphprotocol/graph-ts": "^0.16.0",
+    "@sablier/eslint-config": "^1.0.1",
+    "fs-extra": "^8.1.0",
+    "handlebars": "^4.5.2",
+    "js-yaml": "^3.13.1",
+    "typy": "^3.3.0"
   },
   "license": "LGPL-3.0",
   "repository": {
@@ -21,11 +27,28 @@
   "scripts": {
     "build": "graph build --debug",
     "codegen": "graph codegen --debug --output-dir src/types/",
-    "create": "graph create sablierhq/sablier-kovan --node https://api.thegraph.com/deploy/",
-    "create-local": "graph create sablierhq/sablier-kovan --node http://127.0.0.1:8020",
-    "deploy": "graph deploy sablierhq/sablier-kovan --debug --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
-    "deploy-local": "graph deploy sablierhq/sablier-kovan --debug --ipfs http://localhost:5001 --node http://127.0.0.1:8020",
-    "remove-local": "graph remove sablierhq/sablier-kovan --node http://localhost:8020/",
+    "create:": "graph create $SUBGRAPH --node https://api.thegraph.com/deploy/",
+    "create:goerli": "SUBGRAPH=sablierhq/sablier-goerli yarn create",
+    "create:kovan": "SUBGRAPH=sablierhq/sablier-kovan yarn create",
+    "create:local": "graph create sablierhq/sablier --node http://127.0.0.1:8020",
+    "create:mainnet": "SUBGRAPH=sablierhq/sablier yarn create",
+    "create:rinkeby": "SUBGRAPH=sablierhq/sablier-rinkeby yarn create",
+    "create:ropsten": "SUBGRAPH=sablierhq/sablier-ropsten yarn create",
+    "deploy": "graph deploy $SUBGRAPH --debug --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
+    "deploy:goerli": "SUBGRAPH=sablierhq/sablier-goerli yarn deploy",
+    "deploy:kovan": "SUBGRAPH=sablierhq/sablier-kovan yarn deploy",
+    "deploy:local": "graph deploy sablierhq/sablier --debug --ipfs http://127.0.0.1:5001 --node http://127.0.0.1:8020",
+    "deploy:mainnet": "SUBGRAPH=sablierhq/sablier yarn deploy",
+    "deploy:rinkeby": "SUBGRAPH=sablierhq/sablier-rinkeby yarn deploy",
+    "deploy:ropsten": "SUBGRAPH=sablierhq/sablier-ropsten yarn deploy",
+    "prepare:subgraph:goerli": "NETWORK_NAME=goerli node ./templatify.js",
+    "prepare:subgraph:kovan": "NETWORK_NAME=kovan node ./templatify.js",
+    "prepare:subgraph:mainnet": "NETWORK_NAME=mainnet node ./templatify.js",
+    "prepare:subgraph:rinkeby": "NETWORK_NAME=rinkeby node ./templatify.js",
+    "prepare:subgraph:ropsten": "NETWORK_NAME=ropsten node ./templatify.js",
+    "prettier": "prettier --config .prettierrc --write '**/*.{js,json,md,yaml}'",
+    "prettier:ci": "prettier --config .prettierrc --list-different '**/*.{js,json,md,yaml}'",
+    "remove-local": "graph remove sablierhq/sablier --node http://127.0.0.1:8020/",
     "reset-local": "yarn codegen && yarn remove-local && yarn create-local && yarn deploy-local"
   }
 }
