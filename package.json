@@ -17,6 +17,7 @@
     "fs-extra": "^8.1.0",
     "handlebars": "^4.5.2",
     "js-yaml": "^3.13.1",
+    "shx": "^0.3.2",
     "typy": "^3.3.0"
   },
   "license": "LGPL-3.0",
@@ -27,6 +28,7 @@
   "scripts": {
     "build": "graph build --debug",
     "codegen": "graph codegen --debug --output-dir src/types/",
+    "clean": "shx rm -rf ./build ./src/types ./subgraph.yaml",
     "create:": "graph create $SUBGRAPH --node https://api.thegraph.com/deploy/",
     "create:goerli": "SUBGRAPH=sablierhq/sablier-goerli yarn create",
     "create:kovan": "SUBGRAPH=sablierhq/sablier-kovan yarn create",
