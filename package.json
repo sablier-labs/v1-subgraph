@@ -1,6 +1,6 @@
 {
   "name": "@sablier/subgraph",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": {
     "name": "Sablier",
     "email": "paul@sablier.app",
@@ -9,7 +9,6 @@
   "bugs": {
     "url": "https://github.com/sablierhq/sablier-subgraph/issues"
   },
-  "dependencies": {},
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.16.0",
     "@graphprotocol/graph-ts": "^0.16.0"
