@@ -1,6 +1,9 @@
-## Warning
+## Warning :warning:
 
-We migrated to mainnet since we participated at the CoinList hackathon. Please check out the [mainnet][mainnet-branch] for the latest links and tetsing information.
+This branch is stale. It was used for a hackathon we
+[participated](https://medium.com/graphprotocol/the-graph-coinlist-hackathon-recap-862a4a7f065c) at in May 2019. Now, we're dynamically
+generating the `subgraph.yaml` file with [handlebars.js](https://github.com/wycats/handlebars.js/). See the
+[master](https://github.com/sablierhq/sablier-subgraph/tree/master) branch.
 
 ## Sablier Subgraph
 
