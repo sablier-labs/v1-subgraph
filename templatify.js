@@ -28,7 +28,7 @@ function getNetworkNameForSubgraph() {
   const networkName = process.env.NETWORK_NAME || getNetworkNameForSubgraph();
   const network = t(networks, networkName).safeObject;
   if (t(network).isFalsy) {
-    throw new Error('Please provide a "network" argument');
+    throw new Error('Please set either a "NETWORK_NAME" or a "SUBGRAPH" environment variable');
   }
 
   const subgraphTemplateFilePath = path.join(__dirname, "subgraph.template.yaml");
