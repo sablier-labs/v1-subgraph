@@ -38,6 +38,7 @@ type Cancellation @entity {
   senderBalance: BigInt!
   senderInterest: BigInt
   timestamp: BigInt!
+  token: Token
   txhash: String!
 }
 
@@ -68,6 +69,7 @@ type Withdrawal @entity {
   senderInterest: BigInt
   stream: Stream!
   timestamp: BigInt!
+  token: Token
 }
 
 ### Payroll ###

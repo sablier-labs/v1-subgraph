@@ -54,6 +54,7 @@ export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
   withdrawal.amount = event.params.amount;
   withdrawal.stream = streamId;
   withdrawal.timestamp = event.block.timestamp;
+  withdrawal.token = stream.token;
   withdrawal.save();
 
   addTransaction("WithdrawFromStream", event, streamId);
@@ -70,6 +71,7 @@ export function handleCancelStream(event: CancelStreamEvent): void {
   cancellation.recipientBalance = event.params.recipientBalance;
   cancellation.senderBalance = event.params.senderBalance;
   cancellation.timestamp = event.block.timestamp;
+  cancellation.token = stream.token;
   cancellation.txhash = event.transaction.hash.toHex();
   cancellation.save();
 
