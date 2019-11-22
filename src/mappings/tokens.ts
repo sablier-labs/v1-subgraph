@@ -6,37 +6,44 @@ export function addToken(address: string): void {
     return;
   }
 
+  /* Mainnet */
   token = new Token(address);
-
-  if (address == "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359") {
+  if (address === "0xf5dce57282a584d2746faf1593d3121fcac444dc") {
+    token.decimals = 8;
+    token.name = "Compound Sai";
+    token.symbol = "cSAI";
+  } else if (address === "0x39aa39c021dfbae8fac545936693ac917d5e7563") {
+    token.decimals = 8;
+    token.name = "Compound USD Coin";
+    token.symbol = "cUSDC";
+  } else if (address === "0x6b175474e89094c44da98b954eedeac495271d0f") {
     token.decimals = 18;
-    token.name = "Dai Stablecoin v1.0";
+    token.name = "Dai Stablecoin";
     token.symbol = "DAI";
-  } else if (address == "0x056fd409e1d7a124bd7017459dfea2f387b6d5cd") {
-    token.decimals = 2;
-    token.name = "Gemini Dollar";
-    token.symbol = "GUSD";
-  } else if (address == "0x8e870d67f660d95d5be530380d0ec0bd388289e1") {
+  } else if (address === "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359") {
     token.decimals = 18;
-    token.name = "Paxos Standard";
-    token.symbol = "PAX";
-  } else if (address == "0x0000000000085d4780b73119b644ae5ecd22b376") {
-    token.decimals = 18;
-    token.name = "TrueUSD";
-    token.symbol = "TUSD";
-  } else if (address == "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48") {
+    token.name = "Sai Stablecoin v1.0";
+    token.symbol = "SAI";
+  } else if (address === "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48") {
     token.decimals = 6;
     token.name = "USD Coin";
     token.symbol = "USDC";
-  } else if (address == "0x7d669a64deb8a4a51eea755bb0e19fd39ce25ae9") {
-  /* Token used for testing on Kovan  */
-    token.decimals = 18;
-    token.name = "Testnet Dai";
-    token.symbol = "DAI";
   } else {
     token.decimals = null;
     token.name = null;
     token.symbol = null;
+  }
+
+  /* Testnets */
+  if (
+    address === "0xf2d1f94310823fe26cfa9c9b6fd152834b8e7849" /* Goerli */ ||
+    address === "0x7d669a64deb8a4a51eea755bb0e19fd39ce25ae9" /* Kovan */ ||
+    address === "0xc3dbf84abb494ce5199d5d4d815b10ec29529ff8" /* Rinkeby */ ||
+    address === "0x2d69ad895797c880abce92437788047ba0eb7ff6" /* Ropsten */
+  ) {
+    token.decimals = 18;
+    token.name = "Testnet Dai";
+    token.symbol = "DAI";
   }
 
   token.save();
