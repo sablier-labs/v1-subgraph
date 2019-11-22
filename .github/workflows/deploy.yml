@@ -1,0 +1,43 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Node.js for use with actions
+        uses: actions/setup-node@v1.1.0
+        with:
+          version: 10.17.0
+      - name: Install dependencies
+        run: |
+          yarn install
+          npm install -g @graphprotocol/graph-cli
+      - name: Authenticate graph-cli
+        run: graph auth https://api.thegraph.com/deploy/ ${{ secrets.THE_GRAPH_TOKEN }}
+      - name: Generate AssemblyScript types
+        run: |
+          yarn run prepare:mainnet
+          yarn run codegen
+      - name: Deploy to Goerli
+        run: |
+          yarn run prepare:goerli
+          yarn run deploy:goerli
+      - name: Deploy to Kovan
+        run: |
+          yarn run prepare:kovan
+          yarn run deploy:kovan
+      - name: Deploy to Rinkeby
+        run: |
+          yarn run prepare:rinkeby
+          yarn run deploy:rinkeby
+      - name: Deploy to Ropsten
+        run: |
+          yarn run prepare:ropsten
+          yarn run deploy:ropsten
+      - name: Deploy to Mainnet
+        run: |
+          yarn run prepare:mainnet
+          yarn run deploy:mainnet

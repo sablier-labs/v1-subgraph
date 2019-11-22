@@ -1,7 +1,7 @@
 {
   "name": "@sablier/subgraph",
   "description": "GraphQL server built The Graph",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": {
     "name": "Sablier",
     "email": "paul@sablier.app",
@@ -29,13 +29,7 @@
     "build": "graph build --debug",
     "clean": "shx rm -rf ./build ./src/types ./subgraph.yaml",
     "codegen": "graph codegen --debug --output-dir src/types/",
-    "create:": "graph create $SUBGRAPH --node https://api.thegraph.com/deploy/",
-    "create:goerli": "yarn prepare:goerli && SUBGRAPH=sablierhq/sablier-goerli yarn create",
-    "create:kovan": "yarn prepare:kovanUBGRAPH=sablierhq/sablier-kovan yarn create",
     "create:local": "graph create sablierhq/sablier --node http://127.0.0.1:8020",
-    "create:mainnet": "yarn prepare:mainnet && SUBGRAPH=sablierhq/sablier yarn create",
-    "create:rinkeby": "yarn prepare:rinkeby && SUBGRAPH=sablierhq/sablier-rinkeby yarn create",
-    "create:ropsten": "yarn prepare:ropsten && SUBGRAPH=sablierhq/sablier-ropsten yarn create",
     "deploy": "graph deploy $SUBGRAPH --debug --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
     "deploy:goerli": "yarn prepare:goerli && SUBGRAPH=sablierhq/sablier-goerli yarn deploy",
     "deploy:kovan": "yarn prepare:kovan && SUBGRAPH=sablierhq/sablier-kovan yarn deploy",
