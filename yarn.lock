@@ -25,10 +25,10 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@graphprotocol/graph-cli@^0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@graphprotocol/graph-cli/-/graph-cli-0.16.0.tgz#0829a42a2ec4c122fbdb8bfb482b74e0d27db935"
-  integrity sha512-tTpJc9waeRPzhF/aeWxu4jGW7GonVTQBeubTGVC6B2oFHpADXrQdthPgpmtThexXGHk46q14bHLuiSEm6ZBpkw==
+"@graphprotocol/graph-cli@^0.16.2":
+  version "0.16.2"
+  resolved "https://registry.yarnpkg.com/@graphprotocol/graph-cli/-/graph-cli-0.16.2.tgz#3396e444decbe582c962d27e88f9804371d974fe"
+  integrity sha512-6kaJmTQFj6BlDJfvoFnvcfy+a7nXlq7BVZqqrWHSXmKafr9IXVfuihFBOdXI5Sq+n09+bL4kZerd/cohnsWM3Q==
   dependencies:
     assemblyscript "https://github.com/AssemblyScript/assemblyscript#36040d5b5312f19a025782b5e36663823494c2f3"
     chalk "^2.4.1"
