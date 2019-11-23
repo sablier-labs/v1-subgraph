@@ -29,7 +29,7 @@ export function addToken(address: string): void {
     token.name = "USD Coin";
     token.symbol = "USDC";
   } else {
-    token.decimals = null;
+    token.decimals = 0;
     token.name = null;
     token.symbol = null;
   }
