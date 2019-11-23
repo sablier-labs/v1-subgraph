@@ -42,7 +42,7 @@ export function addToken(address: string): void {
     address === "0x2d69ad895797c880abce92437788047ba0eb7ff6" /* Ropsten */
   ) {
     token.decimals = 18;
-    token.name = "Testnet Dai";
+    token.name = "TestnetDAI";
     token.symbol = "DAI";
   }
 
