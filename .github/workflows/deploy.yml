@@ -26,6 +26,7 @@ jobs:
           yarn run codegen
       - name: Deploy to Goerli
         run: |
+          graph auth https://api.thegraph.com/deploy/ ${{ secrets.THE_GRAPH_TOKEN }}
           yarn run prepare:goerli
           yarn run deploy:goerli
       - name: Deploy to Kovan
