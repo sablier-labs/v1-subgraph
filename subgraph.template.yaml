@@ -1,5 +1,5 @@
 specVersion: 0.0.2
-description: Sablier is a protocol for real-time finance on Ethereum
+description: Sablier is the protocol for real-time finance on Ethereum
 repository: https://github.com/sablierhq/sablier-subgraph
 schema:
   file: ./schema.graphql
