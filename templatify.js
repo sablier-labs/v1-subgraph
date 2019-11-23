@@ -10,6 +10,8 @@ function getNetworkNameForSubgraph() {
     case undefined:
     case "sablierhq/sablier":
       return "mainnet";
+    case "sablierhq/sablier-goerli":
+      return "goerli";
     case "sablierhq/sablier-kovan":
       return "kovan";
     case "sablierhq/sablier-rinkeby":
