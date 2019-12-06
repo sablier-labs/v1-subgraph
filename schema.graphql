@@ -79,4 +79,5 @@ type Salary @entity {
   company: Bytes!
   employee: Bytes!
   stream: Stream!
+  timestamp: BigInt!
 }

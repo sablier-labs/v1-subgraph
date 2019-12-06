@@ -11,5 +11,6 @@ export function handleCreateSalary(event: CreateSalaryEvent): void {
   salary.company = event.params.company;
   salary.employee = stream.recipient;
   salary.stream = event.params.streamId.toString();
+  salary.timestamp = event.block.timestamp;
   salary.save();
 }
