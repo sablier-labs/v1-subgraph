@@ -72,12 +72,12 @@ type Withdrawal @entity {
   token: Token
 }
 
-### Payroll ###
+### Proxy ###
 
-type Salary @entity {
+type ProxyStream @entity {
   id: ID!
-  company: Bytes!
-  employee: Bytes!
+  recipient: Bytes!
+  sender: Bytes!
   stream: Stream!
   timestamp: BigInt!
 }

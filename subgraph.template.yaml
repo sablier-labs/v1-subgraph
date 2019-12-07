@@ -73,7 +73,7 @@ dataSources:
         - name: Payroll
           file: ./abis/Payroll.json
       entities:
-        - Salary
+        - ProxyStream
       eventHandlers:
         - event: CreateSalary(indexed uint256,indexed uint256,indexed address)
           handler: handleCreateSalary
