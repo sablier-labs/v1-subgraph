@@ -8,10 +8,10 @@ export function addToken(address: string): void {
 
   /* Mainnet */
   token = new Token(address);
-  if (address == "0xf5dce57282a584d2746faf1593d3121fcac444dc") {
+  if (address == "0x5d3a536e4d6dbd6114cc1ead35777bab948e3643") {
     token.decimals = 8;
-    token.name = "Compound Sai";
-    token.symbol = "cSAI";
+    token.name = "Compound Dai";
+    token.symbol = "cDAI";
   } else if (address == "0x39aa39c021dfbae8fac545936693ac917d5e7563") {
     token.decimals = 8;
     token.name = "Compound USD Coin";
