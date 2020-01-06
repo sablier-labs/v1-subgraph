@@ -28,6 +28,10 @@ export function addToken(address: string): void {
     token.decimals = 6;
     token.name = "USD Coin";
     token.symbol = "USDC";
+  } else if (address == "0x67ab11058ef23d0a19178f61a050d3c38f81ae21") {
+    token.decimals = 18;
+    token.name = "Self Token";
+    token.symbol = "SELF";
   } else {
     token.decimals = 0;
     token.name = null;
