@@ -8,7 +8,11 @@ export function addToken(address: string): void {
 
   /* Mainnet */
   token = new Token(address);
-  if (address == "0x5d3a536e4d6dbd6114cc1ead35777bab948e3643") {
+  if (address == "0x06af07097c9eeb7fd685c692751d5c66db49c215") {
+    token.decimals = 18;
+    token.name = "Chai";
+    token.symbol = "CHAI";
+  } else if (address == "0x5d3a536e4d6dbd6114cc1ead35777bab948e3643") {
     token.decimals = 8;
     token.name = "Compound Dai";
     token.symbol = "cDAI";
@@ -24,19 +28,21 @@ export function addToken(address: string): void {
     token.decimals = 18;
     token.name = "Sai Stablecoin v1.0";
     token.symbol = "SAI";
-  } else if (address == "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48") {
-    token.decimals = 6;
-    token.name = "USD Coin";
-    token.symbol = "USDC";
   } else if (address == "0x67ab11058ef23d0a19178f61a050d3c38f81ae21") {
     token.decimals = 18;
     token.name = "Self Token";
     token.symbol = "SELF";
+  } else if (address == "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48") {
+    token.decimals = 6;
+    token.name = "USD Coin";
+    token.symbol = "USDC";
   } else {
     token.decimals = 0;
     token.name = null;
     token.symbol = null;
   }
+
+  // 0x06af07097c9eeb7fd685c692751d5c66db49c215
 
   /* Testnets */
   if (
