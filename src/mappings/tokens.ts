@@ -24,6 +24,10 @@ export function addToken(address: string): void {
     token.decimals = 18;
     token.name = "Dai Stablecoin";
     token.symbol = "DAI";
+  } else if (address == "0x2f141ce366a2462f02cea3d12cf93e4dca49e4fd") {
+    token.decimals = 18;
+    token.name = "Free Coin";
+    token.symbol = "FREE";
   } else if (address == "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359") {
     token.decimals = 18;
     token.name = "Sai Stablecoin v1.0";
