@@ -1,7 +1,7 @@
 {
   "name": "@sablier/subgraph",
-  "description": "GraphQL server built The Graph",
-  "version": "2.0.1",
+  "description": "GraphQL server built with The Graph",
+  "version": "2.1.0",
   "author": {
     "name": "Sablier",
     "email": "paul@sablier.app",
