@@ -28,10 +28,6 @@ export function addToken(address: string): void {
     token.decimals = 18;
     token.name = "Dai Stablecoin";
     token.symbol = "DAI";
-  } else if (address == "0x056fd409e1d7a124bd7017459dfea2f387b6d5cd") {
-    token.decimals = 2;
-    token.name = "Gemini Dollar";
-    token.symbol = "GUSD";
   } else if (address == "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359") {
     token.decimals = 18;
     token.name = "Sai Stablecoin v1.0";
