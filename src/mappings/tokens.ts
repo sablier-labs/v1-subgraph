@@ -20,10 +20,18 @@ export function addToken(address: string): void {
     token.decimals = 8;
     token.name = "Compound USD Coin";
     token.symbol = "cUSDC";
+  } else if (address == "0x06AF07097C9Eeb7fD685c692751D5C66dB49c215") {
+    token.decimals = 18;
+    token.name = "Chai";
+    token.symbol = "CHAI";
   } else if (address == "0x6b175474e89094c44da98b954eedeac495271d0f") {
     token.decimals = 18;
     token.name = "Dai Stablecoin";
     token.symbol = "DAI";
+  } else if (address == "0x056fd409e1d7a124bd7017459dfea2f387b6d5cd") {
+    token.decimals = 2;
+    token.name = "Gemini Dollar";
+    token.symbol = "GUSD";
   } else if (address == "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359") {
     token.decimals = 18;
     token.name = "Sai Stablecoin v1.0";
@@ -32,17 +40,27 @@ export function addToken(address: string): void {
     token.decimals = 18;
     token.name = "Self Token";
     token.symbol = "SELF";
+  } else if (address == "0x57ab1e02fee23774580c119740129eac7081e9d3") {
+    token.decimals = 18;
+    token.name = "Synth sUSD";
+    token.symbol = "sUSD";
   } else if (address == "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48") {
     token.decimals = 6;
     token.name = "USD Coin";
     token.symbol = "USDC";
+  } else if (address == "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599") {
+    token.decimals = 8;
+    token.name = "Wrapped Bitcoin";
+    token.symbol = "wBTC";
+  } else if (address == "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2") {
+    token.decimals = 18;
+    token.name = "wETH";
+    token.symbol = "Wrapped Ether";
   } else {
     token.decimals = 0;
     token.name = null;
     token.symbol = null;
   }
-
-  // 0x06af07097c9eeb7fd685c692751d5c66db49c215
 
   /* Testnets */
   if (
