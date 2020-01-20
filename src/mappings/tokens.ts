@@ -44,6 +44,10 @@ export function addToken(address: string): void {
     token.decimals = 6;
     token.name = "USD Coin";
     token.symbol = "USDC";
+  } else if (address == "0x58b6a8a3302369daec383334672404ee733ab239") {
+    token.decimals = 18;
+    token.name = "Livepeer Token";
+    token.symbol = "LPT";
   } else if (address == "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599") {
     token.decimals = 8;
     token.name = "Wrapped Bitcoin";
