@@ -28,6 +28,14 @@ export function addToken(address: string): void {
     token.decimals = 18;
     token.name = "Dai Stablecoin";
     token.symbol = "DAI";
+  } else if (address == "0x493c57c4763932315a328269e1adad09653b9081") {
+    token.decimals = 18;
+    token.name = "Fulcrum DAI iToken";
+    token.symbol = "iDAI";
+  } else if (address == "0xf013406a0b1d544238083df0b93ad0d2cbe0f65f") {
+    token.decimals = 6;
+    token.name = "Fulcrum USDC iToken";
+    token.symbol = "iUSDC";
   } else if (address == "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359") {
     token.decimals = 18;
     token.name = "Sai Stablecoin v1.0";
