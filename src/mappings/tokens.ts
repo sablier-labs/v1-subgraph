@@ -20,10 +20,10 @@ export function addToken(address: string): void {
     token.decimals = 8;
     token.name = "Compound USD Coin";
     token.symbol = "cUSDC";
-  } else if (address == "0x06AF07097C9Eeb7fD685c692751D5C66dB49c215") {
+  } else if (address == "0xea0bea4d852687c45fdc57f6b06a8a92302baabc") {
     token.decimals = 18;
-    token.name = "Chai";
-    token.symbol = "CHAI";
+    token.name = "Counsel";
+    token.symbol = "CNSL";
   } else if (address == "0x6b175474e89094c44da98b954eedeac495271d0f") {
     token.decimals = 18;
     token.name = "Dai Stablecoin";
