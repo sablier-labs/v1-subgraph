@@ -72,44 +72,74 @@ export function addToken(address: string): void {
      */
   } else if (address == "0x960b236A07cf122663c4303350609A66A7B288C0") {
     token.decimals = 18;
-    token.name = "ANT";
-    token.symbol = "Aragon Network Token";
+    token.name = "Aragon Network Token";
+    token.symbol = "ANT";
   } else if (address == "0x0D8775F648430679A709E98d2b0Cb6250d2887EF") {
     token.decimals = 18;
-    token.name = "BAT";
-    token.symbol = "Basic Attention Token";
+    token.name = "Basic Attention Token";
+    token.symbol = "BAT";
   } else if (address == "0xdd974D5C2e2928deA5F71b9825b8b646686BD200") {
     token.decimals = 18;
-    token.name = "KNC";
-    token.symbol = "Kyber Network Crystal";
+    token.name = "Kyber Network Crystal";
+    token.symbol = "KNC";
   } else if (address == "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942") {
     token.decimals = 18;
-    token.name = "MANA";
-    token.symbol = "Decentraland MANA";
+    token.name = "Decentraland MANA";
+    token.symbol = "MANA";
   } else if (address == "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2") {
     token.decimals = 18;
-    token.name = "MKR";
-    token.symbol = "Maker";
+    token.name = "Maker";
+    token.symbol = "MKR";
   } else if (address == "0x4575f41308EC1483f3d399aa9a2826d74Da13Deb") {
     token.decimals = 18;
-    token.name = "OXT";
-    token.symbol = "Orchid";
+    token.name = "Orchid";
+    token.symbol = "OXT";
   } else if (address == "0x408e41876cCCDC0F92210600ef50372656052a38") {
     token.decimals = 18;
-    token.name = "REN";
-    token.symbol = "Republic Token";
+    token.name = "Republic Token";
+    token.symbol = "REN";
   } else if (address == "0x744d70FDBE2Ba4CF95131626614a1763DF805B9E") {
     token.decimals = 18;
-    token.name = "SNT";
-    token.symbol = "Status Network Token";
+    token.name = "Status Network Token";
+    token.symbol = "SNT";
   } else if (address == "0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F") {
     token.decimals = 18;
-    token.name = "SNX";
-    token.symbol = "Synthetix Network Token";
+    token.name = "Synthetix Network Token";
+    token.symbol = "SNX";
   } else if (address == "0x09fE5f0236F0Ea5D930197DCE254d77B04128075") {
     token.decimals = 18;
-    token.name = "WCK";
-    token.symbol = "Wrapped CryptoKitties";
+    token.name = "Wrapped CryptoKitties";
+    token.symbol = "WCK";
+
+    /**
+     *
+     * New Social Tokens
+     *
+     */
+  } else if (address == "0x8db6Da2120b346FAa7f206841f2FB005BBE0DFD8") {
+    token.decimals = 4;
+    token.name = "Paul Razvan Berg";
+    token.symbol = "PAUL";
+  } else if (address == "0x8BA6DcC667d3FF64C1A2123cE72FF5F0199E5315") {
+    token.decimals = 4;
+    token.name = "Alex Masmej";
+    token.symbol = "ALEX";
+  } else if (address == "0x51876a15Aff97A68ED7DF051cE11fade0b91b384") {
+    token.decimals = 4;
+    token.name = "PET3R USES THE FORCE";
+    token.symbol = "MAGIC";
+  } else if (address == "0xDcfE18bc46f5A0Cd0d3Af0c2155d2bCB5AdE2fc5") {
+    token.decimals = 4;
+    token.name = "Hue";
+    token.symbol = "HUE";
+  } else if (address == "0xe6710e0CdA178f3D921f456902707B0d4C4A332B") {
+    token.decimals = 4;
+    token.name = "Julien";
+    token.symbol = "JULIEN";
+  } else if (address == "0xdc8092AaF83e00Ebf9B01A2e90b7B7eF867ba503") {
+    token.decimals = 4;
+    token.name = "Calvin";
+    token.symbol = "CALVIN";
   } else {
     token.decimals = 0;
     token.name = null;
