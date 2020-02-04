@@ -25,7 +25,7 @@ export function addToken(address: string): void {
     token.name = "Chai";
     token.symbol = "CHAI";
     token.decimals = 18;
-  } else if (address == "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643") {
+  } else if (address == "0x5d3a536e4d6dbd6114cc1ead35777bab948e3643") {
     token.name = "Compound Dai";
     token.symbol = "cDAI";
     token.decimals = 8;
@@ -39,7 +39,7 @@ export function addToken(address: string): void {
     token.decimals = 18;
   } else if (address == "0x0cf0ee63788a0849fe5297f3407f701e122cc023") {
     token.name = "DATACoin";
-    token.symbol = "DATAC";
+    token.symbol = "DATA";
     token.decimals = 18;
   } else if (address == "0xc0f9bd5fa5698b6505f643900ffa515ea5df54a9") {
     token.name = "Donut";
@@ -105,6 +105,10 @@ export function addToken(address: string): void {
     token.name = "Paxos";
     token.symbol = "PXT";
     token.decimals = 18;
+  } else if (address == "0x5a844590c5b8f40ae56190771d06c60b9ab1da1c") {
+    token.name = "Ross Campbell Legal Engineering";
+    token.symbol = "RCLE";
+    token.decimals = 18;
   } else if (address == "0x261b45d85ccfeabb11f022eba346ee8d1cd488c0") {
     token.name = "Redeemable DAI";
     token.symbol = "rDAI";
@@ -138,7 +142,8 @@ export function addToken(address: string): void {
     token.symbol = "sUSD";
     token.decimals = 18;
   } else if (address == "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f") {
-    (token.name = "Synthetix Network Token"), (token.symbol = "SNX");
+    token.name = "Synthetix Network Token";
+    token.symbol = "SNX";
     token.decimals = 18;
   } else if (address == "0x0000000000085d4780b73119b644ae5ecd22b376") {
     token.name = "TrueUSD";
