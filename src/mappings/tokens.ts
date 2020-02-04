@@ -105,10 +105,6 @@ export function addToken(address: string): void {
     token.name = "Paxos";
     token.symbol = "PXT";
     token.decimals = 18;
-  } else if (address == "0x5a844590c5b8f40ae56190771d06c60b9ab1da1c") {
-    token.name = "Ross Campbell Legal Engineering";
-    token.symbol = "RCLE";
-    token.decimals = 18;
   } else if (address == "0x261b45d85ccfeabb11f022eba346ee8d1cd488c0") {
     token.name = "Redeemable DAI";
     token.symbol = "rDAI";
@@ -206,6 +202,10 @@ export function addToken(address: string): void {
     token.name = "Paul Razvan Berg";
     token.symbol = "PAUL";
     token.decimals = 4;
+  } else if (address == "0x5a844590c5b8f40ae56190771d06c60b9ab1da1c") {
+    token.name = "Ross Campbell Legal Engineering";
+    token.symbol = "RCLE";
+    token.decimals = 18;
   } else if (address == "0xca7a0be200c7de43438878eb54b8b5d31296fbd8") {
     token.name = "Stani";
     token.symbol = "STANI";
