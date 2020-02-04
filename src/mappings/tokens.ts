@@ -191,7 +191,11 @@ export function addToken(address: string): void {
     token.decimals = 4;
   } else if (address == "0xe6710e0cda178f3d921f456902707b0d4c4a332b") {
     token.name = "Julien";
-    token.symbol = "Julien";
+    token.symbol = "JULIEN";
+    token.decimals = 4;
+  } else if (address == "0x8f464bfe2292748a0fed58bb53d3838b4ce018b0") {
+    token.name = "Kevin";
+    token.symbol = "KEVIN";
     token.decimals = 4;
   } else if (address == "0x8db6da2120b346faa7f206841f2fb005bbe0dfd8") {
     token.name = "Paul Razvan Berg";
