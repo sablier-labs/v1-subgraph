@@ -190,6 +190,10 @@ export function addToken(address: string): void {
     token.name = "Hue";
     token.symbol = "HUE";
     token.decimals = 4;
+  } else if (address == "0x3c35132d0b129f068fdfa65b2c4d265fa5d8cea6") {
+    token.name = "Jonathan Joseph";
+    token.symbol = "JJJ";
+    token.decimals = 4;
   } else if (address == "0xe6710e0cda178f3d921f456902707b0d4c4a332b") {
     token.name = "Julien";
     token.symbol = "JULIEN";
@@ -197,6 +201,10 @@ export function addToken(address: string): void {
   } else if (address == "0x8f464bfe2292748a0fed58bb53d3838b4ce018b0") {
     token.name = "Kevin";
     token.symbol = "KEVIN";
+    token.decimals = 4;
+  } else if (address == "0xdb7eb3ede973665b1bb9f3016861e3255062e4ed") {
+    token.name = "MNFT";
+    token.symbol = "MNFT";
     token.decimals = 4;
   } else if (address == "0x8db6da2120b346faa7f206841f2fb005bbe0dfd8") {
     token.name = "Paul Razvan Berg";
@@ -210,10 +218,18 @@ export function addToken(address: string): void {
     token.name = "Stani";
     token.symbol = "STANI";
     token.decimals = 4;
+  } else if (address == "0xd0bf154768b0f1f8cba50daa8960c285ce4c67f2") {
+    token.name = "UrBen";
+    token.symbol = "URBEN";
+    token.decimals = 4;
+  } else if (address == "0x0236a73726c7670f51c0681baca867b7c5355526") {
+    token.name = "What by @jessewldn";
+    token.symbol = "WHAT";
+    token.decimals = 4;
   } else {
-    token.decimals = 0;
     token.name = null;
     token.symbol = null;
+    token.decimals = 0;
   }
 
   /* Testnets */
