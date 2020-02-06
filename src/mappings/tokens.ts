@@ -25,6 +25,10 @@ export function addToken(address: string): void {
     token.name = "Chai";
     token.symbol = "CHAI";
     token.decimals = 18;
+  } else if (address == "0x514910771af9ca656af840dff83e8264ecf986ca") {
+    token.name = "ChainLink Token";
+    token.symbol = "LINK";
+    token.decimals = 18;
   } else if (address == "0x5d3a536e4d6dbd6114cc1ead35777bab948e3643") {
     token.name = "Compound Dai";
     token.symbol = "cDAI";
@@ -73,6 +77,14 @@ export function addToken(address: string): void {
     token.name = "Gnosis";
     token.symbol = "GNO";
     token.decimals = 18;
+  } else if (address == "0x10ec0d497824e342bcb0edce00959142aaa766dd") {
+    token.name = "IdleDAI";
+    token.symbol = "IDLEDAI";
+    token.decimals = 18;
+  } else if (address == "0xeb66acc3d011056b00ea521f8203580c2e5d3991") {
+    token.name = "IdleUSDC";
+    token.symbol = "IDLEUSDC";
+    token.decimals = 18;
   } else if (address == "0xdd974d5c2e2928dea5f71b9825b8b646686bd200") {
     token.name = "Kyber Network Crystal";
     token.symbol = "KNC";
@@ -89,10 +101,6 @@ export function addToken(address: string): void {
     token.name = "Melon Token";
     token.symbol = "MLN";
     token.decimals = 18;
-  } else if (address == "0x05bbed16620b352a7f889e23e3cf427d1d379ffe") {
-    token.name = "Naira Token";
-    token.symbol = "NGNT";
-    token.decimals = 2;
   } else if (address == "0x1776e1f26f98b1a5df9cd347953a26dd3cb46671") {
     token.name = "Numeraire";
     token.symbol = "NMR";
