@@ -222,6 +222,10 @@ export function addToken(address: string): void {
     token.name = "Ross Campbell Legal Engineering";
     token.symbol = "RCLE";
     token.decimals = 18;
+  } else if (address == "0x27fd686db10e0ae047fe8fe1de9830c0e0dc3cfa") {
+    token.name = "Scott";
+    token.symbol = "SCOTT";
+    token.decimals = 4;
   } else if (address == "0xca7a0be200c7de43438878eb54b8b5d31296fbd8") {
     token.name = "Stani";
     token.symbol = "STANI";
