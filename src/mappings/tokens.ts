@@ -45,10 +45,6 @@ export function addToken(address: string): void {
     token.name = "DATACoin";
     token.symbol = "DATA";
     token.decimals = 18;
-  } else if (address == "0xc0f9bd5fa5698b6505f643900ffa515ea5df54a9") {
-    token.name = "Donut";
-    token.symbol = "DONUT";
-    token.decimals = 18;
   } else if (address == "0x6b175474e89094c44da98b954eedeac495271d0f") {
     token.name = "Dai Stablecoin";
     token.symbol = "DAI";
@@ -61,6 +57,10 @@ export function addToken(address: string): void {
     token.name = "Digix Gold Token";
     token.symbol = "DGX";
     token.decimals = 9;
+  } else if (address == "0xc0f9bd5fa5698b6505f643900ffa515ea5df54a9") {
+    token.name = "Donut";
+    token.symbol = "DONUT";
+    token.decimals = 18;
   } else if (address == "0x4946fcea7c692606e8908002e55a582af44ac121") {
     token.name = "FOAM Token";
     token.symbol = "FOAM";
@@ -170,7 +170,7 @@ export function addToken(address: string): void {
     token.symbol = "wETH";
     token.decimals = 18;
   } else if (address == "0x8ba6dcc667d3ff64c1a2123ce72ff5f0199e5315") {
-  /** Social Money **/
+    /** Social Money **/
     token.name = "Alex Masmej";
     token.symbol = "ALEX";
     token.decimals = 4;
@@ -226,6 +226,10 @@ export function addToken(address: string): void {
     token.name = "Scott";
     token.symbol = "SCOTT";
     token.decimals = 4;
+  } else if (address == "0xbdbf67d9bcb35e2bb7e4951002c6d70013196972") {
+    token.name = "Scott Stevenson Legal Engineering";
+    token.symbol = "SSLE";
+    token.decimals = 18;
   } else if (address == "0xca7a0be200c7de43438878eb54b8b5d31296fbd8") {
     token.name = "Stani";
     token.symbol = "STANI";
@@ -233,10 +237,6 @@ export function addToken(address: string): void {
   } else if (address == "0xd0bf154768b0f1f8cba50daa8960c285ce4c67f2") {
     token.name = "UrBen";
     token.symbol = "URBEN";
-    token.decimals = 4;
-  } else if (address == "0x0236a73726c7670f51c0681baca867b7c5355526") {
-    token.name = "What by @jessewldn";
-    token.symbol = "WHAT";
     token.decimals = 4;
   } else {
     token.name = null;
