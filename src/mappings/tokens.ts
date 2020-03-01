@@ -41,10 +41,6 @@ export function addToken(address: string): void {
     token.name = "Crypto Franc";
     token.symbol = "XCHF";
     token.decimals = 18;
-  } else if (address == "0x0cf0ee63788a0849fe5297f3407f701e122cc023") {
-    token.name = "DATACoin";
-    token.symbol = "DATA";
-    token.decimals = 18;
   } else if (address == "0x6b175474e89094c44da98b954eedeac495271d0f") {
     token.name = "Dai Stablecoin";
     token.symbol = "DAI";
