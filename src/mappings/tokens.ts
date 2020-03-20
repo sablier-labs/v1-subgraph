@@ -89,6 +89,10 @@ export function addToken(address: string): void {
     token.name = "Livepeer Token";
     token.symbol = "LPT";
     token.decimals = 18;
+  } else if (address == "0xDF2C7238198Ad8B389666574f2d8bc411A4b7428") {
+    token.name = "Mainframe Token";
+    token.name = "MFT";
+    token.decimals = 18;
   } else if (address == "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2") {
     token.name = "Maker";
     token.symbol = "MKR";
