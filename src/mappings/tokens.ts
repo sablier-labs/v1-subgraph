@@ -91,7 +91,7 @@ export function addToken(address: string): void {
     token.decimals = 18;
   } else if (address == "0xdf2c7238198ad8b389666574f2d8bc411a4b7428") {
     token.name = "Mainframe Token";
-    token.name = "MFT";
+    token.symbol = "MFT";
     token.decimals = 18;
   } else if (address == "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2") {
     token.name = "Maker";
