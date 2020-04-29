@@ -9,11 +9,7 @@ export function addToken(address: string): void {
   /* Mainnet */
   token = new Token(address);
 
-  if (address == "0xfc1e690f61efd961294b3e1ce3313fbd8aa4f85d") {
-    token.name = "Aave Interest Bearing DAI";
-    token.symbol = "aDAI";
-    token.decimals = 18;
-  } else if (address == "0x960b236a07cf122663c4303350609a66a7b288c0") {
+  if (address == "0x960b236a07cf122663c4303350609a66a7b288c0") {
     token.name = "Aragon Network Token";
     token.symbol = "ANT";
     token.decimals = 18;
@@ -112,10 +108,6 @@ export function addToken(address: string): void {
   } else if (address == "0x8e870d67f660d95d5be530380d0ec0bd388289e1") {
     token.name = "Paxos";
     token.symbol = "PXT";
-    token.decimals = 18;
-  } else if (address == "0x261b45d85ccfeabb11f022eba346ee8d1cd488c0") {
-    token.name = "Redeemable DAI";
-    token.symbol = "rDAI";
     token.decimals = 18;
   } else if (address == "0x408e41876cccdc0f92210600ef50372656052a38") {
     token.name = "Republic Token";
