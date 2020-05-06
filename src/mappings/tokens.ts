@@ -125,6 +125,10 @@ export function addToken(address: string): void {
     token.name = "Sai Stablecoin v1.0";
     token.symbol = "SAI";
     token.decimals = 18;
+  } else if (address == "0x67ab11058ef23d0a19178f61a050d3c38f81ae21") {
+    token.name = "Self Token";
+    token.symbol = "SELF";
+    token.decimals = 18;
   } else if (address == "0xa4bdb11dc0a2bec88d24a3aa1e6bb17201112ebe") {
     token.name = "Stable USD";
     token.symbol = "USDS";
