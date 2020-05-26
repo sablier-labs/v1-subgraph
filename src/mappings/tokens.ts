@@ -17,6 +17,10 @@ export function addToken(address: string): void {
     token.name = "Basic Attention Token";
     token.symbol = "BAT";
     token.decimals = 18;
+  } else if (address == "0xf67c3000943c74186b64a1bc84cb5880e5198661") {
+    token.name = "CHF36 Stablecoin";
+    token.symbol = "CHF36";
+    token.decimals = 18;
   } else if (address == "0x06af07097c9eeb7fd685c692751d5c66db49c215") {
     token.name = "Chai";
     token.symbol = "CHAI";
@@ -52,6 +56,10 @@ export function addToken(address: string): void {
   } else if (address == "0xc0f9bd5fa5698b6505f643900ffa515ea5df54a9") {
     token.name = "Donut";
     token.symbol = "DONUT";
+    token.decimals = 18;
+  } else if (address == "0x0cde550b066ff98da123377eeb0a149607c9ca17") {
+    token.name = "EUR36 Stablecoin";
+    token.symbol = "EUR36";
     token.decimals = 18;
   } else if (address == "0x4946fcea7c692606e8908002e55a582af44ac121") {
     token.name = "FOAM Token";
