@@ -263,6 +263,13 @@ export function addToken(address: string): void {
     token.name = "TestnetDAI";
     token.symbol = "DAI";
   }
+  
+  /* Rinkeby */
+  if (address == "0xc778417e063141139fce010982780140aa0cd5ab") {
+    token.decimals = 18;
+    token.name = "Wrapped Ether";
+    token.symbol = "wETH";
+  }
 
   token.save();
 }
