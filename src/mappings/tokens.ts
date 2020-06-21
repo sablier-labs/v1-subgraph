@@ -252,23 +252,36 @@ export function addToken(address: string): void {
     token.decimals = 0;
   }
 
-  /* Testnets */
-  if (
-    address == "0xf2d1f94310823fe26cfa9c9b6fd152834b8e7849" /* Goerli */ ||
-    address == "0x7d669a64deb8a4a51eea755bb0e19fd39ce25ae9" /* Kovan */ ||
-    address == "0xc3dbf84abb494ce5199d5d4d815b10ec29529ff8" /* Rinkeby */ ||
-    address == "0x2d69ad895797c880abce92437788047ba0eb7ff6" /* Ropsten */
-  ) {
+  /* Goerli */
+  if (address == "0xf2d1f94310823fe26cfa9c9b6fd152834b8e7849") {
     token.decimals = 18;
     token.name = "TestnetDAI";
     token.symbol = "DAI";
   }
-  
+
+  /* Kovan */
+  if (address == "0x7d669a64deb8a4a51eea755bb0e19fd39ce25ae9") {
+    token.decimals = 18;
+    token.name = "TestnetDAI";
+    token.symbol = "DAI";
+  }
+
   /* Rinkeby */
-  if (address == "0xc778417e063141139fce010982780140aa0cd5ab") {
+  if (address == "0xc3dbf84abb494ce5199d5d4d815b10ec29529ff8") {
+    token.decimals = 18;
+    token.name = "TestnetDAI";
+    token.symbol = "DAI";
+  } else if (address == "0xc778417e063141139fce010982780140aa0cd5ab") {
     token.decimals = 18;
     token.name = "Wrapped Ether";
     token.symbol = "wETH";
+  }
+
+  /* Ropsten */
+  if (address == "0x2d69ad895797c880abce92437788047ba0eb7ff6") {
+    token.decimals = 18;
+    token.name = "TestnetDAI";
+    token.symbol = "DAI";
   }
 
   token.save();
