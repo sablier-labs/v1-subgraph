@@ -9,7 +9,11 @@ export function addToken(address: string): void {
   /* Mainnet */
   token = new Token(address);
 
-  if (address == "0x960b236a07cf122663c4303350609a66a7b288c0") {
+  if (address == "0xb6ed7644c69416d67b522e20bc294a9a9b405b31") {
+    token.name = "0xBitcoin Token";
+    token.symbol = "0xBTC";
+    token.decimals = 8;
+  } else if (address == "0x960b236a07cf122663c4303350609a66a7b288c0") {
     token.name = "Aragon Network Token";
     token.symbol = "ANT";
     token.decimals = 18;
