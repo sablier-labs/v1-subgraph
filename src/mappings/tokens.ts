@@ -13,6 +13,10 @@ export function addToken(address: string): void {
     token.name = "0xBitcoin Token";
     token.symbol = "0xBTC";
     token.decimals = 8;
+  } else if (address == "0xd46ba6d942050d489dbd938a2c909a5d5039a161") {
+    token.name = "Ampleforth";
+    token.symbol = "AMPL";
+    token.decimals = 9;
   } else if (address == "0x960b236a07cf122663c4303350609a66a7b288c0") {
     token.name = "Aragon Network Token";
     token.symbol = "ANT";
