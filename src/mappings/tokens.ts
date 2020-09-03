@@ -141,6 +141,14 @@ export function addToken(address: string): void {
     token.name = "Sai Stablecoin v1.0";
     token.symbol = "SAI";
     token.decimals = 18;
+  } else if (address == "0xd233d1f6fd11640081abb8db125f722b5dc729dc") {
+    token.name = "Seigniorage Dollars";
+    token.symbol = "SeignUSD";
+    token.decimals = 9;
+  } else if (address == "0x6b583cf4aba7bf9d6f8a51b3f1f7c7b2ce59bf15") {
+    token.name = "Seigniorage Shares";
+    token.symbol = "SHARE";
+    token.decimals = 9;
   } else if (address == "0x67ab11058ef23d0a19178f61a050d3c38f81ae21") {
     token.name = "Self Token";
     token.symbol = "SELF";
@@ -173,10 +181,6 @@ export function addToken(address: string): void {
     token.name = "Wrapped Bitcoin";
     token.symbol = "WBTC";
     token.decimals = 8;
-  } else if (address == "0x09fe5f0236f0ea5d930197dce254d77b04128075") {
-    token.name = "Wrapped CryptoKitties";
-    token.symbol = "WCK";
-    token.decimals = 18;
   } else if (address == "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2") {
     token.name = "Wrapped Ether";
     token.symbol = "wETH";
@@ -242,10 +246,6 @@ export function addToken(address: string): void {
     token.name = "Scott Stevenson Legal Engineering";
     token.symbol = "SSLE";
     token.decimals = 18;
-  } else if (address == "0xca7a0be200c7de43438878eb54b8b5d31296fbd8") {
-    token.name = "Stani";
-    token.symbol = "STANI";
-    token.decimals = 4;
   } else if (address == "0xd0bf154768b0f1f8cba50daa8960c285ce4c67f2") {
     token.name = "UrBen";
     token.symbol = "URBEN";
