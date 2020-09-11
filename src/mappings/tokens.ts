@@ -117,10 +117,6 @@ export function addToken(address: string): void {
     token.name = "mStable USD";
     token.symbol = "mUSD";
     token.decimals = 18;
-  } else if (address == "0xc92e74b131d7b1d46e60e07f3fae5d8877dd03f0") {
-    token.name = "Minereum";
-    token.symbol = "MNE";
-    token.decimals = 8;
   } else if (address == "0x1776e1f26f98b1a5df9cd347953a26dd3cb46671") {
     token.name = "Numeraire";
     token.symbol = "NMR";
