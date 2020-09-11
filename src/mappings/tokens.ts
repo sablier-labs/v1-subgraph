@@ -109,6 +109,14 @@ export function addToken(address: string): void {
     token.name = "Melon Token";
     token.symbol = "MLN";
     token.decimals = 18;
+  } else if (address == "0xa3bed4e1c75d00fa6f4e5e6922db7261b5e9acd2") {
+    token.name = "Meta";
+    token.symbol = "MTA";
+    token.decimals = 18;
+  } else if (address == "0xe2f2a5c287993345a840db3b0845fbc70f5935a5") {
+    token.name = "mStable USD";
+    token.symbol = "mUSD";
+    token.decimals = 18;
   } else if (address == "0xc92e74b131d7b1d46e60e07f3fae5d8877dd03f0") {
     token.name = "Minereum";
     token.symbol = "MNE";
