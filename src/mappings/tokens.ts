@@ -65,10 +65,6 @@ export function addToken(address: string): void {
     token.name = "EUR36 Stablecoin";
     token.symbol = "EUR36";
     token.decimals = 18;
-  } else if (address == "0x4946fcea7c692606e8908002e55a582af44ac121") {
-    token.name = "FOAM Token";
-    token.symbol = "FOAM";
-    token.decimals = 18;
   } else if (address == "0x493c57c4763932315a328269e1adad09653b9081") {
     token.name = "Fulcrum DAI iToken";
     token.symbol = "iDAI";
@@ -218,17 +214,9 @@ export function addToken(address: string): void {
     token.name = "Forcer";
     token.symbol = "FORCER";
     token.decimals = 4;
-  } else if (address == "0xdcfe18bc46f5a0cd0d3af0c2155d2bcb5ade2fc5") {
-    token.name = "Hue";
-    token.symbol = "HUE";
-    token.decimals = 4;
   } else if (address == "0x3c35132d0b129f068fdfa65b2c4d265fa5d8cea6") {
     token.name = "Jonathan Joseph";
     token.symbol = "JJJ";
-    token.decimals = 4;
-  } else if (address == "0xe6710e0cda178f3d921f456902707b0d4c4a332b") {
-    token.name = "Julien";
-    token.symbol = "JULIEN";
     token.decimals = 4;
   } else if (address == "0x8f464bfe2292748a0fed58bb53d3838b4ce018b0") {
     token.name = "Kevin";
