@@ -1,14 +1,14 @@
 goerli:
   contracts:
     cTokenManager:
-      address: "0xEE5dfDf2e98FdC572786b9E5649cB8Cc93D47a19"
-      startBlock: 1636851
+      address: "0x3b7b1eB1B9C65Db580f673d7599da69Bc1A26338"
+      startBlock: 1636902
     payroll:
-      address: "0x7ee114C3628Ca90119fC699f03665bF9dB8f5faF"
-      startBlock: 1636877
+      address: "0x8eB93647490DF9989295461AB2AcdEDdCCA84781"
+      startBlock: 1636930
     sablier:
-      address: "0xc04Ad234E01327b24a831e3718DBFcbE245904CC"
-      startBlock: 1636870
+      address: "0x590b3974533141a44a89033deEcf932F52fcFDea"
+      startBlock: 1636914
   networkName: goerli
 kovan:
   contracts:
