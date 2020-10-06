@@ -161,6 +161,10 @@ export function addToken(address: string): void {
     token.name = "Status Network Token";
     token.symbol = "SNT";
     token.decimals = 18;
+  } else if (address == "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2") {
+    token.name = "SushiToken";
+    token.symbol = "SUSHI";
+    token.decimals = 18;
   } else if (address == "0x57ab1e02fee23774580c119740129eac7081e9d3") {
     token.name = "Synth sUSD";
     token.symbol = "sUSD";
