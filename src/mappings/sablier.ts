@@ -21,8 +21,6 @@ export function handleCreateStream(event: CreateStreamEvent): void {
   stream.stopTime = event.params.stopTime;
   stream.timestamp = event.block.timestamp;
   stream.token = event.params.tokenAddress.toHex();
-  stream.txs = [];
-  stream.withdrawals = [];
   stream.save();
 
   /* Create adjacent but important objects */
@@ -96,12 +94,12 @@ export function handlePayInterest(event: PayInterestEvent): void {
     cancellation.recipientInterest = event.params.recipientInterest;
     cancellation.sablierInterest = event.params.sablierInterest;
     cancellation.senderInterest = event.params.senderInterest;
-  } else {
+  } else if (stream.withdrawals) {
     /**
      * Without first storing the array in this variable, the compiler throws an error:
      * AS100: Operation not supported
      */
-    let withdrawals = stream.withdrawals;
+    let withdrawals = stream.withdrawals!;
     let withdrawalIndex = withdrawals.length;
     let withdrawalId = withdrawals[withdrawalIndex];
     let withdrawal = Withdrawal.load(withdrawalId.toString());

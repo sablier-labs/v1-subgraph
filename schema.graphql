@@ -58,8 +58,11 @@ type Stream @entity {
   stopTime: BigInt!
   timestamp: BigInt!
   token: Token
-  txs: [StreamTransaction!]! @derivedFrom(field: "stream")
-  withdrawals: [Withdrawal!]! @derivedFrom(field: "stream")
+  # Do not turn these arrays into forcibly non-null by adding a "!"
+  # The indexing would fail with an error:
+  # > field is derived and can not be set wasm backtrace
+  txs: [StreamTransaction!] @derivedFrom(field: "stream")
+  withdrawals: [Withdrawal!] @derivedFrom(field: "stream")
 }
 
 type Withdrawal @entity {
