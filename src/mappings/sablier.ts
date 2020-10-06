@@ -7,7 +7,7 @@ import {
   PayInterest as PayInterestEvent,
 } from "../types/Sablier/Sablier";
 import { addToken } from "./tokens";
-import { addTransaction } from "./transactions";
+import { addStreamTransaction } from "./transactions";
 
 export function handleCreateStream(event: CreateStreamEvent): void {
   /* Create the stream object */
@@ -21,10 +21,12 @@ export function handleCreateStream(event: CreateStreamEvent): void {
   stream.stopTime = event.params.stopTime;
   stream.timestamp = event.block.timestamp;
   stream.token = event.params.tokenAddress.toHex();
+  stream.txs = [];
+  stream.withdrawals = [];
   stream.save();
 
   /* Create adjacent but important objects */
-  addTransaction("CreateStream", event, streamId);
+  addStreamTransaction("CreateStream", event, streamId);
   addToken(event.params.tokenAddress.toHex());
 }
 
@@ -40,7 +42,7 @@ export function handleCreateCompoundingStream(event: CreateCompoundingStreamEven
   stream.recipientSharePercentage = event.params.recipientSharePercentage;
   stream.save();
 
-  addTransaction("CreateCompoundingStream", event, streamId);
+  addStreamTransaction("CreateCompoundingStream", event, streamId);
 }
 
 export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
@@ -50,14 +52,14 @@ export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
     return;
   }
 
-  let withdrawal = new Withdrawal(event.transaction.hash.toHex());
+  let withdrawal = new Withdrawal(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
   withdrawal.amount = event.params.amount;
   withdrawal.stream = streamId;
   withdrawal.timestamp = event.block.timestamp;
   withdrawal.token = stream.token;
   withdrawal.save();
 
-  addTransaction("WithdrawFromStream", event, streamId);
+  addStreamTransaction("WithdrawFromStream", event, streamId);
 }
 
 export function handleCancelStream(event: CancelStreamEvent): void {
@@ -78,7 +80,7 @@ export function handleCancelStream(event: CancelStreamEvent): void {
   stream.cancellation = streamId;
   stream.save();
 
-  addTransaction("CancelStream", event, streamId);
+  addStreamTransaction("CancelStream", event, streamId);
 }
 
 export function handlePayInterest(event: PayInterestEvent): void {
@@ -87,17 +89,24 @@ export function handlePayInterest(event: PayInterestEvent): void {
    * We have to check for both - we can't know beforehand.
    */
   let streamId = event.params.streamId.toString();
-  let txhash = event.transaction.hash.toHex();
+  let stream = Stream.load(streamId);
   let cancellation = Cancellation.load(streamId);
-  let withdrawal = Withdrawal.load(txhash);
 
-  if (withdrawal != null) {
-    withdrawal.recipientInterest = event.params.recipientInterest;
-    withdrawal.sablierInterest = event.params.sablierInterest;
-    withdrawal.senderInterest = event.params.senderInterest;
-  } else if (cancellation != null) {
+  if (cancellation != null) {
     cancellation.recipientInterest = event.params.recipientInterest;
     cancellation.sablierInterest = event.params.sablierInterest;
     cancellation.senderInterest = event.params.senderInterest;
+  } else {
+    /**
+     * Without first storing the array in this variable, the compiler throws an error:
+     * AS100: Operation not supported
+     */
+    let withdrawals = stream.withdrawals;
+    let withdrawalIndex = withdrawals.length;
+    let withdrawalId = withdrawals[withdrawalIndex];
+    let withdrawal = Withdrawal.load(withdrawalId.toString());
+    withdrawal.recipientInterest = event.params.recipientInterest;
+    withdrawal.sablierInterest = event.params.sablierInterest;
+    withdrawal.senderInterest = event.params.senderInterest;
   }
 }

@@ -7,7 +7,7 @@ type Token @entity {
   symbol: String
 }
 
-type Transaction @entity {
+type StreamTransaction @entity {
   id: ID!
   block: Int!
   event: String!
@@ -15,6 +15,7 @@ type Transaction @entity {
   stream: Stream!
   timestamp: BigInt!
   to: Bytes
+  txhash: String!
 }
 
 ### CTokenManager ###
@@ -57,8 +58,8 @@ type Stream @entity {
   stopTime: BigInt!
   timestamp: BigInt!
   token: Token
-  txs: [Transaction!] @derivedFrom(field: "stream")
-  withdrawals: [Withdrawal!] @derivedFrom(field: "stream")
+  txs: [StreamTransaction!]! @derivedFrom(field: "stream")
+  withdrawals: [Withdrawal!]! @derivedFrom(field: "stream")
 }
 
 type Withdrawal @entity {

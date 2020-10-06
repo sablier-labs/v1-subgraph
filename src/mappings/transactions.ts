@@ -1,14 +1,15 @@
 import { EthereumEvent } from "@graphprotocol/graph-ts";
 
-import { Transaction } from "../types/schema";
+import { StreamTransaction } from "../types/schema";
 
-export function addTransaction(name: string, event: EthereumEvent, streamId: string): void {
-  let transaction = new Transaction(event.transaction.hash.toHex());
-  transaction.event = name;
-  transaction.block = event.block.number.toI32();
-  transaction.from = event.transaction.from;
-  transaction.stream = streamId;
-  transaction.timestamp = event.block.timestamp;
-  transaction.to = event.transaction.to;
-  transaction.save();
+export function addStreamTransaction(name: string, event: EthereumEvent, streamId: string): void {
+  let streamTransaction = new StreamTransaction(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
+  streamTransaction.event = name;
+  streamTransaction.block = event.block.number.toI32();
+  streamTransaction.from = event.transaction.from;
+  streamTransaction.stream = streamId;
+  streamTransaction.timestamp = event.block.timestamp;
+  streamTransaction.to = event.transaction.to;
+  streamTransaction.txhash = event.transaction.hash.toHex();
+  streamTransaction.save();
 }

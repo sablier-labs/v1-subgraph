@@ -42,8 +42,8 @@ dataSources:
       entities:
         - Cancellation
         - Stream
+        - StreamTransaction
         - Token
-        - Transaction
         - Withdrawal
       eventHandlers:
         - event: CreateStream(indexed uint256,indexed address,indexed
