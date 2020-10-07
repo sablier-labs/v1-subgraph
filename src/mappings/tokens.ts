@@ -125,6 +125,10 @@ export function addToken(address: string): void {
     token.name = "Paxos";
     token.symbol = "PXT";
     token.decimals = 18;
+  } else if (address == "0xf1f955016ecbcd7321c7266bccfb96c68ea5e49b") {
+    token.name = "Rally";
+    token.symbol = "RLY";
+    token.decimals = 18;
   } else if (address == "0x408e41876cccdc0f92210600ef50372656052a38") {
     token.name = "Republic Token";
     token.symbol = "REN";
