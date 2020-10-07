@@ -105,10 +105,6 @@ export function addToken(address: string): void {
     token.name = "Maker";
     token.symbol = "MKR";
     token.decimals = 18;
-  } else if (address == "0xec67005c4e498ec7f55e092bd1d35cbc47c91892") {
-    token.name = "Melon Token";
-    token.symbol = "MLN";
-    token.decimals = 18;
   } else if (address == "0xa3bed4e1c75d00fa6f4e5e6922db7261b5e9acd2") {
     token.name = "Meta";
     token.symbol = "MTA";
@@ -128,6 +124,10 @@ export function addToken(address: string): void {
   } else if (address == "0x8e870d67f660d95d5be530380d0ec0bd388289e1") {
     token.name = "Paxos";
     token.symbol = "PXT";
+    token.decimals = 18;
+  } else if (address == "0xbc396689893d065f41bc2c6ecbee5e0085233447") {
+    token.name = "Perpetual";
+    token.symbol = "PERP";
     token.decimals = 18;
   } else if (address == "0xf1f955016ecbcd7321c7266bccfb96c68ea5e49b") {
     token.name = "Rally";
