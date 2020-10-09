@@ -53,9 +53,9 @@ export function addToken(address: string): void {
     token.name = "Dai Stablecoin";
     token.symbol = "DAI";
     token.decimals = 18;
-  } else if (address == "0x0f5d2fb29fb7d3cfee444a200298f468908cc942") {
-    token.name = "Decentraland MANA";
-    token.symbol = "MANA";
+  } else if (address == "0x5f64ab1544d28732f0a24f4713c2c8ec0da089f0") {
+    token.name = "DEXTF Token (DEXTF)";
+    token.symbol = "DEXTF";
     token.decimals = 18;
   } else if (address == "0x4f3afec4e5a3f2a6a1a411def7d7dfe50ee057bf") {
     token.name = "Digix Gold Token";
@@ -116,6 +116,10 @@ export function addToken(address: string): void {
   } else if (address == "0x1776e1f26f98b1a5df9cd347953a26dd3cb46671") {
     token.name = "Numeraire";
     token.symbol = "NMR";
+    token.decimals = 18;
+  } else if (address == "0x7240ac91f01233baaf8b064248e80feaa5912ba3") {
+    token.name = "Octo.fi";
+    token.symbol = "OCTO";
     token.decimals = 18;
   } else if (address == "0x4575f41308ec1483f3d399aa9a2826d74da13deb") {
     token.name = "Orchid";
