@@ -129,6 +129,10 @@ export function addToken(address: string): void {
     token.name = "Orchid";
     token.symbol = "OXT";
     token.decimals = 18;
+  } else if (address == "0x0b11d5d078955c6e5913beeaba85660202a4fc55") {
+    token.name = "Ortier";
+    token.symbol = "ORTC";
+    token.decimals = 4;
   } else if (address == "0x8e870d67f660d95d5be530380d0ec0bd388289e1") {
     token.name = "Paxos";
     token.symbol = "PXT";
