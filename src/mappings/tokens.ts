@@ -25,6 +25,10 @@ export function addToken(address: string): void {
     token.name = "Basic Attention Token";
     token.symbol = "BAT";
     token.decimals = 18;
+  } else if (address == "0xcf3c8be2e2c42331da80ef210e9b1b307c03d36a") {
+    token.name = "Bet Protocol Token";
+    token.symbol = "BEPRO";
+    token.decimals = 18;
   } else if (address == "0xf67c3000943c74186b64a1bc84cb5880e5198661") {
     token.name = "CHF36 Stablecoin";
     token.symbol = "CHF36";
