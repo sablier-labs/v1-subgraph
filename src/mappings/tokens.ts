@@ -145,6 +145,10 @@ export function addToken(address: string): void {
     token.name = "Perpetual";
     token.symbol = "PERP";
     token.decimals = 18;
+  } else if (address == "0x83e6f1e41cdd28eaceb20cb649155049fac3d5aa") {
+    token.name = "Polkastarter Token";
+    token.symbol = "POLS";
+    token.decimals = 18;
   } else if (address == "0xf1f955016ecbcd7321c7266bccfb96c68ea5e49b") {
     token.name = "Rally";
     token.symbol = "RLY";
