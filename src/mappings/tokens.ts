@@ -209,10 +209,6 @@ export function addToken(address: string): void {
     token.name = "Synthetix Network Token";
     token.symbol = "SNX";
     token.decimals = 18;
-  } else if (address == "0xdac17f958d2ee523a2206206994597c13d831ec7") {
-    token.name = "Tether USD";
-    token.symbol = "USDT";
-    token.decimals = 6;
   } else if (address == "0x0000000000085d4780b73119b644ae5ecd22b376") {
     token.name = "TrueUSD";
     token.symbol = "TUSD";
