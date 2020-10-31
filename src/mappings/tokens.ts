@@ -61,6 +61,10 @@ export function addToken(address: string): void {
     token.name = "DEXTF Token (DEXTF)";
     token.symbol = "DEXTF";
     token.decimals = 18;
+  } else if (address == "0xca1207647ff814039530d7d35df0e1dd2e91fa84") {
+    token.name = "dHedge";
+    token.symbol = "DHT";
+    token.decimals = 18;
   } else if (address == "0x4f3afec4e5a3f2a6a1a411def7d7dfe50ee057bf") {
     token.name = "Digix Gold Token";
     token.symbol = "DGX";
