@@ -8,8 +8,8 @@ src/types/
 # files
 .DS_Store
 .env
-subgraph.yaml
 npm-debug.log*
+subgraph.yaml
 yarn-debug.log*
 yarn-error.log*
 *.log

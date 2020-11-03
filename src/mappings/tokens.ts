@@ -21,6 +21,10 @@ export function addToken(address: string): void {
     token.name = "Aragon Network Token";
     token.symbol = "ANT";
     token.decimals = 18;
+  } else if (address == "0xf5d669627376ebd411e34b98f19c868c8aba5ada") {
+    token.name = "Axie Infinity Shard";
+    token.symbol = "AXS";
+    token.decimals = 18;
   } else if (address == "0x0d8775f648430679a709e98d2b0cb6250d2887ef") {
     token.name = "Basic Attention Token";
     token.symbol = "BAT";

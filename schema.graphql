@@ -7,17 +7,6 @@ type Token @entity {
   symbol: String
 }
 
-type StreamTransaction @entity {
-  id: ID!
-  block: Int!
-  event: String!
-  from: Bytes!
-  stream: Stream!
-  timestamp: BigInt!
-  to: Bytes
-  txhash: String!
-}
-
 ### CTokenManager ###
 
 type CToken @entity {
@@ -63,6 +52,17 @@ type Stream @entity {
   # > field is derived and can not be set wasm backtrace
   txs: [StreamTransaction!] @derivedFrom(field: "stream")
   withdrawals: [Withdrawal!] @derivedFrom(field: "stream")
+}
+
+type StreamTransaction @entity {
+  id: ID!
+  block: Int!
+  event: String!
+  from: Bytes!
+  stream: Stream!
+  timestamp: BigInt!
+  to: Bytes
+  txhash: String!
 }
 
 type Withdrawal @entity {
