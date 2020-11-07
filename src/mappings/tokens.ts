@@ -181,11 +181,11 @@ export function addToken(address: string): void {
     token.name = "Sai Stablecoin v1.0";
     token.symbol = "SAI";
     token.decimals = 18;
-  } else if (address == "0xd233d1f6fd11640081abb8db125f722b5dc729dc") {
+  } else if (address == "0x2f6081e3552b1c86ce4479b80062a1dda8ef23e3") {
     token.name = "Seigniorage Dollars";
     token.symbol = "SeignUSD";
     token.decimals = 9;
-  } else if (address == "0x6b583cf4aba7bf9d6f8a51b3f1f7c7b2ce59bf15") {
+  } else if (address == "0x39795344cbcc76cc3fb94b9d1b15c23c2070c66d") {
     token.name = "Seigniorage Shares";
     token.symbol = "SHARE";
     token.decimals = 9;
@@ -273,10 +273,6 @@ export function addToken(address: string): void {
   } else if (address == "0xdb7eb3ede973665b1bb9f3016861e3255062e4ed") {
     token.name = "MNFT";
     token.symbol = "MNFT";
-    token.decimals = 4;
-  } else if (address == "0x8db6da2120b346faa7f206841f2fb005bbe0dfd8") {
-    token.name = "Paul Razvan Berg";
-    token.symbol = "PAUL";
     token.decimals = 4;
   } else if (address == "0x5a844590c5b8f40ae56190771d06c60b9ab1da1c") {
     token.name = "Ross Campbell Legal Engineering";
