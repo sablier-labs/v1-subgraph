@@ -89,14 +89,6 @@ export function addToken(address: string): void {
     token.name = "Fulcrum USDC iToken";
     token.symbol = "iUSDC";
     token.decimals = 6;
-  } else if (address == "0x6810e776880c02933d47db1b9fc05908e5386b96") {
-    token.name = "Gnosis";
-    token.symbol = "GNO";
-    token.decimals = 18;
-  } else if (address == "0x56687cf29ac9751ce2a4e764680b6ad7e668942e") {
-    token.name = "FlynnJamm";
-    token.symbol = "JAMM";
-    token.decimals = 4;
   } else if (address == "0x10ec0d497824e342bcb0edce00959142aaa766dd") {
     token.name = "IdleDAI";
     token.symbol = "IDLEDAI";
@@ -257,6 +249,10 @@ export function addToken(address: string): void {
   } else if (address == "0xe98b5f11897d42afd17185dd301bcb2d46389bf1") {
     token.name = "Dude";
     token.symbol = "DUDE";
+    token.decimals = 4;
+  } else if (address == "0x56687cf29ac9751ce2a4e764680b6ad7e668942e") {
+    token.name = "FlynnJamm";
+    token.symbol = "JAMM";
     token.decimals = 4;
   } else if (address == "0xc1fb6c015fc535abd331d3029de76a62e412fb23") {
     token.name = "Forcer";
