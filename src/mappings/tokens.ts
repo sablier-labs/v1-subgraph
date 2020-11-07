@@ -105,6 +105,10 @@ export function addToken(address: string): void {
     token.name = "IdleUSDC";
     token.symbol = "IDLEUSDC";
     token.decimals = 18;
+  } else if (address == "0xc463f34040ad6222c1ffb03acebdfaac032202d6") {
+    token.name = "KiloAmple";
+    token.symbol = "kMPL";
+    token.decimals = 9;
   } else if (address == "0xdd974d5c2e2928dea5f71b9825b8b646686bd200") {
     token.name = "Kyber Network Crystal";
     token.symbol = "KNC";
