@@ -1,19 +1,15 @@
-## Sablier Subgraph
+# Sablier Subgraph
 
-The Graph is a tool that helps dapps index their blockchain data so that users don't have to wait hours or more for the
-website to load.
+This is our subgraph, a collection of GraphQL schemas and mappings that parse the data broadcast on the Ethereum blockchain.
 
-This is our subgraph, a collection of schemas and event handlers that
-parse the data broadcast on the Ethereum blockchain to GraphQL form.
+Our smart contracts can be found in this [repository](https://github.com/sablierhq/sablier).
 
-Our smart contracts can be found in the [Sablier monorepo](https://github.com/sablierhq/sablier).
-
-## Contributing
+## Development
 
 Before you can build, create and deploy this subgraph, you have to execute the following commands in the terminal:
 
 ```bash
-$ yarn
+$ yarn install
 $ yarn prepare:mainnet
 ```
 

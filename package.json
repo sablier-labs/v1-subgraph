@@ -1,7 +1,7 @@
 {
   "name": "@sablier/subgraph",
   "description": "Data server for Sablier",
-  "version": "2.1.0",
+  "version": "1.0.0",
   "author": {
     "name": "Sablier",
     "url": "https://sablier.finance"
