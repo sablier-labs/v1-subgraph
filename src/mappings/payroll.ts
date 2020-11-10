@@ -1,11 +1,11 @@
-import { ProxyStream, Stream } from "../types/schema";
 import { CreateSalary as CreateSalaryEvent } from "../types/Payroll/Payroll";
+import { ProxyStream, Stream } from "../types/schema";
 
 /**
- * Maps the salary creation event to an object called "proxyStream". You may notice a naming
- * discrepancy, but this is on purpose. Initially, we thought that the proxy would only be
- * useful to the payroll dapp, only to later realise that a proxy that can be used to run a
- * relayer system would be pretty damn useful.
+ * Maps the salary creation event to an entity called "ProxyStream". The naming might sound
+ * awkward, but this is on purpose. We initially thought of Sablier as having a narrow
+ * scope (payroll) but only after authoring the contracts, we realised that the
+ * same implementation can be used for more use cases.
  */
 export function handleCreateSalary(event: CreateSalaryEvent): void {
   let stream = Stream.load(event.params.streamId.toString());

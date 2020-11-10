@@ -1,0 +1,10 @@
+# folders
+build/
+node_modules/
+src/types/
+
+# files
+npm-debug.log*
+templatify.js
+yarn-debug.log*
+yarn-error.log*

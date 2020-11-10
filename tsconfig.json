@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "types": ["@graphprotocol/graph-ts"]
+  },
+  "exclude": ["./templatify.js"],
+  "extends": "./node_modules/@graphprotocol/graph-ts/tsconfig.json"
+}

@@ -1,7 +1,7 @@
 import { CToken } from "../types/schema";
 import {
-  WhitelistCToken as WhitelistCTokenEvent,
   DiscardCToken as DiscardCTokenEvent,
+  WhitelistCToken as WhitelistCTokenEvent,
 } from "../types/CTokenManager/CTokenManager";
 
 function addCToken(address: string): void {

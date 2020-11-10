@@ -6,7 +6,7 @@ export function addToken(address: string): void {
     return;
   }
 
-  /* Mainnet */
+  // Mainnet
   token = new Token(address);
 
   if (address == "0xb6ed7644c69416d67b522e20bc294a9a9b405b31") {
@@ -230,7 +230,6 @@ export function addToken(address: string): void {
     token.symbol = "wETH";
     token.decimals = 18;
   } else if (address == "0x8ba6dcc667d3ff64c1a2123ce72ff5f0199e5315") {
-    /** Social Money **/
     token.name = "Alex Masmej";
     token.symbol = "ALEX";
     token.decimals = 4;
@@ -292,21 +291,21 @@ export function addToken(address: string): void {
     token.decimals = 0;
   }
 
-  /* Goerli */
+  // Goerli
   if (address == "0xf2d1f94310823fe26cfa9c9b6fd152834b8e7849") {
     token.decimals = 18;
     token.name = "TestnetDAI";
     token.symbol = "DAI";
   }
 
-  /* Kovan */
+  // Kovan
   if (address == "0x7d669a64deb8a4a51eea755bb0e19fd39ce25ae9") {
     token.decimals = 18;
     token.name = "TestnetDAI";
     token.symbol = "DAI";
   }
 
-  /* Rinkeby */
+  // Rinkeby
   if (address == "0xc3dbf84abb494ce5199d5d4d815b10ec29529ff8") {
     token.decimals = 18;
     token.name = "TestnetDAI";
@@ -317,7 +316,7 @@ export function addToken(address: string): void {
     token.symbol = "wETH";
   }
 
-  /* Ropsten */
+  // Ropsten
   if (address == "0x2d69ad895797c880abce92437788047ba0eb7ff6") {
     token.decimals = 18;
     token.name = "TestnetDAI";

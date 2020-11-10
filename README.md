@@ -1,6 +1,7 @@
 # Sablier Subgraph
 
-This is our subgraph, a collection of GraphQL schemas and mappings that parse the data broadcast on the Ethereum blockchain.
+This is our subgraph, a collection of GraphQL schemas and mappings that parse the events broadcast by the Sablier protocol
+on the Ethereum blockchain.
 
 Our smart contracts can be found in this [repository](https://github.com/sablierhq/sablier).
 

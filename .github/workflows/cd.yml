@@ -1,0 +1,53 @@
+name: "Continuous Deployment"
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  build:
+    runs-on: "macos-latest"
+    steps:
+      - name: "Check out the repo"
+        uses: "actions/checkout@v2"
+
+      - name: "Install Node.js"
+        uses: "actions/setup-node@v1"
+        with:
+          node-version: "12"
+
+      - name: "Load cache if any"
+        uses: "actions/cache@v2"
+        with:
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          path: "./node_modules"
+
+      - name: "Install dependencies"
+        run: "yarn install --frozen-lockfile"
+
+      - name: "Lint AssemblyScript code"
+        run: "yarn run lint"
+
+      - name: "Authenticate The Graph CLI"
+        run: yarn graph auth https://api.thegraph.com/deploy/ ${{ secrets.THE_GRAPH_TOKEN }}
+
+      - name: "Generate AssemblyScript types"
+        run: |
+          yarn run prepare:mainnet
+          yarn run codegen
+
+      - name: "Deploy to Goerli"
+        run: yarn run prepare:goerli
+
+      - name: "Deploy to Kovan"
+        run: yarn run prepare:kovan
+
+      - name: "Deploy to Rinkeby"
+        run: yarn run prepare:rinkeby
+
+      - name: "Deploy to Ropsten"
+        run: yarn run prepare:ropsten
+
+      - name: "Deploy to Mainnet"
+        run: yarn run prepare:mainnet
