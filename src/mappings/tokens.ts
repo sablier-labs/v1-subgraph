@@ -217,6 +217,10 @@ export function addToken(address: string): void {
     token.name = "TrueUSD";
     token.symbol = "TUSD";
     token.decimals = 18;
+  } else if (address == "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984") {
+    token.name = "Uniswap";
+    token.symbol = "UNI";
+    token.decimals = 18;
   } else if (address == "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48") {
     token.name = "USD Coin";
     token.symbol = "USDC";
