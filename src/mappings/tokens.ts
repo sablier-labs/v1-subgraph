@@ -89,13 +89,9 @@ export function addToken(address: string): void {
     token.name = "Fulcrum USDC iToken";
     token.symbol = "iUSDC";
     token.decimals = 6;
-  } else if (address == "0x3fE7940616e5Bc47b0775a0dccf6237893353bB4") {
-    token.name = "IdleDAI";
-    token.symbol = "IDLEDAI";
-    token.decimals = 18;
-  } else if (address == "0x5274891bEC421B39D23760c04A6755eCB444797C") {
-    token.name = "IdleUSDC";
-    token.symbol = "IDLEUSDC";
+  } else if (address == "0xaac41ec512808d64625576eddd580e7ea40ef8b2") {
+    token.name = "GameSwap";
+    token.name = "GSWAP";
     token.decimals = 18;
   } else if (address == "0xc463f34040ad6222c1ffb03acebdfaac032202d6") {
     token.name = "KiloAmple";
