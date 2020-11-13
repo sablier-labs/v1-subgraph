@@ -17,6 +17,10 @@ export function addToken(address: string): void {
     token.name = "Aavegotchi Token";
     token.symbol = "GHST";
     token.decimals = 18;
+  } else if (address == "0x27702a26126e0b3702af63ee09ac4d1a084ef628") {
+    token.name = "Aleph";
+    token.symbol = "ALEPH";
+    token.decimals = 18;
   } else if (address == "0x960b236a07cf122663c4303350609a66a7b288c0") {
     token.name = "Aragon Network Token";
     token.symbol = "ANT";
