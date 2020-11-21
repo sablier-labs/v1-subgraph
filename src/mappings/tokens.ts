@@ -189,6 +189,10 @@ export function addToken(address: string): void {
     token.name = "Shroom.Finance";
     token.symbol = "SHROOM";
     token.decimals = 18;
+  } else if (address == "0x23b608675a2b2fb1890d3abbd85c5775c51691d5") {
+    token.name = "Unisocks v0";
+    token.symbol = "SOCKS";
+    token.decimals = 18;
   } else if (address == "0xa4bdb11dc0a2bec88d24a3aa1e6bb17201112ebe") {
     token.name = "Stable USD";
     token.symbol = "USDS";
