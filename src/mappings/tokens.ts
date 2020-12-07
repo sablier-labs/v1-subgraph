@@ -121,6 +121,10 @@ export function addToken(address: string): void {
     token.name = "Meta";
     token.symbol = "MTA";
     token.decimals = 18;
+  } else if (address == "0xa3d58c4e56fedcae3a7c43a725aee9a71f0ece4e") {
+    token.name = "Metronome";
+    token.symbol = "MET";
+    token.decimals = 18;
   } else if (address == "0xe2f2a5c287993345a840db3b0845fbc70f5935a5") {
     token.name = "mStable USD";
     token.symbol = "mUSD";
