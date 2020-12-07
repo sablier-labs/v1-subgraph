@@ -97,7 +97,7 @@ export function addToken(address: string): void {
     token.name = "GameSwap";
     token.name = "GSWAP";
     token.decimals = 18;
-  } else if (address == "0xc463f34040ad6222c1ffb03acebdfaac032202d6") {
+  } else if (address == "0xe8d17542dfe79ff4fbd4b850f2d39dc69c4489a2") {
     token.name = "KiloAmple";
     token.symbol = "kMPL";
     token.decimals = 9;
