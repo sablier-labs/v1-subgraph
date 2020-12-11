@@ -38,16 +38,13 @@ jobs:
           yarn run codegen
 
       - name: "Deploy to Goerli"
-        run: yarn run prepare:goerli
+        run: yarn run deploy:goerli
 
       - name: "Deploy to Kovan"
-        run: yarn run prepare:kovan
+        run: yarn run deploy:kovan
 
       - name: "Deploy to Rinkeby"
-        run: yarn run prepare:rinkeby
+        run: yarn run deploy:rinkeby
 
       - name: "Deploy to Ropsten"
-        run: yarn run prepare:ropsten
-
-      # - name: "Deploy to Mainnet"
-        # run: yarn run prepare:mainnet
+        run: yarn run deploy:ropsten
