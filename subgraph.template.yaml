@@ -13,7 +13,7 @@ dataSources:
       startBlock: {{contracts.cTokenManager.startBlock}}
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.3
+      apiVersion: 0.0.4
       abis:
         - name: CTokenManager
           file: ./abis/CTokenManager.json
@@ -37,6 +37,8 @@ dataSources:
       kind: ethereum/events
       apiVersion: 0.0.3
       abis:
+        - name: Erc20
+          file: ./abis/Erc20.json
         - name: Sablier
           file: ./abis/Sablier.json
       entities:
@@ -68,7 +70,7 @@ dataSources:
       startBlock: {{contracts.payroll.startBlock}}
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.3
+      apiVersion: 0.0.4
       abis:
         - name: Payroll
           file: ./abis/Payroll.json

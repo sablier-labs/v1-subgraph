@@ -6,8 +6,7 @@ import {
   CancelStream as CancelStreamEvent,
   PayInterest as PayInterestEvent,
 } from "../types/Sablier/Sablier";
-import { addToken } from "./tokens";
-import { addStreamTransaction } from "./transactions";
+import { createStreamTransaction, loadOrCreateToken } from "../helpers/database";
 
 export function handleCreateStream(event: CreateStreamEvent): void {
   // Create the stream entity.
@@ -24,8 +23,8 @@ export function handleCreateStream(event: CreateStreamEvent): void {
   stream.save();
 
   // Create adjacent but important entities.
-  addStreamTransaction("CreateStream", event, streamId);
-  addToken(event.params.tokenAddress.toHex());
+  createStreamTransaction("CreateStream", event, streamId);
+  loadOrCreateToken(event.params.tokenAddress.toHex());
 }
 
 export function handleCreateCompoundingStream(event: CreateCompoundingStreamEvent): void {
@@ -40,7 +39,7 @@ export function handleCreateCompoundingStream(event: CreateCompoundingStreamEven
   stream.recipientSharePercentage = event.params.recipientSharePercentage;
   stream.save();
 
-  addStreamTransaction("CreateCompoundingStream", event, streamId);
+  createStreamTransaction("CreateCompoundingStream", event, streamId);
 }
 
 export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
@@ -57,7 +56,7 @@ export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
   withdrawal.token = stream.token;
   withdrawal.save();
 
-  addStreamTransaction("WithdrawFromStream", event, streamId);
+  createStreamTransaction("WithdrawFromStream", event, streamId);
 }
 
 export function handleCancelStream(event: CancelStreamEvent): void {
@@ -78,7 +77,7 @@ export function handleCancelStream(event: CancelStreamEvent): void {
   stream.cancellation = streamId;
   stream.save();
 
-  addStreamTransaction("CancelStream", event, streamId);
+  createStreamTransaction("CancelStream", event, streamId);
 }
 
 export function handlePayInterest(event: PayInterestEvent): void {
