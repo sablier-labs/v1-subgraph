@@ -49,5 +49,5 @@ jobs:
       - name: "Deploy to Ropsten"
         run: yarn run prepare:ropsten
 
-      - name: "Deploy to Mainnet"
-        run: yarn run prepare:mainnet
+      # - name: "Deploy to Mainnet"
+        # run: yarn run prepare:mainnet
