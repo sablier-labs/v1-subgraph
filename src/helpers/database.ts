@@ -1,10 +1,9 @@
-import { Address } from "@graphprotocol/graph-ts";
-import { EthereumEvent } from "@graphprotocol/graph-ts";
+import { Address, ethereum } from "@graphprotocol/graph-ts";
 
 import { StreamTransaction, Token } from "../types/schema";
 import { Erc20 as Erc20Contract } from "../types/Sablier/Erc20";
 
-export function createStreamTransaction(name: string, event: EthereumEvent, streamId: string): void {
+export function createStreamTransaction(name: string, event: ethereum.Event, streamId: string): void {
   let streamTransaction = new StreamTransaction(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
   streamTransaction.event = name;
   streamTransaction.block = event.block.number.toI32();
