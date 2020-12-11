@@ -48,3 +48,6 @@ jobs:
 
       - name: "Deploy to Ropsten"
         run: yarn run deploy:ropsten
+
+      - name: "Deploy to Mainnet"
+        run: yarn run deploy:mainnet
