@@ -39,6 +39,10 @@ dataSources:
       abis:
         - name: Erc20
           file: ./abis/Erc20.json
+        - name: Erc20NameBytes32
+          file: ./abis/Erc20NameBytes32.json
+        - name: Erc20SymbolBytes32
+          file: ./abis/Erc20SymbolBytes32.json
         - name: Sablier
           file: ./abis/Sablier.json
       entities:

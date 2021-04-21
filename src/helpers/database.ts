@@ -1,7 +1,9 @@
 import { Address, ethereum } from "@graphprotocol/graph-ts";
 
-import { StreamTransaction, Token } from "../types/schema";
 import { Erc20 as Erc20Contract } from "../types/Sablier/Erc20";
+import { Erc20NameBytes32 as Erc20NameBytes32Contract } from "../types/Sablier/Erc20NameBytes32";
+import { Erc20SymbolBytes32 as Erc20SymbolBytes32Contract } from "../types/Sablier/Erc20SymbolBytes32";
+import { StreamTransaction, Token } from "../types/schema";
 
 export function createStreamTransaction(name: string, event: ethereum.Event, streamId: string): void {
   let streamTransaction = new StreamTransaction(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
@@ -16,7 +18,10 @@ export function createStreamTransaction(name: string, event: ethereum.Event, str
 }
 
 export function createToken(id: string): Token {
-  let contract: Erc20Contract = Erc20Contract.bind(Address.fromString(id));
+  let tokenAddress: Address = Address.fromString(id);
+  let contract: Erc20Contract = Erc20Contract.bind(tokenAddress);
+  let contractNameBytes32: Erc20NameBytes32Contract = Erc20NameBytes32Contract.bind(tokenAddress);
+  let contractSymbolBytes32: Erc20SymbolBytes32Contract = Erc20SymbolBytes32Contract.bind(tokenAddress);
   let token = new Token(id);
 
   let decimals = 0;
@@ -26,17 +31,27 @@ export function createToken(id: string): Token {
   }
   token.decimals = decimals;
 
-  let name: string = null;
-  let nameContractCall = contract.try_name();
-  if (!nameContractCall.reverted) {
-    name = nameContractCall.value;
+  let name: string = "Unknown";
+  let nameStringCall = contract.try_name();
+  if (nameStringCall.reverted) {
+    let nameBytesCall = contractNameBytes32.try_name();
+    if (!nameBytesCall.reverted) {
+      name = nameBytesCall.value.toString();
+    }
+  } else {
+    name = nameStringCall.value;
   }
   token.name = name;
 
-  let symbol: string = null;
-  let symbolContractCall = contract.try_symbol();
-  if (!symbolContractCall.reverted) {
-    symbol = symbolContractCall.value;
+  let symbol: string = "Unknown";
+  let symbolStringCall = contract.try_symbol();
+  if (symbolStringCall.reverted) {
+    let symbolBytesCall = contractSymbolBytes32.try_symbol();
+    if (!symbolBytesCall.reverted) {
+      symbol = symbolBytesCall.value.toString();
+    }
+  } else {
+    symbol = symbolStringCall.value;
   }
   token.symbol = symbol;
 
