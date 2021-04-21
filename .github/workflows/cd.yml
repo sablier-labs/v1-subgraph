@@ -6,7 +6,7 @@ on:
       - "main"
 
 jobs:
-  build:
+  cd:
     runs-on: "macos-latest"
     steps:
       - name: "Check out the repo"
@@ -29,25 +29,22 @@ jobs:
       - name: "Lint AssemblyScript code"
         run: "yarn run lint"
 
-      - name: "Authenticate The Graph CLI"
-        run: yarn graph auth https://api.thegraph.com/deploy/ ${{ secrets.THE_GRAPH_TOKEN }}
-
       - name: "Generate AssemblyScript types"
         run: |
           yarn run prepare:mainnet
           yarn run codegen
 
       - name: "Deploy to Goerli"
-        run: yarn run deploy:goerli
+        run: yarn run deploy:goerli --access-token ${{ secrets.THE_GRAPH_TOKEN }}
 
       - name: "Deploy to Kovan"
-        run: yarn run deploy:kovan
+        run: yarn run deploy:kovan --access-token ${{ secrets.THE_GRAPH_TOKEN }}
 
       - name: "Deploy to Rinkeby"
-        run: yarn run deploy:rinkeby
+        run: yarn run deploy:rinkeby --access-token ${{ secrets.THE_GRAPH_TOKEN }}
 
       - name: "Deploy to Ropsten"
-        run: yarn run deploy:ropsten
+        run: yarn run deploy:ropsten --access-token ${{ secrets.THE_GRAPH_TOKEN }}
 
       - name: "Deploy to Mainnet"
-        run: yarn run deploy:mainnet
+        run: yarn run deploy:mainnet --access-token ${{ secrets.THE_GRAPH_TOKEN }}
