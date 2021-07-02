@@ -1,5 +1,7 @@
 # folders
-.vscode/
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
 build/
 lib/
 node_modules/

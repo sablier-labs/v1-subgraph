@@ -1,12 +1,14 @@
 import { Address, ethereum } from "@graphprotocol/graph-ts";
 
-import { Erc20 as Erc20Contract } from "../types/Sablier/Erc20";
-import { Erc20NameBytes32 as Erc20NameBytes32Contract } from "../types/Sablier/Erc20NameBytes32";
-import { Erc20SymbolBytes32 as Erc20SymbolBytes32Contract } from "../types/Sablier/Erc20SymbolBytes32";
+import { ERC20 as Erc20Contract } from "../types/Sablier/ERC20";
+import { ERC20NameBytes32 as ERC20NameBytes32Contract } from "../types/Sablier/ERC20NameBytes32";
+import { ERC20SymbolBytes32 as ERC20SymbolBytes32Contract } from "../types/Sablier/ERC20SymbolBytes32";
 import { StreamTransaction, Token } from "../types/schema";
 
 export function createStreamTransaction(name: string, event: ethereum.Event, streamId: string): void {
-  let streamTransaction = new StreamTransaction(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
+  let streamTransaction: StreamTransaction = new StreamTransaction(
+    event.transaction.hash.toHex() + "-" + event.logIndex.toString(),
+  );
   streamTransaction.event = name;
   streamTransaction.block = event.block.number.toI32();
   streamTransaction.from = event.transaction.from;
@@ -18,13 +20,13 @@ export function createStreamTransaction(name: string, event: ethereum.Event, str
 }
 
 export function createToken(id: string): Token {
+  let token: Token = new Token(id);
   let tokenAddress: Address = Address.fromString(id);
   let contract: Erc20Contract = Erc20Contract.bind(tokenAddress);
-  let contractNameBytes32: Erc20NameBytes32Contract = Erc20NameBytes32Contract.bind(tokenAddress);
-  let contractSymbolBytes32: Erc20SymbolBytes32Contract = Erc20SymbolBytes32Contract.bind(tokenAddress);
-  let token = new Token(id);
+  let contractNameBytes32: ERC20NameBytes32Contract = ERC20NameBytes32Contract.bind(tokenAddress);
+  let contractSymbolBytes32: ERC20SymbolBytes32Contract = ERC20SymbolBytes32Contract.bind(tokenAddress);
 
-  let decimals = 0;
+  let decimals: i32 = 0;
   let decimalsContractCall = contract.try_decimals();
   if (!decimalsContractCall.reverted) {
     decimals = decimalsContractCall.value;
@@ -60,7 +62,7 @@ export function createToken(id: string): Token {
 }
 
 export function loadOrCreateToken(id: string): Token {
-  let token = Token.load(id);
+  let token: Token | null = Token.load(id);
   if (token == null) {
     token = createToken(id);
   }

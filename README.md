@@ -1,27 +1,14 @@
 # Sablier Subgraph
 
-This is our subgraph, a collection of GraphQL schemas and mappings that parse the events broadcast by the Sablier protocol
-on the Ethereum blockchain.
+Sablier is a money streaming protocol built on the Ethereum blockchain. This subgraph indexes the events emitted by our smart contracts.
 
-Our smart contracts can be found in this [repository](https://github.com/sablierhq/sablier).
-
-## Development
-
-Before you can build, create and deploy this subgraph, you have to execute the following commands in the terminal:
-
-```bash
-$ yarn install
-$ yarn prepare:mainnet
-```
-
-The first command installs all external dependencies, while the latter generates the `subgraph.yaml` file, which is
-required by The Graph.
-
-We use [Handlebars](https://github.com/wycats/handlebars.js/) to compile a [template subgraph](./subgraph.template.yaml) and add the parameters specific to each
-network (Mainnet, Goerli, Kovan, Rinkeby, Ropsten). The network can be changed via the `NETWORK_NAME` environment
-variable or directly by choosing a different "prepare" script. See [package.json](./package.json) for all options.
+You can interact with the subgraph via The Graph's [hosted service](https://thegraph.com/explorer/subgraph/sablierhq/sablier).
 
 ## Queries
+
+Below are a few ways to show how to query the Sablier subgraph for data. The queries show most of the information that is queryable, but there are many other filtering options that can be used, just check out the querying api.
+
+For more examples, check out the saved queries on the hosted service.
 
 ### Querying All Streams
 
@@ -31,17 +18,13 @@ variable or directly by choosing a different "prepare" script. See [package.json
     id
     cancellation {
       recipientBalance
-      recipientInterest
       timestamp
       txhash
     }
     deposit
-    exchangeRateInitial
     ratePerSecond
     recipient
-    recipientSharePercentage
     sender
-    senderSharePercentage
     startTime
     stopTime
     timestamp

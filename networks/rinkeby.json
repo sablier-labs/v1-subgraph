@@ -1,0 +1,9 @@
+{
+  "network": "rinkeby",
+  "contracts": {
+    "sablier": {
+      "address": "0xC1f3af5DC05b0C51955804b2afc80eF8FeED67b9",
+      "startBlock": 8865670
+    }
+  }
+}

@@ -1,4 +1,5 @@
 # folders
+.yarn/
 build/
 node_modules/
 src/types/

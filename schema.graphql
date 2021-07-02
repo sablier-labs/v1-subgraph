@@ -7,49 +7,30 @@ type Token @entity {
   symbol: String
 }
 
-### CTokenManager ###
-
-type CToken @entity {
-  id: ID!
-  decimals: Int
-  name: String
-  symbol: String
-  whitelisted: Boolean
-}
-
 ### Sablier ###
 
-# The id is the stream's id
 type Cancellation @entity {
   id: ID!
   recipientBalance: BigInt!
-  recipientInterest: BigInt
-  sablierInterest: BigInt
   senderBalance: BigInt!
-  senderInterest: BigInt
   timestamp: BigInt!
   token: Token
   txhash: String!
 }
 
-# @derivedFrom makes it possible to map large sets of data to the same stream
 type Stream @entity {
   cancellation: Cancellation
   deposit: BigInt!
-  exchangeRateInitial: BigInt
   id: ID!
   ratePerSecond: BigInt!
   recipient: Bytes!
-  recipientSharePercentage: BigInt
   sender: Bytes!
-  senderSharePercentage: BigInt
   startTime: BigInt!
   stopTime: BigInt!
   timestamp: BigInt!
   token: Token
-  # Do not turn these arrays into forcibly non-null by adding a "!"
-  # The indexing would fail with an error:
-  # > field is derived and can not be set wasm backtrace
+  # Do not turn these arrays into forcibly non-null by adding a "!", lest the indexing fails
+  # with an error: "> field is derived and can not be set wasm backtrace".
   txs: [StreamTransaction!] @derivedFrom(field: "stream")
   withdrawals: [Withdrawal!] @derivedFrom(field: "stream")
 }
@@ -68,20 +49,7 @@ type StreamTransaction @entity {
 type Withdrawal @entity {
   id: ID!
   amount: BigInt!
-  recipientInterest: BigInt
-  sablierInterest: BigInt
-  senderInterest: BigInt
   stream: Stream!
   timestamp: BigInt!
   token: Token
-}
-
-### Proxy ###
-
-type ProxyStream @entity {
-  id: ID!
-  recipient: Bytes!
-  sender: Bytes!
-  stream: Stream!
-  timestamp: BigInt!
 }
