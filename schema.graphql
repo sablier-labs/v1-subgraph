@@ -52,4 +52,5 @@ type Withdrawal @entity {
   stream: Stream!
   timestamp: BigInt!
   token: Token
+  txhash: String!
 }

@@ -8,7 +8,9 @@ import { Cancellation, Stream, Withdrawal } from "../types/schema";
 
 export function handleCreateStream(event: CreateStreamEvent): void {
   // Create the stream entity.
-  let streamId = event.params.streamId.toString();
+  let streamId: string = event.params.streamId.toString();
+  let tokenAddress: string = event.params.tokenAddress.toHex();
+
   let stream: Stream = new Stream(streamId);
   stream.deposit = event.params.deposit;
   stream.ratePerSecond = event.params.deposit.div(event.params.stopTime.minus(event.params.startTime));
@@ -17,12 +19,12 @@ export function handleCreateStream(event: CreateStreamEvent): void {
   stream.startTime = event.params.startTime;
   stream.stopTime = event.params.stopTime;
   stream.timestamp = event.block.timestamp;
-  stream.token = event.params.tokenAddress.toHex();
+  stream.token = tokenAddress;
   stream.save();
 
   // Create adjacent but important entities.
   createStreamTransaction("CreateStream", event, streamId);
-  loadOrCreateToken(event.params.tokenAddress.toHex());
+  loadOrCreateToken(tokenAddress);
 }
 
 export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
@@ -32,11 +34,13 @@ export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
     return;
   }
 
-  let withdrawal: Withdrawal = new Withdrawal(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
+  let txhash: string = event.transaction.hash.toHex();
+  let withdrawal: Withdrawal = new Withdrawal(txhash + "-" + event.logIndex.toString());
   withdrawal.amount = event.params.amount;
   withdrawal.stream = streamId;
   withdrawal.timestamp = event.block.timestamp;
   withdrawal.token = stream.token;
+  withdrawal.txhash = txhash;
   withdrawal.save();
 
   createStreamTransaction("WithdrawFromStream", event, streamId);

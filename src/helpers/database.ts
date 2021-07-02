@@ -6,16 +6,15 @@ import { ERC20SymbolBytes32 as ERC20SymbolBytes32Contract } from "../types/Sabli
 import { StreamTransaction, Token } from "../types/schema";
 
 export function createStreamTransaction(name: string, event: ethereum.Event, streamId: string): void {
-  let streamTransaction: StreamTransaction = new StreamTransaction(
-    event.transaction.hash.toHex() + "-" + event.logIndex.toString(),
-  );
+  let txhash: string = event.transaction.hash.toHex();
+  let streamTransaction: StreamTransaction = new StreamTransaction(txhash + "-" + event.logIndex.toString());
   streamTransaction.event = name;
   streamTransaction.block = event.block.number.toI32();
   streamTransaction.from = event.transaction.from;
   streamTransaction.stream = streamId;
   streamTransaction.timestamp = event.block.timestamp;
   streamTransaction.to = event.transaction.to;
-  streamTransaction.txhash = event.transaction.hash.toHex();
+  streamTransaction.txhash = txhash;
   streamTransaction.save();
 }
 
