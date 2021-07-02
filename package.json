@@ -39,6 +39,7 @@
     "lint": "yarn lint:ts . && yarn prettier:check",
     "lint:ts": "eslint --config ./.eslintrc.yaml --ignore-path ./.eslintignore --ext .js,.ts .",
     "postinstall": "husky install",
+    "prepare:mainnet": "mustache ./networks/mainnet.json subgraph.template.yaml > subgraph.yaml",
     "prepare:rinkeby": "mustache ./networks/rinkeby.json subgraph.template.yaml > subgraph.yaml",
     "prettier": "prettier --config .prettierrc --write \"**/*.{js,json,md,ts,yaml,yml}\"",
     "prettier:check": "prettier --config .prettierrc --check \"**/*.{js,json,md,ts,yaml,yml}\""

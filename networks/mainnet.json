@@ -1,0 +1,9 @@
+{
+  "network": "mainnet",
+  "contracts": {
+    "sablier": {
+      "address": "0xCD18eAa163733Da39c232722cBC4E8940b1D8888",
+      "startBlock": 12749357
+    }
+  }
+}
