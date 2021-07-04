@@ -1,0 +1,9 @@
+{
+  "network": "ropsten",
+  "contracts": {
+    "sablier": {
+      "address": "0xcd79FFea8e2E6eFDAe92554Fdd1F154bB7c62D0f",
+      "startBlock": 10566441
+    }
+  }
+}

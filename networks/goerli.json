@@ -1,0 +1,9 @@
+{
+  "network": "goerli",
+  "contracts": {
+    "sablier": {
+      "address": "0xFc7E3a3073F88B0f249151192812209117C2014b",
+      "startBlock": 5081638
+    }
+  }
+}

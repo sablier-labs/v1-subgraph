@@ -1,0 +1,9 @@
+{
+  "network": "kovan",
+  "contracts": {
+    "sablier": {
+      "address": "0x5eb34b5d5c75ce2119078e5b3f6a3f30e457e46b",
+      "startBlock": 25902228
+    }
+  }
+}
