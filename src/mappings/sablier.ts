@@ -7,10 +7,10 @@ import {
 import { Cancellation, Stream, Withdrawal } from "../types/schema";
 
 export function handleCreateStream(event: CreateStreamEvent): void {
-  // Create the stream entity.
   let streamId: string = event.params.streamId.toString();
   let tokenAddress: string = event.params.tokenAddress.toHex();
 
+  // Create the stream entity.
   let stream: Stream = new Stream(streamId);
   stream.deposit = event.params.deposit;
   stream.ratePerSecond = event.params.deposit.div(event.params.stopTime.minus(event.params.startTime));
@@ -34,6 +34,7 @@ export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
     return;
   }
 
+  // Create the withdrawal entity.
   let txhash: string = event.transaction.hash.toHex();
   let withdrawal: Withdrawal = new Withdrawal(txhash + "-" + event.logIndex.toString());
   withdrawal.amount = event.params.amount;
@@ -43,6 +44,7 @@ export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
   withdrawal.txhash = txhash;
   withdrawal.save();
 
+  // Create a stream transaction entity.
   createStreamTransaction("WithdrawFromStream", event, streamId);
 }
 
@@ -53,6 +55,7 @@ export function handleCancelStream(event: CancelStreamEvent): void {
     return;
   }
 
+  // Create the cancellation entity.
   let cancellation: Cancellation = new Cancellation(streamId);
   cancellation.recipientBalance = event.params.recipientBalance;
   cancellation.senderBalance = event.params.senderBalance;
@@ -61,8 +64,10 @@ export function handleCancelStream(event: CancelStreamEvent): void {
   cancellation.txhash = event.transaction.hash.toHex();
   cancellation.save();
 
+  // Update the stream entity.
   stream.cancellation = streamId;
   stream.save();
 
+  // Create a stream transaction entity.
   createStreamTransaction("CancelStream", event, streamId);
 }

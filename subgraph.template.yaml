@@ -5,12 +5,37 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: Sablier
+    name: SablierV1.0.0
     network: {{network}}
     source:
       abi: Sablier
-      address: "{{contracts.sablier.address}}"
-      startBlock: {{contracts.sablier.startBlock}}
+      address: "{{contracts.sablier.v1-0-0.address}}"
+      startBlock: {{contracts.sablier.v1-0-0.startBlock}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      abis:
+        - name: Sablier
+          file: ./abis/Sablier.json
+      entities:
+        - Cancellation
+        - Stream
+        - StreamTransaction
+        - Withdrawal
+      eventHandlers:
+        - event: WithdrawFromStream(indexed uint256,indexed address,uint256)
+          handler: handleWithdrawFromStream
+        - event: CancelStream(indexed uint256,indexed address,indexed address,uint256,uint256)
+          handler: handleCancelStream
+      file: ./src/mappings/sablier.ts
+      language: wasm/assemblyscript
+  - kind: ethereum/contract
+    name: SablierV1.1.0
+    network: {{network}}
+    source:
+      abi: Sablier
+      address: "{{contracts.sablier.v1-1-0.address}}"
+      startBlock: {{contracts.sablier.v1-1-0.startBlock}}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -37,4 +62,24 @@ dataSources:
         - event: CancelStream(indexed uint256,indexed address,indexed address,uint256,uint256)
           handler: handleCancelStream
       file: ./src/mappings/sablier.ts
+      language: wasm/assemblyscript
+  - kind: ethereum/contract
+    name: Payroll
+    network: {{network}}
+    source:
+      abi: Payroll
+      address: "{{contracts.payroll.address}}"
+      startBlock: {{contracts.payroll.startBlock}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      abis:
+        - name: Payroll
+          file: ./abis/Payroll.json
+      entities:
+        - ProxyStream
+      eventHandlers:
+        - event: CreateSalary(indexed uint256,indexed uint256,indexed address)
+          handler: handleCreateSalary
+      file: ./src/mappings/payroll.ts
       language: wasm/assemblyscript

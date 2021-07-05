@@ -1,9 +1,19 @@
 {
   "network": "goerli",
   "contracts": {
+    "payroll": {
+      "address": "0x8eB93647490DF9989295461AB2AcdEDdCCA84781",
+      "startBlock": 1636930
+    },
     "sablier": {
-      "address": "0xFc7E3a3073F88B0f249151192812209117C2014b",
-      "startBlock": 5081638
+      "v1-0-0": {
+        "address": "0x590b3974533141a44a89033deEcf932F52fcFDea",
+        "startBlock": 1636914
+      },
+      "v1-1-0": {
+        "address": "0xFc7E3a3073F88B0f249151192812209117C2014b",
+        "startBlock": 5081638
+      }
     }
   }
 }
