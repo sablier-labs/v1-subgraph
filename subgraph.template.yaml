@@ -74,6 +74,12 @@ dataSources:
       kind: ethereum/events
       apiVersion: 0.0.4
       abis:
+        - name: ERC20
+          file: ./abis/ERC20.json
+        - name: ERC20NameBytes32
+          file: ./abis/ERC20NameBytes32.json
+        - name: ERC20SymbolBytes32
+          file: ./abis/ERC20SymbolBytes32.json
         - name: Payroll
           file: ./abis/Payroll.json
         - name: Sablier
