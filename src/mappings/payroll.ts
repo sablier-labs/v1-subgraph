@@ -25,7 +25,7 @@ export function handleCreateSalary(event: CreateSalaryEvent): void {
   let tokenAddress: string = getStreamResult.value3.toHex();
 
   // Create the stream entity.
-  let streamId: string = event.params.streamId.toString();
+  let streamId: string = event.params.salaryId.toString();
   let stream: Stream = new Stream(streamId);
   stream.sender = event.params.company;
   stream.recipient = getStreamResult.value1;
