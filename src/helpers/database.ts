@@ -1,8 +1,8 @@
 import { Address, ethereum } from "@graphprotocol/graph-ts";
 
-import { ERC20 as Erc20Contract } from "../types/Sablier/ERC20";
-import { ERC20NameBytes32 as ERC20NameBytes32Contract } from "../types/Sablier/ERC20NameBytes32";
-import { ERC20SymbolBytes32 as ERC20SymbolBytes32Contract } from "../types/Sablier/ERC20SymbolBytes32";
+import { ERC20 as Erc20Contract } from "../types/SablierV1.1.0/ERC20";
+import { ERC20NameBytes32 as ERC20NameBytes32Contract } from "../types/SablierV1.1.0/ERC20NameBytes32";
+import { ERC20SymbolBytes32 as ERC20SymbolBytes32Contract } from "../types/SablierV1.1.0/ERC20SymbolBytes32";
 import { StreamTransaction, Token } from "../types/schema";
 
 export function createStreamTransaction(name: string, event: ethereum.Event, streamId: string): void {

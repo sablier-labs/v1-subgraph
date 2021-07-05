@@ -3,7 +3,7 @@ import {
   CancelStream as CancelStreamEvent,
   CreateStream as CreateStreamEvent,
   WithdrawFromStream as WithdrawFromStreamEvent,
-} from "../types/Sablier/Sablier";
+} from "../types/SablierV1.1.0/Sablier";
 import { Cancellation, Stream, Withdrawal } from "../types/schema";
 
 export function handleCreateStream(event: CreateStreamEvent): void {

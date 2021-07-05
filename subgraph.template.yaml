@@ -76,6 +76,8 @@ dataSources:
       abis:
         - name: Payroll
           file: ./abis/Payroll.json
+        - name: Sablier
+          file: ./abis/Sablier.json
       entities:
         - ProxyStream
       eventHandlers:
