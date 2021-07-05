@@ -8,7 +8,7 @@
     "sablier": {
       "v1-0-0": {
         "address": "0xc04Ad234E01327b24a831e3718DBFcbE245904CC",
-        "startBlocks": 14759800
+        "startBlock": 14759800
       },
       "v1-1-0": {
         "address": "0x5eb34b5d5c75ce2119078e5b3f6a3f30e457e46b",
