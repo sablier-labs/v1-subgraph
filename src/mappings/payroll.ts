@@ -1,16 +1,16 @@
 import { Address, dataSource } from "@graphprotocol/graph-ts";
 
+import { CUTOFF_STREAM_ID } from "../helpers/constants";
 import { createStreamTransaction, loadOrCreateToken } from "../helpers/database";
-import { hasPassedCutoffBlock } from "../helpers/time";
 import { CreateSalary as CreateSalaryEvent, Payroll as PayrollContract } from "../types/Payroll/Payroll";
 import { Sablier as SablierContract, Sablier__getStreamResult } from "../types/SablierV1.1.0/Sablier";
 import { Stream } from "../types/schema";
 
-/// Maps and normalises salaries as streams. The naming might sound awkward, but this is because of
-/// historical reasons. We initially thought of Sablier as having a narrow scope, but after writing
+/// Maps and normalises salaries as streams. The "payroll" naming might sound awkward, but this is due
+/// to historical reasons. We initially thought of Sablier as having a narrow scope. But after writing
 /// the contracts, we realised that the same code can be used for far more use cases.
 export function handleCreateSalary(event: CreateSalaryEvent): void {
-  if (hasPassedCutoffBlock(event)) {
+  if (event.params.salaryId.ge(CUTOFF_STREAM_ID)) {
     return;
   }
 
