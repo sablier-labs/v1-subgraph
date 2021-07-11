@@ -1,56 +1,110 @@
-### Generic ###
-
+"""
+Generic type for ERC-20 tokens.
+"""
 type Token @entity {
+  "The contract address"
   id: ID!
+  "The ERC-20 decimals"
   decimals: Int
+  "The ERC-20 name"
   name: String
+  "The ERC-20 symbol"
   symbol: String
 }
 
-### Sablier ###
-
+"""
+Generic type for Sablier cancellations.
+"""
 type Cancellation @entity {
+  "The same as the stream id"
   id: ID!
+  "Amount of tokens the recipient was distributed"
   recipientBalance: BigInt!
+  "Amount of tokens the sender was distributed"
   senderBalance: BigInt!
+  "The time when the cancellation was made"
   timestamp: BigInt!
+  "The token used for payment"
   token: Token
+  "Transaction hash"
   txhash: String!
 }
 
+"""
+Generic type for Sablier streams.
+"""
 type Stream @entity {
+  "Details about cancellation time and the distributed amounts"
   cancellation: Cancellation
   deposit: BigInt!
+  "The salary id in v1.0.0 and the actual stream id in v1.1.0"
   id: ID!
+  "How much is being streamed every second"
   ratePerSecond: BigInt!
+  "The address of the recipient account"
   recipient: Bytes!
+  "The address of the sender account, who created the streamed"
   sender: Bytes!
+  "The time when the stream commences"
   startTime: BigInt!
+  "The time when the stream stops"
   stopTime: BigInt!
+  "The time when the stream was created"
   timestamp: BigInt!
+  "The token used for payment"
   token: Token
-  # Do not turn these arrays into forcibly non-null by adding a "!", lest the indexing fails
-  # with an error: "> field is derived and can not be set wasm backtrace".
+  "Exhaustive list of all transactions that interacted with the stream"
   txs: [StreamTransaction!] @derivedFrom(field: "stream")
+  "Exhaustive list of all withdrawals made from the stream"
   withdrawals: [Withdrawal!] @derivedFrom(field: "stream")
 }
 
-type StreamTransaction @entity {
+"""
+Needed for retroactively indexing cancellations and withdrawals for v1.0.0 streams.
+"""
+type StreamToSalary @entity {
+  "The stream id"
   id: ID!
+  "The salary id"
+  salaryId: BigInt!
+}
+
+"""
+Ethereum transaction that interacted with a stream.
+"""
+type StreamTransaction @entity {
+  "Transaction hash concatenated with log index"
+  id: ID!
+  "Block number"
   block: Int!
+  "The name of the event emitted"
   event: String!
+  "The caller, or msg.sender"
   from: Bytes!
+  "The stream entity associated with this transaction"
   stream: Stream!
+  "Block timestamp"
   timestamp: BigInt!
+  "The contract address"
   to: Bytes
+  "Transaction hash"
   txhash: String!
 }
 
+"""
+Generic type for Sablier withdrawals.
+"""
 type Withdrawal @entity {
+  "Transaction hash concatenated with log index"
   id: ID!
+  "How many tokens were withdrawn"
   amount: BigInt!
+  "The stream entity associated with this withdrawal"
   stream: Stream!
+  "The time when the cancellation was made"
   timestamp: BigInt!
+  "The token used for payment"
   token: Token
+  "Transaction hash"
   txhash: String!
 }

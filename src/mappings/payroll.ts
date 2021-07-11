@@ -1,10 +1,10 @@
-import { Address, dataSource } from "@graphprotocol/graph-ts";
+import { Address, BigInt, dataSource } from "@graphprotocol/graph-ts";
 
 import { CUTOFF_STREAM_ID } from "../helpers/constants";
 import { createStreamTransaction, loadOrCreateToken } from "../helpers/database";
 import { CreateSalary as CreateSalaryEvent, Payroll as PayrollContract } from "../types/Payroll/Payroll";
 import { Sablier as SablierContract, Sablier__getStreamResult } from "../types/SablierV1.1.0/Sablier";
-import { Stream } from "../types/schema";
+import { Stream, StreamToSalary } from "../types/schema";
 
 /// Maps and normalises salaries as streams. The "payroll" naming might sound awkward, but this is due
 /// to historical reasons. We initially thought of Sablier as having a narrow scope. But after writing
@@ -21,12 +21,13 @@ export function handleCreateSalary(event: CreateSalaryEvent): void {
   let sablierContract: SablierContract = SablierContract.bind(sablierAddress);
 
   // Query the Sablier.sol for the newly created stream.
-  let getStreamResult: Sablier__getStreamResult = sablierContract.getStream(event.params.streamId);
+  let streamId: BigInt = event.params.streamId;
+  let getStreamResult: Sablier__getStreamResult = sablierContract.getStream(streamId);
   let tokenAddress: string = getStreamResult.value3.toHex();
 
-  // Create the stream entity.
-  let streamId: string = event.params.salaryId.toString();
-  let stream: Stream = new Stream(streamId);
+  // Create the stream entity. Yes, the id of the Stream entity is the salary id.
+  let salaryId: string = event.params.salaryId.toString();
+  let stream: Stream = new Stream(salaryId);
   stream.sender = event.params.company;
   stream.recipient = getStreamResult.value1;
   stream.deposit = getStreamResult.value2;
@@ -37,7 +38,12 @@ export function handleCreateSalary(event: CreateSalaryEvent): void {
   stream.timestamp = event.block.timestamp;
   stream.save();
 
+  // Create the streamToSalary entity.
+  let streamToSalary: StreamToSalary = new StreamToSalary(streamId.toString());
+  streamToSalary.salaryId = event.params.salaryId;
+  streamToSalary.save();
+
   // Create adjacent but important entities.
-  createStreamTransaction("CreateStream", event, streamId);
+  createStreamTransaction("CreateStream", event, salaryId);
   loadOrCreateToken(tokenAddress);
 }

@@ -1,4 +1,4 @@
-import { createStreamTransaction, loadOrCreateToken } from "../helpers/database";
+import { createStreamTransaction, loadOrCreateToken, loadStream } from "../helpers/database";
 import {
   CancelStream as CancelStreamEvent,
   CreateStream as CreateStreamEvent,
@@ -28,8 +28,7 @@ export function handleCreateStream(event: CreateStreamEvent): void {
 }
 
 export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
-  let streamId: string = event.params.streamId.toString();
-  let stream: Stream | null = Stream.load(streamId);
+  let stream: Stream | null = loadStream(event.params.streamId.toString());
   if (stream == null) {
     return;
   }
@@ -38,25 +37,24 @@ export function handleWithdrawFromStream(event: WithdrawFromStreamEvent): void {
   let txhash: string = event.transaction.hash.toHex();
   let withdrawal: Withdrawal = new Withdrawal(txhash + "-" + event.logIndex.toString());
   withdrawal.amount = event.params.amount;
-  withdrawal.stream = streamId;
+  withdrawal.stream = stream.id;
   withdrawal.timestamp = event.block.timestamp;
   withdrawal.token = stream.token;
   withdrawal.txhash = txhash;
   withdrawal.save();
 
   // Create a stream transaction entity.
-  createStreamTransaction("WithdrawFromStream", event, streamId);
+  createStreamTransaction("WithdrawFromStream", event, stream.id);
 }
 
 export function handleCancelStream(event: CancelStreamEvent): void {
-  let streamId: string = event.params.streamId.toString();
-  let stream: Stream | null = Stream.load(streamId);
+  let stream: Stream | null = loadStream(event.params.streamId.toString());
   if (stream == null) {
     return;
   }
 
   // Create the cancellation entity.
-  let cancellation: Cancellation = new Cancellation(streamId);
+  let cancellation: Cancellation = new Cancellation(stream.id);
   cancellation.recipientBalance = event.params.recipientBalance;
   cancellation.senderBalance = event.params.senderBalance;
   cancellation.timestamp = event.block.timestamp;
@@ -65,9 +63,9 @@ export function handleCancelStream(event: CancelStreamEvent): void {
   cancellation.save();
 
   // Update the stream entity.
-  stream.cancellation = streamId;
+  stream.cancellation = stream.id;
   stream.save();
 
   // Create a stream transaction entity.
-  createStreamTransaction("CancelStream", event, streamId);
+  createStreamTransaction("CancelStream", event, stream.id);
 }
