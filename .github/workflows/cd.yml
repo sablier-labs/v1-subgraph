@@ -7,7 +7,7 @@ on:
 
 jobs:
   cd:
-    runs-on: "macos-latest"
+    runs-on: "ubuntu-18.04"
     steps:
       - name: "Check out the repo"
         uses: "actions/checkout@v2"
@@ -15,13 +15,8 @@ jobs:
       - name: "Install Node.js"
         uses: "actions/setup-node@v2"
         with:
-          node-version: "14"
-
-      - name: "Load cache if any"
-        uses: "actions/cache@v2"
-        with:
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-          path: "./node_modules"
+          cache: "yarn"
+          node-version: "16"
 
       - name: "Install dependencies"
         run: "yarn install --immutable"
