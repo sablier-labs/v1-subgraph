@@ -26,6 +26,7 @@
     "lint-staged": "^11.0.1",
     "mustache": "^4.2.0",
     "pinst": "^2.1.6",
+    "prettier": "^2.3.2",
     "shx": "^0.3.3",
     "typescript": "^4.3.5",
     "typy": "^3.3.0"
@@ -55,6 +56,6 @@
     "prepare:rinkeby": "mustache ./networks/rinkeby.json subgraph.template.yaml > subgraph.yaml",
     "prepare:ropsten": "mustache ./networks/ropsten.json subgraph.template.yaml > subgraph.yaml",
     "prettier": "prettier --config .prettierrc --write \"**/*.{js,json,md,ts,yaml,yml}\"",
-    "prettier:check": "prettier --config .prettierrc --check \"**/*.{js,json,md,ts,yaml,yml}\""
+    "prettier:check": "prettier --check --config .prettierrc \"**/*.{js,json,md,ts,yaml,yml}\""
   }
 }
