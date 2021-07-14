@@ -24,10 +24,11 @@ jobs:
       - name: "Lint AssemblyScript code"
         run: "yarn run lint"
 
+      - name: "Generate subgraph manifest"
+        run: "yarn run prepare:mainnet"
+
       - name: "Generate AssemblyScript types"
-        run: |
-          yarn run prepare:mainnet
-          yarn run codegen
+        run: "yarn run codegen"
 
       - name: "Deploy to Goerli"
         run: yarn run deploy:goerli --access-token ${{ secrets.THE_GRAPH_TOKEN }}
