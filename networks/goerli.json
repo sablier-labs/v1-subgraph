@@ -1,5 +1,5 @@
 {
-  "chain": "goerli",
+  "network": "goerli",
   "contracts": {
     "payroll": {
       "address": "0x8eB93647490DF9989295461AB2AcdEDdCCA84781",
