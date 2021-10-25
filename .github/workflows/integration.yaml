@@ -22,13 +22,13 @@ jobs:
         run: "yarn install --immutable"
 
       - name: "Lint the code"
-        run: "yarn run lint"
+        run: "yarn lint"
 
       - name: "Generate the subgraph manifest"
-        run: "yarn run prepare:mainnet"
+        run: "yarn prepare:mainnet"
 
       - name: "Generate the AssemblyScript types"
-        run: "yarn run codegen"
+        run: "yarn codegen"
 
       - name: "Build the subgraph"
-        run: "yarn run build"
+        run: "yarn build"
