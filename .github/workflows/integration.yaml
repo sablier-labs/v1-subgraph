@@ -1,0 +1,34 @@
+name: "Continuous Deployment"
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  cd:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Check out the repo"
+        uses: "actions/checkout@v2"
+
+      - name: "Install Node.js"
+        uses: "actions/setup-node@v2"
+        with:
+          cache: "yarn"
+          node-version: "16"
+
+      - name: "Install dependencies"
+        run: "yarn install --immutable"
+
+      - name: "Lint the code"
+        run: "yarn run lint"
+
+      - name: "Generate the subgraph manifest"
+        run: "yarn run prepare:mainnet"
+
+      - name: "Generate the AssemblyScript types"
+        run: "yarn run codegen"
+
+      - name: "Build the subgraph"
+        run: "yarn run build"

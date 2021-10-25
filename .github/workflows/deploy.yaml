@@ -1,13 +1,10 @@
-name: "Continuous Deployment"
+name: "Deploy Subgraphs"
 
-on:
-  push:
-    branches:
-      - "main"
+on: workflow_dispatch
 
 jobs:
   cd:
-    runs-on: "ubuntu-18.04"
+    runs-on: "ubuntu-latest"
     steps:
       - name: "Check out the repo"
         uses: "actions/checkout@v2"
@@ -21,13 +18,13 @@ jobs:
       - name: "Install dependencies"
         run: "yarn install --immutable"
 
-      - name: "Lint AssemblyScript code"
+      - name: "Lint the code"
         run: "yarn run lint"
 
-      - name: "Generate subgraph manifest"
+      - name: "Generate the subgraph manifest"
         run: "yarn run prepare:mainnet"
 
-      - name: "Generate AssemblyScript types"
+      - name: "Generate the AssemblyScript types"
         run: "yarn run codegen"
 
       - name: "Deploy to Goerli"
