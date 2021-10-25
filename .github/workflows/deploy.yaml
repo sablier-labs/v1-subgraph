@@ -3,7 +3,7 @@ name: "Deploy Subgraphs"
 on: workflow_dispatch
 
 jobs:
-  cd:
+  deploy:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Check out the repo"

@@ -1,4 +1,4 @@
-name: "Continuous Deployment"
+name: "Integration"
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - "main"
 
 jobs:
-  cd:
+  integration:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Check out the repo"
