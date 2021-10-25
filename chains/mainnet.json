@@ -1,5 +1,5 @@
 {
-  "network": "mainnet",
+  "chain": "mainnet",
   "contracts": {
     "payroll": {
       "address": "0xbd6a40Bb904aEa5a49c59050B5395f7484A4203d",

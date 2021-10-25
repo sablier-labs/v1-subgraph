@@ -1,18 +1,18 @@
 {
-  "network": "kovan",
+  "chain": "ropsten",
   "contracts": {
     "payroll": {
       "address": "0x7ee114C3628Ca90119fC699f03665bF9dB8f5faF",
-      "startBlock": 14759634
+      "startBlock": 6761469
     },
     "sablier": {
       "v1-0-0": {
         "address": "0xc04Ad234E01327b24a831e3718DBFcbE245904CC",
-        "startBlock": 14759800
+        "startBlock": 6761469
       },
       "v1-1-0": {
-        "address": "0x5eb34b5d5c75ce2119078e5b3f6a3f30e457e46b",
-        "startBlock": 25902228
+        "address": "0xcd79FFea8e2E6eFDAe92554Fdd1F154bB7c62D0f",
+        "startBlock": 10566441
       }
     }
   }

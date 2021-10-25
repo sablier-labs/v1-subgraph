@@ -1,18 +1,18 @@
 {
-  "network": "rinkeby",
+  "chain": "kovan",
   "contracts": {
     "payroll": {
       "address": "0x7ee114C3628Ca90119fC699f03665bF9dB8f5faF",
-      "startBlock": 5428801
+      "startBlock": 14759634
     },
     "sablier": {
       "v1-0-0": {
         "address": "0xc04Ad234E01327b24a831e3718DBFcbE245904CC",
-        "startBlock": 5428792
+        "startBlock": 14759800
       },
       "v1-1-0": {
-        "address": "0xC1f3af5DC05b0C51955804b2afc80eF8FeED67b9",
-        "startBlock": 8865670
+        "address": "0x5eb34b5d5c75ce2119078e5b3f6a3f30e457e46b",
+        "startBlock": 25902228
       }
     }
   }

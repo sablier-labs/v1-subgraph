@@ -6,7 +6,7 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: SablierV1.0.0
-    network: {{network}}
+    chain: {{chain}}
     source:
       abi: Sablier
       address: "{{contracts.sablier.v1-0-0.address}}"
@@ -31,7 +31,7 @@ dataSources:
       language: wasm/assemblyscript
   - kind: ethereum/contract
     name: SablierV1.1.0
-    network: {{network}}
+    chain: {{chain}}
     source:
       abi: Sablier
       address: "{{contracts.sablier.v1-1-0.address}}"
@@ -65,7 +65,7 @@ dataSources:
       language: wasm/assemblyscript
   - kind: ethereum/contract
     name: Payroll
-    network: {{network}}
+    chain: {{chain}}
     source:
       abi: Payroll
       address: "{{contracts.payroll.address}}"
