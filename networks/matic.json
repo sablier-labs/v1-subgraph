@@ -1,5 +1,5 @@
 {
-  "network": "polygon-mainnet",
+  "network": "matic",
   "contracts": {
     "sablier": {
       "v1-1-0": {

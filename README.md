@@ -5,8 +5,8 @@ Sablier is a money streaming protocol running on top of EVM-compatible chains. T
 You can interact with the subgraph via The Graph's hosted service:
 
 - [sablierhq/sablier](https://thegraph.com/explorer/subgraph/sablierhq/sablier)
-- [sablierhq/sablier-polygon-mainnet](https://thegraph.com/explorer/subgraph/sablierhq/sablier-polygon-mainnet)
-- [sablierhq/sablier-bsc-mainnet](https://thegraph.com/explorer/subgraph/sablierhq/sablier-bsc-mainnet)
+- [sablierhq/sablier-matic](https://thegraph.com/explorer/subgraph/sablierhq/sablier-matic)
+- [sablierhq/sablier-bsc](https://thegraph.com/explorer/subgraph/sablierhq/sablier-bsc)
 
 ## Queries
 

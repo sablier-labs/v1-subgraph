@@ -1,4 +1,4 @@
-name: "Deploy Subgraphs"
+name: "Deploy Subgraph"
 
 on:
   workflow_dispatch:
@@ -27,7 +27,7 @@ jobs:
         run: "yarn lint"
 
       - name: "Generate the subgraph manifest"
-        run: "yarn prepare:ethereum:mainnet"
+        run: "yarn prepare:mainnet"
 
       - name: "Generate the AssemblyScript types"
         run: "yarn codegen"
