@@ -1,6 +1,11 @@
 name: "Deploy Subgraphs"
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      network:
+        description: "Network name in lowercase"
+        required: true
 
 jobs:
   deploy:
@@ -27,17 +32,5 @@ jobs:
       - name: "Generate the AssemblyScript types"
         run: "yarn codegen"
 
-      - name: "Deploy to Goerli"
-        run: yarn deploy:goerli --access-token ${{ secrets.THE_GRAPH_TOKEN }}
-
-      - name: "Deploy to Kovan"
-        run: yarn deploy:kovan --access-token ${{ secrets.THE_GRAPH_TOKEN }}
-
-      - name: "Deploy to Rinkeby"
-        run: yarn deploy:rinkeby --access-token ${{ secrets.THE_GRAPH_TOKEN }}
-
-      - name: "Deploy to Ropsten"
-        run: yarn deploy:ropsten --access-token ${{ secrets.THE_GRAPH_TOKEN }}
-
-      - name: "Deploy to Mainnet"
-        run: yarn deploy:mainnet --access-token ${{ secrets.THE_GRAPH_TOKEN }}
+      - name: "Deploy to ${{ github.event.inputs.network }}"
+        run: yarn deploy:${{ github.event.inputs.network }} --access-token ${{ secrets.THE_GRAPH_TOKEN }}

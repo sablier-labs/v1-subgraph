@@ -1,14 +1,17 @@
 # Sablier Subgraph
 
-Sablier is a money streaming protocol built on the Ethereum blockchain. This subgraph indexes the events emitted by our smart contracts.
+Sablier is a money streaming protocol running on top of EVM-compatible chains. This subgraph indexes the events emitted by our smart contracts.
 
-You can interact with the subgraph via The Graph's [hosted service](https://thegraph.com/explorer/subgraph/sablierhq/sablier).
+You can interact with the subgraph via The Graph's hosted service:
+
+- [sablierhq/sablier](https://thegraph.com/explorer/subgraph/sablierhq/sablier)
+- [sablierhq/sablier-polygon-mainnet](https://thegraph.com/explorer/subgraph/sablierhq/sablier-polygon-mainnet)
+- [sablierhq/sablier-bsc-mainnet](https://thegraph.com/explorer/subgraph/sablierhq/sablier-bsc-mainnet)
 
 ## Queries
 
-Below are a few ways to show how to query the Sablier subgraph for data. The queries show most of the information that is queryable, but there are many other filtering options that can be used, just check out the querying api.
-
-For more examples, check out the saved queries on the hosted service.
+Below are a few ways to show how to query the Sablier subgraph for data. The queries show most of the information that
+is queryable, but there are many other filtering options that can be used. Just check out the GraphQL API.
 
 ### Querying All Streams
 

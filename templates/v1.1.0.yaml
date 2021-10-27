@@ -1,0 +1,40 @@
+specVersion: 0.0.2
+description: Money streaming protocol
+repository: https://github.com/sablierhq/sablier-subgraph
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: SablierV1.1.0
+    network: {{network}}
+    source:
+      abi: Sablier
+      address: "{{contracts.sablier.v1-1-0.address}}"
+      startBlock: {{contracts.sablier.v1-1-0.startBlock}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      abis:
+        - name: ERC20
+          file: ./abis/ERC20.json
+        - name: ERC20NameBytes32
+          file: ./abis/ERC20NameBytes32.json
+        - name: ERC20SymbolBytes32
+          file: ./abis/ERC20SymbolBytes32.json
+        - name: Sablier
+          file: ./abis/Sablier.json
+      entities:
+        - Cancellation
+        - Stream
+        - StreamTransaction
+        - Token
+        - Withdrawal
+      eventHandlers:
+        - event: CreateStream(indexed uint256,indexed address,indexed address,uint256,address,uint256,uint256)
+          handler: handleCreateStream
+        - event: WithdrawFromStream(indexed uint256,indexed address,uint256)
+          handler: handleWithdrawFromStream
+        - event: CancelStream(indexed uint256,indexed address,indexed address,uint256,uint256)
+          handler: handleCancelStream
+      file: ./src/mappings/sablier.ts
+      language: wasm/assemblyscript

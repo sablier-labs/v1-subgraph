@@ -70,7 +70,7 @@ type StreamToSalary @entity {
 }
 
 """
-Ethereum transaction that interacted with a stream.
+Transaction that interacted with a stream.
 """
 type StreamTransaction @entity {
   "Transaction hash concatenated with log index"
