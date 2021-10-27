@@ -237,9 +237,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphprotocol/graph-cli@npm:^0.22.4":
-  version: 0.22.4
-  resolution: "@graphprotocol/graph-cli@npm:0.22.4"
+"@graphprotocol/graph-cli@npm:^0.23.0":
+  version: 0.23.0
+  resolution: "@graphprotocol/graph-cli@npm:0.23.0"
   dependencies:
     assemblyscript: 0.19.10
     binary-install-raw: 0.0.13
@@ -266,16 +266,16 @@ __metadata:
     yaml: ^1.5.1
   bin:
     graph: bin/graph
-  checksum: e3404d7b9bac871522b61e0a1e06fa3465ee9ac3e88e30d261b15ab9f5bf7b3647a197f8fea38650dd333feede4630034a986f36a577abb3fc3c965bf30f0dd1
+  checksum: 176663d8358fdbf738a2833e254b0d947f0e9e195e0313d7bc866cf60a51c36034c786afe3b69463d420093ccddb007ea7104e1befb9abe66014801484b7018a
   languageName: node
   linkType: hard
 
-"@graphprotocol/graph-ts@npm:^0.22.1":
-  version: 0.22.1
-  resolution: "@graphprotocol/graph-ts@npm:0.22.1"
+"@graphprotocol/graph-ts@npm:^0.23.0":
+  version: 0.23.0
+  resolution: "@graphprotocol/graph-ts@npm:0.23.0"
   dependencies:
     assemblyscript: 0.19.10
-  checksum: 9ba65f4205e52ce493adf1b56c197fa6d142fb07a511b3734d85df3eb740c326e1079b038ab56aabccc37e1f5e718ee9a67bf24ae0d2134173449ec2ba92c0e1
+  checksum: d92b7f4e9d2f5efde6bac64cafd2e1781d838b0bb94d8534ec579dcf57a71746b2e747c48241976c6667b4520b931905700864837bb75eb697bb0fdcbdc3430a
   languageName: node
   linkType: hard
 
@@ -351,16 +351,15 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^13.2.1
     "@commitlint/config-conventional": ^13.2.0
-    "@graphprotocol/graph-cli": ^0.22.4
-    "@graphprotocol/graph-ts": ^0.22.1
+    "@graphprotocol/graph-cli": ^0.23.0
+    "@graphprotocol/graph-ts": ^0.23.0
     "@sablier/eslint-config": ^1.0.1
     "@typescript-eslint/eslint-plugin": ^5.2.0
     "@typescript-eslint/parser": ^5.2.0
-    axios: ^0.24.0
     eslint: ^8.1.0
     eslint-config-prettier: ^8.3.0
     husky: ^7.0.4
-    lint-staged: ^11.2.5
+    lint-staged: ^11.2.6
     mustache: ^4.2.0
     pinst: ^2.1.6
     prettier: ^2.4.1
@@ -964,15 +963,6 @@ __metadata:
   dependencies:
     follow-redirects: ^1.10.0
   checksum: c87915fa0b18c15c63350112b6b3563a3e2ae524d7707de0a73d2e065e0d30c5d3da8563037bc29d4cc1b7424b5a350cb7274fa52525c6c04a615fe561c6ab11
-  languageName: node
-  linkType: hard
-
-"axios@npm:^0.24.0":
-  version: 0.24.0
-  resolution: "axios@npm:0.24.0"
-  dependencies:
-    follow-redirects: ^1.14.4
-  checksum: 468cf496c08a6aadfb7e699bebdac02851e3043d4e7d282350804ea8900e30d368daa6e3cd4ab83b8ddb5a3b1e17a5a21ada13fc9cebd27b74828f47a4236316
   languageName: node
   linkType: hard
 
@@ -1682,6 +1672,19 @@ __metadata:
     path-type: ^4.0.0
     yaml: ^1.10.0
   checksum: 6801feaa0249e9b9fdde5b3d70dc33b4f9c69095bec94d67e3fe08b66eac24dc7e2099f053597cfbc94b743de269aa5d2cfa7da3fde765433423b06bd122941a
+  languageName: node
+  linkType: hard
+
+"cosmiconfig@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "cosmiconfig@npm:7.0.1"
+  dependencies:
+    "@types/parse-json": ^4.0.0
+    import-fresh: ^3.2.1
+    parse-json: ^5.0.0
+    path-type: ^4.0.0
+    yaml: ^1.10.0
+  checksum: 4be63e7117955fd88333d7460e4c466a90f556df6ef34efd59034d2463484e339666c41f02b523d574a797ec61f4a91918c5b89a316db2ea2f834e0d2d09465b
   languageName: node
   linkType: hard
 
@@ -2661,16 +2664,6 @@ __metadata:
     debug:
       optional: true
   checksum: 7381a55bdc6951c5c1ab73a8da99d9fa4c0496ce72dba92cd2ac2babe0e3ebde9b81c5bca889498ad95984bc773d713284ca2bb17f1b1e1416e5f6531e39a488
-  languageName: node
-  linkType: hard
-
-"follow-redirects@npm:^1.14.4":
-  version: 1.14.4
-  resolution: "follow-redirects@npm:1.14.4"
-  peerDependenciesMeta:
-    debug:
-      optional: true
-  checksum: d4ce74cf5c6f363168b97e706b914eb9ffb6bf4d4c6d8f8330b93088d9b90e566611ddbcf0e42c8ed5fd17598dfeda1d19230d3e9d6d6c6b4d1c10ec3a0b99be
   languageName: node
   linkType: hard
 
@@ -4098,13 +4091,6 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"lilconfig@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "lilconfig@npm:2.0.3"
-  checksum: 39fcd06c9f94bec0f7be969f89abcead96cf9334682007df63e6fbe9bdb0566cf8e1ca53a8f56d2acca802f28e8acbabe8ed4e6265ed5e419b6a1397db003741
-  languageName: node
-  linkType: hard
-
 "lines-and-columns@npm:^1.1.6":
   version: 1.1.6
   resolution: "lines-and-columns@npm:1.1.6"
@@ -4112,18 +4098,17 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"lint-staged@npm:^11.2.5":
-  version: 11.2.5
-  resolution: "lint-staged@npm:11.2.5"
+"lint-staged@npm:^11.2.6":
+  version: 11.2.6
+  resolution: "lint-staged@npm:11.2.6"
   dependencies:
     cli-truncate: 2.1.0
     colorette: ^1.4.0
     commander: ^8.2.0
+    cosmiconfig: ^7.0.1
     debug: ^4.3.2
     enquirer: ^2.3.6
     execa: ^5.1.1
-    js-yaml: ^4.1.0
-    lilconfig: ^2.0.3
     listr2: ^3.12.2
     micromatch: ^4.0.4
     normalize-path: ^3.0.0
@@ -4133,7 +4118,7 @@ fsevents@~2.3.2:
     supports-color: 8.1.1
   bin:
     lint-staged: bin/lint-staged.js
-  checksum: d5fd11560f28d448de6318cc6792895e55cf87f850a5ac125d7f5e2777baf004e05482e224450e0f13354fa527c13276792f3650b6d53dd3016a67344f97d632
+  checksum: b9071621db351c553579bd18df3d80fb753f851c4f1f72db0aaf12e713eab25b6d8a044dab2957817de7da02054a63f7725a49c763aee09295133f0d554f4d3f
   languageName: node
   linkType: hard
 
