@@ -1,5 +1,5 @@
 {
-  "network": "ethereum-ropsten",
+  "network": "ropsten",
   "contracts": {
     "sablier": {
       "v1-1-0": {

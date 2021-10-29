@@ -1,5 +1,5 @@
 {
-  "network": "ethereum-rinkeby",
+  "network": "rinkeby",
   "contracts": {
     "payroll": {
       "address": "0x7ee114C3628Ca90119fC699f03665bF9dB8f5faF",
