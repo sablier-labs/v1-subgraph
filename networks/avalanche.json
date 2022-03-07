@@ -1,0 +1,11 @@
+{
+  "network": "avalanche",
+  "contracts": {
+    "sablier": {
+      "v1-1-0": {
+        "address": "0x73f503fad13203c87889c3d5c567550b2d41d7a4",
+        "startBlock": 11807565
+      }
+    }
+  }
+}
