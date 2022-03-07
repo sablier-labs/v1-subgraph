@@ -1,0 +1,11 @@
+{
+  "network": "arbitrum-one",
+  "contracts": {
+    "sablier": {
+      "v1-1-0": {
+        "address": "0xadb944b478818d95659067e70d2e5fc43fa3ede9",
+        "startBlock": 7517896
+      }
+    }
+  }
+}

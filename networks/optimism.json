@@ -1,0 +1,11 @@
+{
+  "network": "optimism",
+  "contracts": {
+    "sablier": {
+      "v1-1-0": {
+        "address": "0x6c5927c0679e6d857e87367bb635decbcb20f31c",
+        "startBlock": 4207146
+      }
+    }
+  }
+}
