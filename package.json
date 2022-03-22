@@ -15,6 +15,7 @@
     "@graphprotocol/graph-cli": "^0.23.0",
     "@graphprotocol/graph-ts": "^0.23.0",
     "@sablier/eslint-config": "^1.0.1",
+    "@trivago/prettier-plugin-sort-imports": "^3.2.0",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "@typescript-eslint/parser": "^5.2.0",
     "eslint": "^8.1.0",
