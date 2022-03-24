@@ -1,4 +1,4 @@
-# folders
+# directories
 .yarn/*
 !.yarn/releases
 !.yarn/plugins
