@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 description: Money streaming protocol
-repository: https://github.com/sablier-labs/sablier-subgraph
+repository: https://github.com/sablier-labs/v1-subgraph
 schema:
   file: ./schema.graphql
 dataSources:

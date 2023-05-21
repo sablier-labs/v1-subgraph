@@ -1,13 +1,13 @@
 {
   "name": "@sablier/subgraph",
-  "description": "Subgraph for the Sablier money streaming protocol",
+  "description": "Subgraph for the Sablier cryptoasset streaming protocol",
   "version": "1.0.0",
   "author": {
     "name": "Sablier",
     "url": "https://sablier.finance"
   },
   "bugs": {
-    "url": "https://github.com/sablier-labs/sablier-subgraph/issues"
+    "url": "https://github.com/sablier-labs/v1-subgraph/issues"
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.23.0",
@@ -26,7 +26,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/sablier-labs/sablier-subgraph.git"
+    "url": "https://github.com/sablier-labs/v1-subgraph.git"
   },
   "scripts": {
     "build": "graph build --debug",

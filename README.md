@@ -1,6 +1,6 @@
 # Sablier Subgraph
 
-Sablier is a money streaming protocol running on top of EVM-compatible chains. This subgraph indexes the events emitted by our smart contracts.
+Sablier is a cryptoasset streaming protocol running on top of EVM-compatible chains. This subgraph indexes the events emitted by our smart contracts.
 
 You can interact with the subgraph via The Graph's hosted service:
 
