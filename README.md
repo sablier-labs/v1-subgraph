@@ -4,12 +4,12 @@ Sablier is a money streaming protocol running on top of EVM-compatible chains. T
 
 You can interact with the subgraph via The Graph's hosted service:
 
-- [sablierhq/sablier](https://thegraph.com/explorer/subgraph/sablierhq/sablier)
-- [sablierhq/sablier-arbitrum](https://thegraph.com/explorer/subgraph/sablierhq/sablier-arbitrum)
-- [sablierhq/sablier-avalanche](https://thegraph.com/explorer/subgraph/sablierhq/sablier-avalanche)
-- [sablierhq/sablier-bsc](https://thegraph.com/explorer/subgraph/sablierhq/sablier-bsc)
-- [sablierhq/sablier-matic](https://thegraph.com/explorer/subgraph/sablierhq/sablier-matic)
-- [sablierhq/sablier-optimism](https://thegraph.com/explorer/subgraph/sablierhq/sablier-optimism)
+- [sablier-labs/sablier](https://thegraph.com/explorer/subgraph/sablier-labs/sablier)
+- [sablier-labs/sablier-arbitrum](https://thegraph.com/explorer/subgraph/sablier-labs/sablier-arbitrum)
+- [sablier-labs/sablier-avalanche](https://thegraph.com/explorer/subgraph/sablier-labs/sablier-avalanche)
+- [sablier-labs/sablier-bsc](https://thegraph.com/explorer/subgraph/sablier-labs/sablier-bsc)
+- [sablier-labs/sablier-matic](https://thegraph.com/explorer/subgraph/sablier-labs/sablier-matic)
+- [sablier-labs/sablier-optimism](https://thegraph.com/explorer/subgraph/sablier-labs/sablier-optimism)
 
 ## Queries
 

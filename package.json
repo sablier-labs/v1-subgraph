@@ -7,7 +7,7 @@
     "url": "https://sablier.finance"
   },
   "bugs": {
-    "url": "https://github.com/sablierhq/sablier-subgraph/issues"
+    "url": "https://github.com/sablier-labs/sablier-subgraph/issues"
   },
   "devDependencies": {
     "@commitlint/cli": "^13.2.1",
@@ -32,23 +32,23 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/sablierhq/sablier-subgraph.git"
+    "url": "https://github.com/sablier-labs/sablier-subgraph.git"
   },
   "scripts": {
     "build": "graph build --debug",
     "clean": "shx rm -rf ./build ./src/types ./subgraph.yaml",
     "codegen": "graph codegen --debug --output-dir src/types/",
     "deploy": "graph deploy $SUBGRAPH --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
-    "deploy:arbitrum": "yarn prepare:arbitrum && SUBGRAPH=sablierhq/sablier-arbitrum yarn deploy",
-    "deploy:avalanche": "yarn prepare:avalanche && SUBGRAPH=sablierhq/sablier-avalanche yarn deploy",
-    "deploy:bsc": "yarn prepare:bsc && SUBGRAPH=sablierhq/sablier-bsc yarn deploy",
-    "deploy:goerli": "yarn prepare:goerli && SUBGRAPH=sablierhq/sablier-goerli yarn deploy",
-    "deploy:kovan": "yarn prepare:kovan && SUBGRAPH=sablierhq/sablier-kovan yarn deploy",
-    "deploy:mainnet": "yarn prepare:mainnet && SUBGRAPH=sablierhq/sablier yarn deploy",
-    "deploy:matic": "yarn prepare:matic && SUBGRAPH=sablierhq/sablier-matic yarn deploy",
-    "deploy:optimism": "yarn prepare:optimism && SUBGRAPH=sablierhq/sablier-optimism yarn deploy",
-    "deploy:rinkeby": "yarn prepare:rinkeby && SUBGRAPH=sablierhq/sablier-rinkeby yarn deploy",
-    "deploy:ropsten": "yarn prepare:ropsten && SUBGRAPH=sablierhq/sablier-ropsten yarn deploy",
+    "deploy:arbitrum": "yarn prepare:arbitrum && SUBGRAPH=sablier-labs/sablier-arbitrum yarn deploy",
+    "deploy:avalanche": "yarn prepare:avalanche && SUBGRAPH=sablier-labs/sablier-avalanche yarn deploy",
+    "deploy:bsc": "yarn prepare:bsc && SUBGRAPH=sablier-labs/sablier-bsc yarn deploy",
+    "deploy:goerli": "yarn prepare:goerli && SUBGRAPH=sablier-labs/sablier-goerli yarn deploy",
+    "deploy:kovan": "yarn prepare:kovan && SUBGRAPH=sablier-labs/sablier-kovan yarn deploy",
+    "deploy:mainnet": "yarn prepare:mainnet && SUBGRAPH=sablier-labs/sablier yarn deploy",
+    "deploy:matic": "yarn prepare:matic && SUBGRAPH=sablier-labs/sablier-matic yarn deploy",
+    "deploy:optimism": "yarn prepare:optimism && SUBGRAPH=sablier-labs/sablier-optimism yarn deploy",
+    "deploy:rinkeby": "yarn prepare:rinkeby && SUBGRAPH=sablier-labs/sablier-rinkeby yarn deploy",
+    "deploy:ropsten": "yarn prepare:ropsten && SUBGRAPH=sablier-labs/sablier-ropsten yarn deploy",
     "lint": "yarn lint:ts && yarn prettier:check",
     "lint:ts": "eslint --config ./.eslintrc.yaml --ignore-path ./.eslintignore --ext .js,.ts .",
     "postinstall": "husky install",
