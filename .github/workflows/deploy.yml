@@ -1,16 +1,18 @@
-name: "Integration"
+name: "Deploy Subgraph"
 
 on:
-  push:
-    branches:
-      - "main"
+  workflow_dispatch:
+    inputs:
+      network:
+        description: "Network name in lowercase"
+        required: true
 
 jobs:
-  integration:
+  deploy:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Check out the repo"
-        uses: "actions/checkout@v2"
+        uses: "actions/checkout@v3"
 
       - name: "Install Node.js"
         uses: "actions/setup-node@v2"
@@ -30,5 +32,5 @@ jobs:
       - name: "Generate the AssemblyScript types"
         run: "yarn codegen"
 
-      - name: "Build the subgraph"
-        run: "yarn build"
+      - name: "Deploy to ${{ inputs.network }}"
+        run: yarn deploy:${{ inputs.network }} --access-token ${{ secrets.THE_GRAPH_TOKEN }}

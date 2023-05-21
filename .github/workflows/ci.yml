@@ -1,18 +1,16 @@
-name: "Deploy Subgraph"
+name: "CI"
 
 on:
-  workflow_dispatch:
-    inputs:
-      network:
-        description: "Network name in lowercase"
-        required: true
+  push:
+    branches:
+      - "main"
 
 jobs:
-  deploy:
+  ci:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Check out the repo"
-        uses: "actions/checkout@v2"
+        uses: "actions/checkout@v3"
 
       - name: "Install Node.js"
         uses: "actions/setup-node@v2"
@@ -32,5 +30,5 @@ jobs:
       - name: "Generate the AssemblyScript types"
         run: "yarn codegen"
 
-      - name: "Deploy to ${{ github.event.inputs.network }}"
-        run: yarn deploy:${{ github.event.inputs.network }} --access-token ${{ secrets.THE_GRAPH_TOKEN }}
+      - name: "Build the subgraph"
+        run: "yarn build"
