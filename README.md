@@ -16,7 +16,7 @@ You can interact with the subgraph via The Graph's hosted service:
 Below are a few ways to show how to query the Sablier subgraph for data. The queries show most of the information that
 is queryable, but there are many other filtering options that can be used. Just check out the GraphQL API.
 
-### Querying All Streams
+### Query All Streams
 
 ```graphql
 {
@@ -56,7 +56,19 @@ is queryable, but there are many other filtering options that can be used. Just 
 }
 ```
 
-### Querying All Transactions
+### Query All Streams for a Particular User
+
+You can do this with the [`where`](https://thegraph.com/docs/en/querying/graphql-api/#example-using-where) clause. Make sure that the user address is in lowercase:
+
+```graphql
+{
+  streams(where: { sender: "0xcafe...beef" }) {
+    id
+  }
+}
+```
+
+### Query All Transactions
 
 ```graphql
 {
