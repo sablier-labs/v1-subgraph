@@ -1,6 +1,6 @@
 {
   "name": "@sablier/subgraph",
-  "description": "Subgraph for the Sablier cryptoasset streaming protocol",
+  "description": "Subgraph for the Sablier V1 token distribution protocol",
   "version": "1.0.0",
   "author": {
     "name": "Sablier",
@@ -24,10 +24,7 @@
   },
   "license": "LGPL-3.0",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sablier-labs/v1-subgraph.git"
-  },
+  "repository": "github.com/sablier-labs/v1-subgraph",
   "scripts": {
     "build": "graph build --debug",
     "clean": "rm -rf ./build ./src/types ./subgraph.yaml",
