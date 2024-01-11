@@ -12,25 +12,25 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Check out the repo"
-        uses: "actions/checkout@v3"
+        uses: "actions/checkout@v4"
 
       - name: "Install Node.js"
         uses: "actions/setup-node@v3"
         with:
           cache: "yarn"
-          node-version: "16"
+          node-version: "18"
 
       - name: "Install dependencies"
         run: "yarn install --immutable"
 
       - name: "Lint the code"
-        run: "yarn lint"
+        run: "yarn run lint"
 
       - name: "Generate the subgraph manifest"
-        run: "yarn prepare:mainnet"
+        run: "yarn run prepare:mainnet"
 
       - name: "Generate the AssemblyScript types"
-        run: "yarn codegen"
+        run: "yarn run codegen"
 
       - name: "Deploy to ${{ inputs.network }}"
-        run: yarn deploy:${{ inputs.network }} --access-token ${{ secrets.THE_GRAPH_TOKEN }}
+        run: yarn run deploy:${{ inputs.network }} --access-token ${{ secrets.THE_GRAPH_TOKEN }}
